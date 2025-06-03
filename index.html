@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
-    <title>Brandmode &#8211; Digital Marketing Agency</title>
+    <title>Next Level Growth Partners - AI Lead Conversion Experts</title>
     <meta name='robots' content='max-image-preview:large' />
     <style>
         img:is([sizes="auto" i], [sizes^="auto," i]) {
@@ -606,6 +606,289 @@
                 order: 1;
                 width: 300px;
                 height: 600px;
+            }
+        }
+
+        /* Process Flow Section Styles */
+        .process-flow-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .process-flow-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .process-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .process-emoji {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        .process-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            font-family: 'Inter Tight', sans-serif;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .process-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .process-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+            position: relative;
+        }
+
+        .process-step.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .process-step:nth-child(even) {
+            flex-direction: row-reverse;
+            transform: translateX(50px);
+        }
+
+        .process-step:nth-child(even).animate {
+            transform: translateX(0);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin: 0 30px;
+            box-shadow: 0 8px 25px rgba(0,123,255,0.4);
+            position: relative;
+            z-index: 2;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .step-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .step-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+            font-family: 'Inter Tight', sans-serif;
+        }
+
+        .step-description {
+            color: #666;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .step-connector {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 80px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.3));
+            z-index: 1;
+        }
+
+        .process-step:last-child .step-connector {
+            display: none;
+        }
+
+        .process-cta {
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out 0.5s both;
+        }
+
+        .process-btn-primary {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,123,255,0.4);
+            margin-bottom: 15px;
+        }
+
+        .process-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,123,255,0.5);
+        }
+
+        .process-cta-note {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Process Flow Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Process Flow Responsive Styles */
+        @media (max-width: 768px) {
+            .process-title {
+                font-size: 2.5rem;
+            }
+
+            .process-subtitle {
+                font-size: 1.1rem;
+                padding: 0 10px;
+            }
+
+            .process-step {
+                flex-direction: column !important;
+                align-items: center;
+                text-align: center;
+                transform: translateY(30px) !important;
+            }
+
+            .process-step.animate {
+                transform: translateY(0) !important;
+            }
+
+            .step-number {
+                margin: 0 0 20px 0;
+            }
+
+            .step-content {
+                max-width: 100%;
+                margin: 0 10px;
+            }
+
+            .step-connector {
+                left: 30px;
+                top: 80px;
+                height: 60px;
+            }
+
+            .process-container {
+                padding: 0 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .process-flow-section {
+                padding: 60px 0;
+            }
+
+            .process-title {
+                font-size: 2rem;
+            }
+
+            .process-emoji {
+                font-size: 3rem;
+            }
+
+            .step-content {
+                padding: 20px;
+            }
+
+            .step-title {
+                font-size: 1.25rem;
+            }
+
+            .step-description {
+                font-size: 0.9rem;
+            }
+
+            .process-btn-primary {
+                padding: 15px 30px;
+                font-size: 1rem;
             }
         }
     </style>
@@ -1294,9 +1577,9 @@
                             <div class="ekit-wid-con">
                                 <div
                                     class="ekit-heading elementskit-section-title-wraper text_center   ekit_heading_tablet-   ekit_heading_mobile-">
-                                    <h1 class="ekit-heading--title elementskit-section-title text_fill">We are a leading
-                                        <span><span>Ai agency</span></span> with global reach &amp;
-                                        <span><span>services</span></span>
+                                    <h1 class="ekit-heading--title elementskit-section-title text_fill">Automated
+                                        <span><span>Lead Conversion</span></span><br>
+                                        Powered By <span><span>AI + SMS</span></span>
                                     </h1>
                                 </div>
                             </div>
@@ -1315,8 +1598,7 @@
                         <div class="elementor-element elementor-element-96bb3b0 elementor-widget elementor-widget-heading"
                             data-id="96bb3b0" data-element_type="widget" data-widget_type="heading.default">
                             <div class="elementor-widget-container">
-                                <h4 class="elementor-heading-title elementor-size-default">Trusted by startups,
-                                    creatives, and suits alike</h4>
+                                <h4 class="elementor-heading-title elementor-size-default">Trusted by 500+ businesses generating $10M+ in additional revenue</h4>
                             </div>
                         </div>
                         <div class="elementor-element elementor-element-e934052 elementor-widget elementor-widget-elementskit-client-logo"
@@ -1575,7 +1857,7 @@
                                       </div> -->
                                             </div>
 
-                                        </div><!-- .elementskit-clients-slider END -->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1609,10 +1891,10 @@
                                 <div class="ekit-wid-con">
                                     <div
                                         class="ekit-heading elementskit-section-title-wraper text_center   ekit_heading_tablet-   ekit_heading_mobile-">
-                                        <h2 class="ekit-heading--title elementskit-section-title text_fill">What can we
-                                            do <span><span>for you? </span></span></h2>
+                                        <h2 class="ekit-heading--title elementskit-section-title text_fill">The 24/7
+                                            <span><span>Sales Machine</span></span></h2>
                                         <div class='ekit-heading__description'>
-                                            <p>We hold exceptional expertise in five main areas</p>
+                                            <p>Uncover Lost Revenue with AI-Powered Lead Engagement</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1629,8 +1911,8 @@
                                     <div
                                         class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-   ekit_heading_mobile-text_center">
                                         <a href="#">
-                                            <h4 class="ekit-heading--title elementskit-section-title text_fill"> Social
-                                                Media <br> <span><span>Automation</span></span></h4>
+                                            <h4 class="ekit-heading--title elementskit-section-title text_fill"> Lead
+                                                <br> <span><span>Engagement</span></span></h4>
                                         </a>
                                     </div>
                                 </div>
@@ -1647,8 +1929,8 @@
                                     <div
                                         class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-   ekit_heading_mobile-text_center">
                                         <a href="#">
-                                            <h4 class="ekit-heading--title elementskit-section-title "> 
-                                                <span><span> custom Build</span></span>
+                                            <h4 class="ekit-heading--title elementskit-section-title ">
+                                                <span><span>Sales Qualifying</span></span>
                                             </h4>
                                         </a>
                                     </div>
@@ -1666,8 +1948,8 @@
                                     <div
                                         class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-   ekit_heading_mobile-text_center">
                                         <a href="#">
-                                            <h4 class="ekit-heading--title elementskit-section-title text_fill"> Abandoned
-                                                <br> <span><span>Cart Agent</span></span>
+                                            <h4 class="ekit-heading--title elementskit-section-title text_fill"> Lead
+                                                <br> <span><span>Nurturing</span></span>
                                             </h4>
                                         </a>
                                     </div>
@@ -1685,8 +1967,8 @@
                                     <div
                                         class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-   ekit_heading_mobile-text_center">
                                         <a href="#">
-                                            <h4 class="ekit-heading--title elementskit-section-title ">Voice <br>
-                                                <span><span>AI Agent</span></span>
+                                            <h4 class="ekit-heading--title elementskit-section-title ">Appointments <br>
+                                                <span><span>Set</span></span>
                                             </h4>
                                         </a>
                                     </div>
@@ -1704,8 +1986,8 @@
                                     <div
                                         class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-   ekit_heading_mobile-text_center">
                                         <a href="#">
-                                            <h4 class="ekit-heading--title elementskit-section-title text_fill">Google<br>
-                                                <span><span>Reviews</span></span>
+                                            <h4 class="ekit-heading--title elementskit-section-title text_fill">Revenue<br>
+                                                <span><span>Optimization</span></span>
                                             </h4>
                                         </a>
                                     </div>
@@ -1738,7 +2020,7 @@
                         <div class="elementor-element elementor-element-ad54a23 elementor-widget elementor-widget-text-editor"
                             data-id="ad54a23" data-element_type="widget" data-widget_type="text-editor.default">
                             <div class="elementor-widget-container">
-                                <p>We ground our work in AI concepts, strategize thoughtfully, and execute creatively, developing intelligent systems, automating processes, and delivering data-driven insights
+                                <p>Stop losing money on dead leads. Our AI-powered SMS system resurrects cold prospects and converts them into booked appointments while you sleep.
                                 </p>
                             </div>
                         </div>
@@ -1751,10 +2033,9 @@
                                 <div class="ekit-wid-con">
                                     <div
                                         class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-text_center   ekit_heading_mobile-">
-                                        <h2 class="ekit-heading--title elementskit-section-title text_fill">Using ,
-                                            machine learning, automation, and <span><span>advanced technologies</span></span>, we shape
-                                            <span><span>Intelligent Business Solutions</span></span> that propel your
-                                            <span><span>success</span></span> in the digital realm.
+                                        <h2 class="ekit-heading--title elementskit-section-title text_fill">Turn your
+                                            <span><span>dead lead database</span></span> into a <span><span>revenue-generating machine</span></span>
+                                            with AI that works <span><span>24/7</span></span> to book qualified appointments.
                                         </h2>
                                     </div>
                                 </div>
@@ -2287,6 +2568,7 @@
             </div>
         </div>
     </div>
+
     <div data-elementor-type="footer" data-elementor-id="1764"
         class="elementor elementor-1764 elementor-location-footer" data-elementor-post-type="elementor_library">
         <div class="elementor-element elementor-element-78cad96 e-flex e-con-boxed e-con e-parent" data-id="78cad96"
@@ -2515,8 +2797,7 @@
                         data-id="49dd403" data-element_type="widget" data-widget_type="theme-site-title.default">
                         <div class="elementor-widget-container">
                             <h2 class="elementor-heading-title elementor-size-default"><a
-                                    href="https://brandmode.1onestrong.com">Copyright © 2024 NLG| Powered by
-                                    Axonflash</a></h2>
+                                    href="index.html">Copyright © 2024 Next Level Growth Partners | AI Lead Conversion Experts</a></h2>
                         </div>
                     </div>
                 </div>
@@ -2840,21 +3121,49 @@
             }
         }
 
+        // Process Flow Animation
+        function initProcessFlowAnimations() {
+            const processSteps = document.querySelectorAll('.process-step');
+
+            const observerOptions = {
+                threshold: 0.3,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('animate');
+                        }, index * 200); // Stagger animation
+                    }
+                });
+            }, observerOptions);
+
+            processSteps.forEach(step => {
+                observer.observe(step);
+            });
+        }
+
         // Initialize the chat interface
         window.onload = function () {
             const input = document.getElementById('messageInput');
 
             // Add input event listener for send button state
-            input.addEventListener('input', updateSendButton);
-
-            // Initialize send button state
-            updateSendButton();
+            if (input) {
+                input.addEventListener('input', updateSendButton);
+                // Initialize send button state
+                updateSendButton();
+            }
 
             // Handle initial navbar visibility
             handleResize();
 
             // Add resize listener
             window.addEventListener('resize', handleResize);
+
+            // Initialize process flow animations
+            initProcessFlowAnimations();
 
             // Add keyboard shortcuts
             document.addEventListener('keydown', function (event) {
@@ -2863,7 +3172,6 @@
                     event.preventDefault();
                     toggleFullscreen();
                 }
-
 
                 if (event.key === 'Escape' && isFullscreen) {
                     toggleFullscreen();
