@@ -35,6 +35,44 @@
             padding: 0 !important;
         }
     </style>
+     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a122e;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e40af;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1e3a8a;
+        }
+
+        /* Custom animations for modal */
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-enter {
+            animation: modalFadeIn 0.3s ease-out;
+        }
+        
+        .overlay-enter {
+            animation: fadeIn 0.2s ease-out;
+        }
+    </style>
     <style>
         /* * {
                 margin: 0;
@@ -1435,6 +1473,217 @@
             }
         }
     </style>
+
+     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+            --accent: #06b6d4;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --glass: rgba(255, 255, 255, 0.15);
+        }
+        
+
+        
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+        }
+        
+        .timeline-connector {
+            position: relative;
+        }
+        
+        .timeline-connector::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            top: 100%;
+            bottom: -2rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.1), 0 10px 10px -5px rgba(59, 130, 246, 0.04);
+        }
+        
+        .radar {
+            width: 120px;
+            height: 120px;
+            position: relative;
+            background: conic-gradient(from 0deg, rgba(37, 99, 235, 0.1) 0%, rgba(6, 182, 212, 0.3) 30%, rgba(37, 99, 235, 0.1) 70%);
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        
+        .radar::before {
+            content: '';
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            background: var(--glass);
+            border-radius: 50%;
+            top: 10%;
+            left: 10%;
+        }
+        
+        .radar-scan {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.5), transparent);
+            animation: scan 4s linear infinite;
+            transform-origin: left center;
+        }
+        
+        @keyframes scan {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .signal-dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(6, 182, 212, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(6, 182, 212, 0);
+            }
+        }
+        
+        .phone-ring {
+            animation: ring 1.5s ease-in-out infinite;
+            transform-origin: 50% 0;
+        }
+        
+        @keyframes ring {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(10deg);
+            }
+            75% {
+                transform: rotate(-10deg);
+            }
+        }
+        
+        .message-bubble {
+            position: relative;
+            max-width: 220px;
+            padding: 12px;
+            border-radius: 18px;
+            margin: 4px 0;
+            animation: slideIn 0.3s ease-out forwards;
+            opacity: 0;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(10px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .typing-indicator {
+            display: flex;
+            padding: 10px;
+        }
+        
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            margin: 0 2px;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+        
+        .typing-dot:nth-child(1) { animation-delay: 0s; }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .countdown {
+            font-family: monospace;
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+        
+        .reactivating {
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px -5px var(--accent);
+            }
+            100% {
+                box-shadow: 0 0 20px 5px var(--accent);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-connector::after {
+                left: 1.5rem;
+                transform: none;
+            }
+            
+            .mobile-timeline-item {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+        }
+    </style>
     <link rel="icon" href="https://brandmode.1onestrong.com/wp-content/uploads/2024/02/Favicon.png" sizes="32x32" />
     <link rel="icon" href="https://brandmode.1onestrong.com/wp-content/uploads/2024/02/Favicon.png" sizes="192x192" />
     <link rel="apple-touch-icon" href="https://brandmode.1onestrong.com/wp-content/uploads/2024/02/Favicon.png" />
@@ -2515,6 +2764,12 @@
                             <div class="elementor-widget-container">
                                 <h2 class="elementor-heading-title elementor-size-default">Our work</h2>
                             </div>
+<button 
+    class="openModalBtn bg-gradient-to-r from-blue-800 to-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105 transform"
+>
+    <i class="fas fa-calendar-check mr-2"></i> Request Demo
+</button>
+
                         </div>
                     </div>
                     <div class="elementor-element elementor-element-5cc2029 elementor-widget elementor-widget-elementskit-heading"
@@ -2528,7 +2783,26 @@
                                     </h2>
                                 </div>
                             </div>
+<button 
+    class="openModalBtn bg-gradient-to-r from-blue-800 to-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105 transform"
+>
+    <i class="fas fa-calendar-check mr-2"></i> Request Demo
+</button>
+
                         </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 order-2 md:order-1 md:pr-12">
+                    <h2 class="text-3xl font-bold mb-4">8. Lost Opportunity Recovery</h2>
+                    <p class="text-lg text-gray-700 mb-6">Our system detects when leads drop off and automatically follows up with tailored messages, special offers, and alternative approaches.</p>
+                    <div class="bg-gradient-to-r from-blue-50 to-cyan-50 p-4 rounded-xl">
+                        <div class="font-medium mb-2">Typical Recovery Workflow:</div>
+                        <ol class="text-sm list-decimal list-inside space-y-1">
+                            <li>1h after: Friendly reminder with benefit recap</li>
+                            <li>24h after: Customer success story + social proof</li>
+                            <li>48h after: Limited-time offer (if applicable)</li>
+                            <li>72h after: Alternative solution or downsell</li>
+                        </ol>
                     </div>
                 </div>
             </div>
@@ -2802,6 +3076,227 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+        <!-- Modal Overlay -->
+    <div 
+        id="modalOverlay" 
+        class="fixed inset-0 bg-black bg-opacity-70 z-50 hidden overlay-enter flex items-center justify-center p-4"
+    >
+        <!-- Modal Container -->
+        <div 
+            id="modalContainer" 
+            class="bg-[#01071a] text-[#A5A5A5] rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl hidden modal-enter scrollbar-thin scrollbar-thumb-blue-800 scrollbar-track-[#0a122e] scrollbar-thumb-rounded-full scrollbar-track-rounded-full"
+        >
+            <!-- Modal Header -->
+            <div class="p-6 border-b border-gray-800 flex justify-between items-center">
+                <div>
+                    <h3 class="text-xl font-bold text-white">Book Your Demo</h3>
+                    <p class="text-sm mt-1">Fill out the form below to schedule your demo</p>
+                </div>
+                <button id="closeModalBtn" class="text-gray-400 hover:text-white focus:outline-none">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Content - Form -->
+            <form class="p-4 md:p-6 pb-6 md:pb-8 space-y-3 md:space-y-4" method="post" name="New Form" id="demoForm">
+                <input type="hidden" name="post_id" value="2672" />
+                <input type="hidden" name="form_id" value="d94708f" />
+                <input type="hidden" name="referer_title" value="Contact" />
+                <input type="hidden" name="queried_id" value="2672" />
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                    <!-- First Name -->
+                    <div>
+                        <label for="form-field-first-name" class="block text-sm font-medium mb-1 text-gray-400">
+                            First Name <span class="text-red-500">*</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            name="form_fields[first_name]" 
+                            id="form-field-first-name" 
+                            class="w-full bg-[#0a122e] border border-gray-800 rounded-lg px-3 md:px-4 py-2 md:py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                            placeholder="First Name" 
+                            required
+                        >
+                    </div>
+                    
+                    <!-- Last Name -->
+                    <div>
+                        <label for="form-field-last-name" class="block text-sm font-medium mb-1 text-gray-400">
+                            Last Name <span class="text-red-500">*</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            name="form_fields[last_name]" 
+                            id="form-field-last-name" 
+                            class="w-full bg-[#0a122e] border border-gray-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                            placeholder="Last Name" 
+                            required
+                        >
+                    </div>
+                    
+                    <!-- Phone -->
+                    <div>
+                        <label for="form-field-phone" class="block text-sm font-medium mb-1 text-gray-400">
+                            Phone <span class="text-red-500">*</span>
+                        </label>
+                        <input 
+                            type="tel" 
+                            name="form_fields[phone]" 
+                            id="form-field-phone" 
+                            class="w-full bg-[#0a122e] border border-gray-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                            placeholder="Phone" 
+                            required
+                        >
+                    </div>
+                    
+                    <!-- Email -->
+                    <div>
+                        <label for="form-field-email" class="block text-sm font-medium mb-1 text-gray-400">
+                            Email <span class="text-red-500">*</span>
+                        </label>
+                        <input 
+                            type="email" 
+                            name="form_fields[email]" 
+                            id="form-field-email" 
+                            class="w-full bg-[#0a122e] border border-gray-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                            placeholder="Email" 
+                            required
+                        >
+                    </div>
+                </div>
+                
+                <!-- Company Name -->
+                <div>
+                    <label for="form-field-company" class="block text-sm font-medium mb-1 text-gray-400">
+                        Company Name <span class="text-red-500">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        name="form_fields[company]" 
+                        id="form-field-company" 
+                        class="w-full bg-[#0a122e] border border-gray-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                        placeholder="Company Name" 
+                        required
+                    >
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Service Interest -->
+                    <div>
+                        <label for="form-field-service" class="block text-sm font-medium mb-1 text-gray-400">
+                            Which service interests you most?
+                        </label>
+                        <div class="relative">
+                            <select 
+                                name="form_fields[service]" 
+                                id="form-field-service" 
+                                class="w-full bg-[#0a122e] border border-gray-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none appearance-none pr-10"
+                            >
+                                <option value="Lead Revival Android">Lead Revival Android</option>
+                                <option value="Instant Lead Android">Instant Lead Android</option>
+                                <option value="Abandoned Cart Recovery">Abandoned Cart Recovery</option>
+                                <option value="Out Of Hours Android">Out Of Hours Android</option>
+                                <option value="Voice AI Receptionist">Voice AI Receptionist</option>
+                                <option value="Convo AI Widget">Convo AI Widget</option>
+                                <option value="Google Reviews Android">Google Reviews Android</option>
+                                <option value="Custom Built Solution">Custom Built Solution</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                <i class="fas fa-chevron-down text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Referral Source -->
+                    <div>
+                        <label for="form-field-referral" class="block text-sm font-medium mb-1 text-gray-400">
+                            How did you hear about us?
+                        </label>
+                        <div class="relative">
+                            <select 
+                                name="form_fields[referral]" 
+                                id="form-field-referral" 
+                                class="w-full bg-[#0a122e] border border-gray-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none appearance-none pr-10"
+                            >
+                                <option value="Google Search">Google Search</option>
+                                <option value="Social Media">Social Media</option>
+                                <option value="Referral">Referral</option>
+                                <option value="LinkedIn">LinkedIn</option>
+                                <option value="Facebook">Facebook</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                <i class="fas fa-chevron-down text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Message -->
+                <div>
+                    <label for="form-field-message" class="block text-sm font-medium mb-1 text-gray-400">
+                        Tell us about your business and goals:
+                    </label>
+                    <textarea 
+                        name="form_fields[message]" 
+                        id="form-field-message" 
+                        rows="4" 
+                        class="w-full bg-[#0a122e] border border-gray-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                        placeholder="Describe your business, current challenges, and what you hope to achieve with AI automation..."
+                    ></textarea>
+                </div>
+                
+                <!-- SMS Consent -->
+                <div class="pt-2">
+                    <div class="flex items-start">
+                        <div class="flex items-center h-5">
+                            <input 
+                                type="checkbox" 
+                                value="yes" 
+                                id="form-field-sms-consent" 
+                                name="form_fields[sms_consent]" 
+                                class="w-4 h-4 bg-[#0a122e] border-gray-800 rounded focus:ring-blue-500 text-blue-600"
+                                required
+                            >
+                        </div>
+                        <label for="form-field-sms-consent" class="ml-3 text-sm text-gray-400">
+                            I consent to receive SMS messages from Next Level Growth Partners. Message and data rates may apply. Reply STOP to opt out. <span class="text-red-500">*</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Terms Consent -->
+                <div class="pb-2">
+                    <div class="flex items-start">
+                        <div class="flex items-center h-5">
+                            <input 
+                                type="checkbox" 
+                                value="yes" 
+                                id="form-field-terms" 
+                                name="form_fields[terms]" 
+                                class="w-4 h-4 bg-[#0a122e] border-gray-800 rounded focus:ring-blue-500 text-blue-600"
+                                required
+                            >
+                        </div>
+                        <label for="form-field-terms" class="ml-3 text-sm text-gray-400">
+                            I agree to the <a href="#" target="_blank" class="text-blue-400 hover:text-blue-300">Terms of Service</a> and <a href="#" target="_blank" class="text-blue-400 hover:text-blue-300">Privacy Policy</a>. <span class="text-red-500">*</span>
+                        </label>
+                    </div>
+                </div>
+                
+            <!-- Submit Button -->
+                <div class="pt-3 md:pt-4">
+                    <button 
+                        type="submit" 
+                        class="w-full bg-gradient-to-r from-blue-800 to-blue-600 hover:from-blue-700 hover:to-blue-500 text-white font-semibold py-3 md:py-4 px-4 md:px-6 rounded-full shadow-md hover:shadow-lg transition-all transform hover:scale-[1.01]"
+                    >
+                        <i class="fas fa-calendar-check mr-2"></i> Book My Demo
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -3179,6 +3674,213 @@
             });
         };
     </script>
+        <script>
+        // Initialize ScrollReveal
+        ScrollReveal().reveal('.mobile-timeline-item', {
+            delay: 200,
+            distance: '50px',
+            origin: 'bottom',
+            interval: 100
+        });
+
+        // GSAP animations for more complex elements
+        document.addEventListener('DOMContentLoaded', () => {
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Animate timeline connectors
+            gsap.from(".timeline-connector::after", {
+                scrollTrigger: {
+                    trigger: ".timeline-connector",
+                    start: "top bottom",
+                    toggleActions: "play none none none"
+                },
+                scaleY: 0,
+                transformOrigin: "top center",
+                duration: 1.5,
+                ease: "power3.out"
+            });
+            
+            // Message bubble animations
+            gsap.to(".message-bubble", {
+                scrollTrigger: {
+                    trigger: "#cold-outreach",
+                    start: "top 80%"
+                },
+                stagger: 0.2,
+                duration: 0.6,
+                opacity: 1,
+                y: 0,
+                ease: "back.out(1)"
+            });
+            
+            // Countdown animation
+            let countdown = document.querySelector('.countdown');
+            if (countdown) {
+                let time = 9.4;
+                let interval = setInterval(() => {
+                    time -= 0.1;
+                    if (time <= 0) {
+                        clearInterval(interval);
+                        countdown.textContent = "00:00.0 response time";
+                    } else {
+                        countdown.textContent = `00:0${Math.floor(time)}.${(time % 1).toFixed(1).slice(2)} response time`;
+                    }
+                }, 100);
+            }
+            
+            // Add hover effects to all demo buttons
+            document.querySelectorAll('[id^="experience-demo"]').forEach(button => {
+                button.addEventListener('mouseenter', () => {
+                    gsap.to(button, {
+                        scale: 1.05,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+                button.addEventListener('mouseleave', () => {
+                    gsap.to(button, {
+                        scale: 1,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+            });
+            
+            // ROI calculator interaction
+            const roiSlider = document.querySelector('input[type="range"]');
+            if (roiSlider) {
+                roiSlider.addEventListener('input', () => {
+                    const value = parseInt(roiSlider.value);
+                    const dealSizeSelect = document.querySelector('select');
+                    const dealSize = parseInt(dealSizeSelect.value.replace(/\D/g, '')) || 10000;
+                    
+                    // Simple ROI calculation - adjust as needed
+                    const estimatedValue = Math.round(value * dealSize * 0.25); // Assuming 25% conversion
+                    
+                    document.querySelector('.text-2xl.font-bold.text-blue-600').textContent = 
+                        `$${estimatedValue.toLocaleString()}`;
+                });
+            }
+        });
+    </script>
+        <script>
+        // Modal functionality
+        // const modalOverlay = document.getElementById('modalOverlay');
+        // const modalContainer = document.getElementById('modalContainer');
+        // const openModalBtn = document.getElementById('openModalBtn');
+        // const closeModalBtn = document.getElementById('closeModalBtn');
+        
+        // function openModal() {
+        //     modalOverlay.classList.remove('hidden');
+        //     modalOverlay.classList.add('flex');
+            
+        //     // Small delay to allow display property to change before animation
+        //     setTimeout(() => {
+        //         modalContainer.classList.remove('hidden');
+        //     }, 10);
+            
+        //     document.body.style.overflow = 'hidden';
+        // }
+        
+        // function closeModal() {
+        //     modalContainer.classList.add('hidden');
+        //     modalOverlay.classList.add('opacity-0');
+            
+        //     setTimeout(() => {
+        //         modalOverlay.classList.add('hidden');
+        //         modalOverlay.classList.remove('opacity-0', 'flex');
+        //         document.body.style.overflow = 'auto';
+        //     }, 300);
+        // }
+        
+        // openModalBtn.addEventListener('click', openModal);
+        // closeModalBtn.addEventListener('click', closeModal);
+        
+        // // Close modal when clicking outside the form
+        // modalOverlay.addEventListener('click', function(e) {
+        //     if (e.target === modalOverlay) {
+        //         closeModal();
+        //     }
+        // });
+        
+        // // Close modal with Escape key
+        // document.addEventListener('keydown', function(e) {
+        //     if (e.key === 'Escape') {
+        //         closeModal();
+        //     }
+        // });
+        
+        // // Form submission
+        // const form = document.querySelector('form[name="New Form"]');
+        // form.addEventListener('submit', function(e) {
+        //     e.preventDefault();
+        //     // Here you would normally handle form submission
+        //     alert('Demo request submitted! We will contact you soon.');
+        //     closeModal();
+        // });
+
+        // Modal functionality
+const modalOverlay = document.getElementById('modalOverlay');
+const modalContainer = document.getElementById('modalContainer');
+const closeModalBtn = document.getElementById('closeModalBtn');
+
+// Attach open modal event to all buttons with class 'openModalBtn'
+const openModalBtns = document.querySelectorAll('.openModalBtn');
+openModalBtns.forEach(button => {
+    button.addEventListener('click', openModal);
+});
+
+function openModal() {
+    modalOverlay.classList.remove('hidden');
+    modalOverlay.classList.add('flex');
+
+    setTimeout(() => {
+        modalContainer.classList.remove('hidden');
+    }, 10);
+
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    modalContainer.classList.add('hidden');
+    modalOverlay.classList.add('opacity-0');
+
+    setTimeout(() => {
+        modalOverlay.classList.add('hidden');
+        modalOverlay.classList.remove('opacity-0', 'flex');
+        document.body.style.overflow = 'auto';
+    }, 300);
+}
+
+closeModalBtn.addEventListener('click', closeModal);
+
+// Close modal when clicking outside the form
+modalOverlay.addEventListener('click', function (e) {
+    if (e.target === modalOverlay) {
+        closeModal();
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+});
+
+// Form submission
+const form = document.querySelector('form[name="New Form"]');
+form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    alert('Demo request submitted! We will contact you soon.');
+    closeModal();
+});
+
+    </script>
+    
 </body>
 
+
+
 </html>
+
