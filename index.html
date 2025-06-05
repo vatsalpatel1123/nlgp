@@ -370,7 +370,7 @@
             flex: 1;
             background: rgba(58, 58, 60, 1);
             border-radius: 20px;
-            padding: 8px 16px;
+            /* padding: 8px 16px; */
             display: flex;
             align-items: center;
             gap: 8px;
@@ -795,7 +795,7 @@
             transform: translateX(-50%);
             width: 2px;
             height: 80px;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.3));
+            /* background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.3)); */
             z-index: 1;
         }
 
@@ -1428,7 +1428,7 @@
         href='https://fonts.googleapis.com/css?family=DM+Sans%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CManrope%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CInter+Tight%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CNunito+Sans%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=swap&#038;ver=6.8.1'
         media='all' />
     <link rel='stylesheet' id='elementor-icons-ekiticons-css'
-        href='https://brandmode.1onestrong.com/wp-content/plugins/elementskit-lite/modules/elementskit-icon-pack/assets/css/ekiticons.css?ver=3.4.0'
+        href='./css/elementskit.woff'
         media='all' />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <script src="https://brandmode.1onestrong.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
@@ -1506,7 +1506,7 @@
             position: relative;
         }
         
-        .timeline-connector::after {
+        /* .timeline-connector::after {
             content: '';
             position: absolute;
             width: 4px;
@@ -1515,7 +1515,7 @@
             bottom: -2rem;
             left: 50%;
             transform: translateX(-50%);
-        }
+        } */
         
         .card-hover {
             transition: all 0.3s ease;
@@ -2746,21 +2746,21 @@
             <div class="mobile-frame">
                 <div class="mobile-screen">
                     <div class="status-bar">
-                        <div class="status-left">
+                        <div class="status-left" style="    margin-bottom: -25px;">
                             <span>15:42</span>
                         </div>
-                        <div class="status-right">
+                        <!-- <div class="status-right">
                             <span>●●●●●</span>
                             <span>📶</span>
                             <span>📶</span>
                             <span>🔋</span>
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="chat-header">
                         <span class="back-btn">‹</span>
                         <div class="contact-info">
-                            <div class="contact-name">Grace</div>
+                            <div class="contact-name">Bella AI</div>
                             <div class="contact-status">AI Assistant</div>
                         </div>
                         <span class="call-btn">📞</span>
@@ -2770,7 +2770,7 @@
                         <div class="message received">
                             <div class="avatar">G</div>
                             <div class="message-bubble">
-                                Hello! I'm Grace, your friendly AI assistant. I'm here to help you see how your own
+                                Hello! I'm Bella, your friendly AI assistant. I'm here to help you see how your own
                                 custom AI assistant can work for your business. To get started, could you share your
                                 first name with me?
                             </div>
@@ -3080,7 +3080,7 @@
                                     </div>
                                 </div>
                             </div>
-<button 
+<button style="    margin-top: 54px;"
     class="openModalBtn bg-gradient-to-r from-blue-800 to-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105 transform"
 >
     <i class="fas fa-calendar-check mr-2"></i> Request Demo
@@ -3180,7 +3180,7 @@
                 <div class="w-full md:w-1/2 mb-8 md:mb-0">
                     <div class="glass-card p-8 card-hover h-full">
                         <div class="flex flex-col items-center">
-                            <div class="w-64 bg-white rounded-xl shadow-lg overflow-hidden mb-6">
+                            <div class="w-64 bg-white rounded-xl shadow-lg overflow-hidden mb-6" style="max-height: 350px; min-height: 350px">
                                 <div class="bg-gradient-to-r from-blue-500 to-cyan-500 p-3 text-white">
                                     <div class="flex items-center">
                                         <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-2">
@@ -3189,7 +3189,7 @@
                                         <div>Bella AI Assistant</div>
                                     </div>
                                 </div>
-                                <div class="p-3 h-40 overflow-y-auto">
+                                <div class="p-3 h-40 overflow-y-auto" style="max-height: 300px; min-height: 300px">
                                     <div class="mb-2">
                                         <div class="bg-gray-100 rounded-lg p-2 text-sm inline-block">
                                             Hi there! How can I help you today?
@@ -3207,9 +3207,6 @@
                                         <button class="bg-blue-50 hover:bg-blue-100 text-blue-600 text-xs px-3 py-1 rounded-full">
                                             Demo
                                         </button>
-                                        <button class="bg-blue-50 hover:bg-blue-100 text-blue-600 text-xs px-3 py-1 rounded-full">
-                                            Case Studies
-                                        </button>
                                     </div>
                                     <div class="flex justify-center">
                                         <div class="typing-indicator bg-gray-100 p-2 rounded-full">
@@ -3218,9 +3215,6 @@
                                             <span class="typing-dot"></span>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="border-t p-2">
-                                    <input type="text" placeholder="Type your question..." class="w-full px-3 py-2 rounded-lg bg-gray-50 text-sm focus:outline-none">
                                 </div>
                             </div>
 <button 
@@ -3275,7 +3269,7 @@
                             <div class="relative mb-6">
                                 <div class="w-56 bg-white rounded-lg shadow-md p-4">
                                     <div class="flex justify-between items-center mb-3">
-                                        <h4 class="font-medium">Cart Recovery Sequence</h4>
+                                        <h4 class="font-medium" style="color: black">Cart Recovery Sequence</h4>
                                         <div class="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded">Active</div>
                                     </div>
                                     <div class="flex items-center space-x-3 mb-3">
@@ -3294,13 +3288,7 @@
                                         <button class="flex-1 bg-blue-500 hover:bg-blue-600 text-white text-sm py-2 rounded-l-lg">
                                             Send Offer
                                         </button>
-                                        <button class="flex-1 bg-gray-100 hover:bg-gray-200 text-sm py-2 rounded-r-lg">
-                                            View Items
-                                        </button>
                                     </div>
-                                </div>
-                                <div class="absolute -right-4 -bottom-4 bg-white p-2 rounded-full shadow-lg">
-                                    <i class="fas fa-tag text-yellow-500"></i>
                                 </div>
                             </div>
 <button 
@@ -3329,67 +3317,13 @@
         </div>
         
         <!-- Final CTA -->
-        <div class="glass-card p-8 md:p-12 rounded-2xl mt-16 mb-8 text-center">
+        <!-- <div class="glass-card p-8 md:p-12 rounded-2xl mt-16 mb-8 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">What Else Can Bella AI Do For You?</h2>
             <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">Complete the picture with our full suite of AI-powered business automation tools.</p>
-            
-            <!-- <div class="grid md:grid-cols-2 gap-8 mb-12">
-                <div class="bg-white/80 p-6 rounded-xl">
-                    <h3 class="text-2xl font-bold mb-3 text-blue-600">ROI Calculator</h3>
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Monthly Leads</label>
-                        <input type="range" min="10" max="500" value="100" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
-                        <div class="flex justify-between text-xs text-gray-500 mt-1">
-                            <span>10</span>
-                            <span>100</span>
-                            <span>500</span>
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Average Deal Size</label>
-                        <select class="w-full p-2 border border-gray-300 rounded-md">
-                            <option>$5,000</option>
-                            <option selected>$10,000</option>
-                            <option>$25,000</option>
-                            <option>$50,000+</option>
-                        </select>
-                    </div>
-                    <div class="bg-blue-50 p-4 rounded-lg">
-                        <div class="text-sm mb-1">Estimated Monthly Revenue Impact</div>
-                        <div class="text-2xl font-bold text-blue-600">$312,500</div>
-                    </div>
-                </div>
-                
-                <div class="bg-white/80 p-6 rounded-xl">
-                    <h3 class="text-2xl font-bold mb-3 text-blue-600">Schedule a Demo</h3>
-                    <form>
-                        <div class="mb-4">
-                            <input type="text" placeholder="Your Name" class="w-full p-3 border border-gray-300 rounded-lg">
-                        </div>
-                        <div class="mb-4">
-                            <input type="email" placeholder="Email Address" class="w-full p-3 border border-gray-300 rounded-lg">
-                        </div>
-                        <div class="mb-4">
-                            <select class="w-full p-3 border border-gray-300 rounded-lg">
-                                <option>I'm interested in...</option>
-                                <option>Full Platform Demo</option>
-                                <option>Lead Generation Module</option>
-                                <option>AI Calling Features</option>
-                                <option>Chatbot Solutions</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-all">
-                            Book My Personalized Demo
-                        </button>
-                    </form>
-                </div>
-            </div> -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-                <!-- Input Controls Column -->
                 <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl">
                     <h2 class="text-2xl font-semibold text-black mb-6">Adjust Your Metrics</h2>
                     
-                    <!-- Monthly Leads Slider -->
                     <div class="mb-6">
                         <div class="flex justify-between mb-2">
                             <label for="monthlyLeads" class="font-medium text-black">Monthly Leads</label>
@@ -3402,7 +3336,6 @@
                         </div>
                     </div>
                     
-                    <!-- Conversion Rate Slider -->
                     <div class="mb-6">
                         <div class="flex justify-between mb-2">
                             <label for="conversionRate" class="font-medium text-gray-700">Conversion Rate</label>
@@ -3415,7 +3348,6 @@
                         </div>
                     </div>
                     
-                    <!-- Average Deal Size Slider -->
                     <div class="mb-8">
                         <div class="flex justify-between mb-2">
                             <label for="dealSize" class="font-medium text-gray-700">Average Deal Size</label>
@@ -3435,9 +3367,7 @@
                     </div>
                 </div>
                 
-                <!-- Visualization Column -->
                 <div class="space-y-6">
-                    <!-- Current Revenue -->
                     <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl card-tilt">
                         <h3 class="text-lg font-semibold text-gray-700 mb-2">Current Performance</h3>
                         <div class="progress-container mb-3">
@@ -3455,7 +3385,6 @@
                         </div>
                     </div>
                     
-                    <!-- Projected Revenue -->
                     <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl card-tilt">
                         <h3 class="text-lg font-semibold text-gray-700 mb-2">Projected Performance</h3>
                         <div class="progress-container mb-3">
@@ -3473,7 +3402,6 @@
                         </div>
                     </div>
                     
-                    <!-- ROI Calculation -->
                     <div id="roiCard" class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-green-500 pulse-animate">
                         <h3 class="text-lg font-semibold text-gray-700 mb-1">Revenue Impact</h3>
                         <div class="flex items-end">
@@ -3488,7 +3416,6 @@
                 </div>
             </div>
             
-            <!-- Insights Section -->
             <div class="bg-white rounded-xl shadow-lg p-6 mt-6">
                 <h2 class="text-2xl font-semibold text-black mb-4">Performance Insights</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -3519,7 +3446,7 @@
                     <p id="recommendation" class="text-gray-700">Based on your current metrics, focus on improving your conversion rate first, as it currently requires 40 leads to generate one deal. A small increase in conversion rate would have a significant impact on your revenue.</p>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
         </div>
       
@@ -4116,7 +4043,7 @@
         let conversationHistory = [
             {
                 role: "system",
-                content: "You are Grace, a friendly AI assistant helping businesses understand how AI can work for them. Keep responses conversational, helpful, and focused on business benefits. Keep responses under 100 words."
+                content: "You are Bella, a friendly AI assistant helping businesses understand how AI can work for them. Keep responses conversational, helpful, and focused on business benefits. Keep responses under 100 words."
             }
         ];
 
