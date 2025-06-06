@@ -463,6 +463,13 @@
             font-size: 1.5em;
             line-height: 1.6;
         }
+        .elementor-message-danger{
+            display: none !important;
+        }
+
+        .elementor-message-danger::before{
+            display: none;
+        }
     </style>
     <link rel='stylesheet' id='template-kit-export-css'
         href='https://brandmode.1onestrong.com/wp-content/plugins/template-kit-export/assets/public/template-kit-export-public.css?ver=1.0.23'
@@ -1339,7 +1346,7 @@
             // Send to n8n webhook
             const webhookUrl = window.WEBHOOK_CONFIG ?
                 window.WEBHOOK_CONFIG.CONTACT_FORM_WEBHOOK :
-                'https://your-n8n-instance.com/webhook/contact-form';
+                'https://someco.app.n8n.cloud/webhook/contact-form';
 
             fetch(webhookUrl, {
                 method: 'POST',
@@ -1361,7 +1368,7 @@
                     if (formType === 'contact_form') {
                         alert('Thank you! Your message has been sent successfully. We will contact you soon.');
                     } else {
-                        alert('Thank you for subscribing to our newsletter!');
+                        // alert('Thank you for subscribing to our newsletter!');
                     }
                     // Reset form
                     form.reset();
@@ -1376,7 +1383,7 @@
                     submitBtn.innerHTML = originalText;
                     submitBtn.disabled = false;
                 }, 3000);
-                alert('There was an error submitting your request. Please try again or contact us directly.');
+                // alert('There was an error submitting your request. Please try again or contact us directly.');
             });
         }
     </script>
