@@ -21,6 +21,8 @@
         /*! This file is auto-generated */
         !function (i, n) { var o, s, e; function c(e) { try { var t = { supportTests: e, timestamp: (new Date).valueOf() }; sessionStorage.setItem(o, JSON.stringify(t)) } catch (e) { } } function p(e, t, n) { e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(t, 0, 0); var t = new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data), r = (e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(n, 0, 0), new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data)); return t.every(function (e, t) { return e === r[t] }) } function u(e, t, n) { switch (t) { case "flag": return n(e, "\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f", "\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f") ? !1 : !n(e, "\ud83c\uddfa\ud83c\uddf3", "\ud83c\uddfa\u200b\ud83c\uddf3") && !n(e, "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f", "\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f"); case "emoji": return !n(e, "\ud83d\udc26\u200d\ud83d\udd25", "\ud83d\udc26\u200b\ud83d\udd25") }return !1 } function f(e, t, n) { var r = "undefined" != typeof WorkerGlobalScope && self instanceof WorkerGlobalScope ? new OffscreenCanvas(300, 150) : i.createElement("canvas"), a = r.getContext("2d", { willReadFrequently: !0 }), o = (a.textBaseline = "top", a.font = "600 32px Arial", {}); return e.forEach(function (e) { o[e] = t(a, e, n) }), o } function t(e) { var t = i.createElement("script"); t.src = e, t.defer = !0, i.head.appendChild(t) } "undefined" != typeof Promise && (o = "wpEmojiSettingsSupports", s = ["flag", "emoji"], n.supports = { everything: !0, everythingExceptFlag: !0 }, e = new Promise(function (e) { i.addEventListener("DOMContentLoaded", e, { once: !0 }) }), new Promise(function (t) { var n = function () { try { var e = JSON.parse(sessionStorage.getItem(o)); if ("object" == typeof e && "number" == typeof e.timestamp && (new Date).valueOf() < e.timestamp + 604800 && "object" == typeof e.supportTests) return e.supportTests } catch (e) { } return null }(); if (!n) { if ("undefined" != typeof Worker && "undefined" != typeof OffscreenCanvas && "undefined" != typeof URL && URL.createObjectURL && "undefined" != typeof Blob) try { var e = "postMessage(" + f.toString() + "(" + [JSON.stringify(s), u.toString(), p.toString()].join(",") + "));", r = new Blob([e], { type: "text/javascript" }), a = new Worker(URL.createObjectURL(r), { name: "wpTestEmojiSupports" }); return void (a.onmessage = function (e) { c(n = e.data), a.terminate(), t(n) }) } catch (e) { } c(n = f(s, u, p)) } t(n) }).then(function (e) { for (var t in e) n.supports[t] = e[t], n.supports.everything = n.supports.everything && n.supports[t], "flag" !== t && (n.supports.everythingExceptFlag = n.supports.everythingExceptFlag && n.supports[t]); n.supports.everythingExceptFlag = n.supports.everythingExceptFlag && !n.supports.flag, n.DOMReady = !1, n.readyCallback = function () { n.DOMReady = !0 } }).then(function () { return e }).then(function () { var e; n.supports.everything || (n.readyCallback(), (e = n.source || {}).concatemoji ? t(e.concatemoji) : e.wpemoji && e.twemoji && (t(e.twemoji), t(e.wpemoji))) })) }((window, document), window._wpemojiSettings);
     </script>
+    <!-- Webhook Configuration -->
+    <script src="./webhook-config.js"></script>
     <style id='wp-emoji-styles-inline-css'>
         img.wp-smiley,
         img.emoji {
@@ -527,7 +529,7 @@
         href='https://fonts.googleapis.com/css?family=DM+Sans%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CManrope%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CInter+Tight%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CNunito+Sans%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=swap&#038;ver=6.8.1'
         media='all' />
     <link rel='stylesheet' id='elementor-icons-ekiticons-css'
-        href='https://brandmode.1onestrong.com/wp-content/plugins/elementskit-lite/modules/elementskit-icon-pack/assets/css/ekiticons.css?ver=3.4.0'
+        href='./css/ekiticons.css'
         media='all' />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <script src="https://brandmode.1onestrong.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
@@ -1270,6 +1272,114 @@
     <script
         src="https://brandmode.1onestrong.com/wp-content/plugins/elementskit-lite/widgets/init/assets/js/elementor.js?ver=3.4.0"
         id="elementskit-elementor-js"></script>
+
+    <script>
+        // Contact form submission handler
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle main contact form
+            const mainContactForm = document.querySelector('form.elementor-form[name="New Form"]');
+            if (mainContactForm) {
+                mainContactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    handleFormSubmission(this, 'contact_form', 'contact_page_main');
+                });
+            }
+
+            // Handle newsletter form
+            const newsletterForms = document.querySelectorAll('form.elementor-form');
+            newsletterForms.forEach(form => {
+                if (form !== mainContactForm) {
+                    form.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        handleFormSubmission(this, 'newsletter_signup', 'contact_page_newsletter');
+                    });
+                }
+            });
+        });
+
+        function handleFormSubmission(form, formType, source) {
+            // Show loading state
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Submitting...';
+            submitBtn.disabled = true;
+
+            // Collect form data
+            const formData = new FormData(form);
+            let data = {
+                form_type: formType,
+                source: source,
+                timestamp: new Date().toISOString(),
+                page_url: window.location.href,
+                user_agent: navigator.userAgent
+            };
+
+            // Add form-specific data
+            if (formType === 'contact_form') {
+                data = {
+                    ...data,
+                    first_name: formData.get('form_fields[first_name]'),
+                    last_name: formData.get('form_fields[last_name]'),
+                    email: formData.get('form_fields[email]'),
+                    phone: formData.get('form_fields[phone]'),
+                    company: formData.get('form_fields[company]'),
+                    service_interest: formData.get('form_fields[service]'),
+                    referral_source: formData.get('form_fields[referral]'),
+                    message: formData.get('form_fields[message]'),
+                    sms_consent: formData.get('form_fields[sms_consent]') === 'yes',
+                    terms_consent: formData.get('form_fields[terms]') === 'yes'
+                };
+            } else if (formType === 'newsletter_signup') {
+                data = {
+                    ...data,
+                    email: formData.get('form_fields[email]')
+                };
+            }
+
+            // Send to n8n webhook
+            const webhookUrl = window.WEBHOOK_CONFIG ?
+                window.WEBHOOK_CONFIG.CONTACT_FORM_WEBHOOK :
+                'https://your-n8n-instance.com/webhook/contact-form';
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(result => {
+                // Success
+                submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Success!';
+                setTimeout(() => {
+                    if (formType === 'contact_form') {
+                        alert('Thank you! Your message has been sent successfully. We will contact you soon.');
+                    } else {
+                        alert('Thank you for subscribing to our newsletter!');
+                    }
+                    // Reset form
+                    form.reset();
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }, 1500);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i> Error - Try Again';
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }, 3000);
+                alert('There was an error submitting your request. Please try again or contact us directly.');
+            });
+        }
+    </script>
 
 </body>
 
