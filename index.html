@@ -1646,6 +1646,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
@@ -1858,6 +1861,524 @@
           .elementor-message-danger::before{
             display: none;
         }
+
+        /* AI Services Section Styles */
+        .ai-services-section {
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+      
+
+        .ai-services-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ai-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .ai-service-card {
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.2;
+        }
+
+        .service-description {
+            color: #4a5568;
+            line-height: 1.6;
+            font-size: 1rem;
+            margin: 0;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .ai-services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .ai-services-section {
+                padding: 60px 0;
+            }
+
+            .ai-services-container {
+                padding: 0 15px;
+            }
+
+            .ai-services-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .ai-service-card {
+                padding: 30px 25px;
+            }
+
+            .service-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+            }
+
+            .service-title {
+                font-size: 1.3rem;
+                margin-bottom: 12px;
+            }
+
+            .service-description {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .ai-services-section {
+                padding: 50px 0;
+            }
+
+            .ai-service-card {
+                padding: 25px 20px;
+                border-radius: 15px;
+            }
+
+            .service-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.6rem;
+                margin-bottom: 18px;
+            }
+
+            .service-title {
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+            }
+
+            .service-description {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Animation for AOS */
+        [data-aos="fade-up"] {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        [data-aos="fade-up"].aos-animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Chat Widget Styles */
+        .chat-widget-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .chat-widget-button {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(30, 60, 114, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            animation: pulse-widget 2s infinite;
+        }
+
+        .chat-widget-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(30, 60, 114, 0.4);
+        }
+
+        .chat-widget-icon {
+            color: white;
+            font-size: 24px;
+        }
+
+        .chat-widget-notification {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ef4444;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            animation: bounce-notification 1s infinite;
+        }
+
+        @keyframes pulse-widget {
+            0%, 100% {
+                box-shadow: 0 8px 25px rgba(30, 60, 114, 0.3), 0 0 0 0 rgba(30, 60, 114, 0.7);
+            }
+            50% {
+                box-shadow: 0 12px 35px rgba(30, 60, 114, 0.4), 0 0 0 10px rgba(30, 60, 114, 0);
+            }
+        }
+
+        @keyframes bounce-notification {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-3px); }
+            60% { transform: translateY(-1px); }
+        }
+
+        .chat-widget-popup {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            transform: scale(0.8) translateY(20px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .chat-widget-popup.show {
+            display: flex;
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        .chat-widget-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-header-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .chat-avatar {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 18px;
+        }
+
+        .chat-header-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .chat-header-status {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .chat-close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: background 0.2s ease;
+        }
+
+        .chat-close-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .chat-widget-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f8fafc;
+        }
+
+        .chat-widget-messages::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .chat-widget-messages::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .chat-widget-messages::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 2px;
+        }
+
+        .chat-message {
+            display: flex;
+            margin-bottom: 15px;
+            animation: slideInMessage 0.3s ease-out;
+        }
+
+        .chat-message.sent {
+            flex-direction: row-reverse;
+        }
+
+        .chat-message-avatar {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .chat-message.sent .chat-message-avatar {
+            background: #e5e7eb;
+            color: #6b7280;
+            margin-right: 0;
+            margin-left: 10px;
+        }
+
+        .chat-message-bubble {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .chat-message.received .chat-message-bubble {
+            background: white;
+            color: #374151;
+            border-bottom-left-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-message.sent .chat-message-bubble {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border-bottom-right-radius: 6px;
+        }
+
+        @keyframes slideInMessage {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-typing-indicator {
+            padding: 0 20px 10px;
+            background: #f8fafc;
+            display: none;
+        }
+
+        .chat-typing-indicator.show {
+            display: block;
+        }
+
+        .chat-typing-dots {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background: white;
+            border-radius: 18px;
+            border-bottom-left-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            width: fit-content;
+        }
+
+        .chat-typing-dots span {
+            width: 8px;
+            height: 8px;
+            background: #9ca3af;
+            border-radius: 50%;
+            margin: 0 2px;
+            animation: typing-dots 1.4s infinite ease-in-out;
+        }
+
+        .chat-typing-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .chat-typing-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing-dots {
+            0%, 60%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            30% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        .chat-widget-input {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chat-input-container {
+            flex: 1;
+            background: #f3f4f6;
+            border-radius: 25px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .chat-input-field {
+            flex: 1;
+            border: none;
+            background: transparent;
+            color: #374151;
+            font-size: 14px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .chat-input-field::placeholder {
+            color: #9ca3af;
+        }
+
+        .chat-send-btn {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(30, 60, 114, 0.3);
+        }
+
+        .chat-send-btn:hover:not(:disabled) {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(30, 60, 114, 0.4);
+        }
+
+        .chat-send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .chat-widget-container {
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .chat-widget-popup {
+                width: 320px;
+                height: 450px;
+                bottom: 75px;
+            }
+
+            .chat-widget-button {
+                width: 55px;
+                height: 55px;
+            }
+
+            .chat-widget-icon {
+                font-size: 22px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .chat-widget-popup {
+                width: calc(100vw - 30px);
+                right: -5px;
+                height: 400px;
+            }
+        }
     </style>
     <link rel="icon" href="https://brandmode.1onestrong.com/wp-content/uploads/2024/02/Favicon.png" sizes="32x32" />
     <link rel="icon" href="https://brandmode.1onestrong.com/wp-content/uploads/2024/02/Favicon.png" sizes="192x192" />
@@ -2064,6 +2585,59 @@
                 </div>
             </div>
         </div>
+
+        <!-- AI Services Features Section -->
+        <section class="ai-services-section">
+            <div class="ai-services-container">
+                <div class="ai-services-grid">
+                    <!-- Lead Engagement -->
+                    <div class="ai-service-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="service-title">Lead Engagement</h3>
+                        <p class="service-description">Instantly engage customers with our powerful AI + SMS marketing campaign.</p>
+                    </div>
+
+                    <!-- Sales Qualifying -->
+                    <div class="ai-service-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="service-icon">
+                            <i class="fas fa-filter"></i>
+                        </div>
+                        <h3 class="service-title">Sales Qualifying</h3>
+                        <p class="service-description">Weed out the bad leads so you can focus on the valuable ones.</p>
+                    </div>
+
+                    <!-- Lead Nurturing -->
+                    <div class="ai-service-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="service-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3 class="service-title">Lead Nurturing</h3>
+                        <p class="service-description">Never loose another opportunity with automated follow ups to touch contacts.</p>
+                    </div>
+
+                    <!-- Appointments Set -->
+                    <div class="ai-service-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="service-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3 class="service-title">Appointments Set</h3>
+                        <p class="service-description">Integrate your calendar to have appointments booked on your behalf.</p>
+                    </div>
+
+                    <!-- Intel Collection -->
+                    <div class="ai-service-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="service-title">Intel Collection</h3>
+                        <p class="service-description">Dominate sales calls with customer insights uploaded right into your CRM.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <div class="elementor-element elementor-element-e7b5ccc e-con-full e-flex e-con e-parent" data-id="e7b5ccc"
             data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
             <div class="elementor-element elementor-element-5eff4c6 e-flex e-con-boxed e-con e-child" data-id="5eff4c6"
@@ -2377,103 +2951,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="elementor-element elementor-element-b50d156 e-con-full e-flex elementor-invisible e-con e-child"
-                        data-id="b50d156" data-element_type="container"
-                        data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:150}">
-                        <div class="elementor-element elementor-element-86024a5 elementor-widget elementor-widget-elementskit-heading"
-                            data-id="86024a5" data-element_type="widget" data-widget_type="elementskit-heading.default">
-                            <div class="elementor-widget-container">
-                                <div class="ekit-wid-con">
-                                    <div
-                                        class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-   ekit_heading_mobile-text_center">
-                                        <a href="#">
-                                            <h4 class="ekit-heading--title elementskit-section-title text_fill"> Lead
-                                                <br> <span><span>Engagement</span></span></h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="elementor-element elementor-element-85f00e5 e-con-full e-flex elementor-invisible e-con e-child"
-                        data-id="85f00e5" data-element_type="container"
-                        data-settings="{&quot;background_background&quot;:&quot;gradient&quot;,&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:200}">
-                        <div class="elementor-element elementor-element-00dec24 elementor-widget elementor-widget-elementskit-heading"
-                            data-id="00dec24" data-element_type="widget" data-widget_type="elementskit-heading.default">
-                            <div class="elementor-widget-container">
-                                <div class="ekit-wid-con">
-                                    <div
-                                        class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-   ekit_heading_mobile-text_center">
-                                        <a href="#">
-                                            <h4 class="ekit-heading--title elementskit-section-title ">
-                                                <span style="margin-bottom: 25px;"><span>Sales Qualifying</span></span>
-                                            </h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="elementor-element elementor-element-0f8a1dd e-con-full e-flex elementor-invisible e-con e-child"
-                        data-id="0f8a1dd" data-element_type="container"
-                        data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:250}">
-                        <div class="elementor-element elementor-element-b6f481b elementor-widget elementor-widget-elementskit-heading"
-                            data-id="b6f481b" data-element_type="widget" data-widget_type="elementskit-heading.default">
-                            <div class="elementor-widget-container">
-                                <div class="ekit-wid-con">
-                                    <div
-                                        class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-   ekit_heading_mobile-text_center">
-                                        <a href="#">
-                                            <h4 class="ekit-heading--title elementskit-section-title text_fill"> Lead
-                                                <br> <span><span>Nurturing</span></span>
-                                            </h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="elementor-element elementor-element-277902a e-con-full e-flex elementor-invisible e-con e-child"
-                        data-id="277902a" data-element_type="container"
-                        data-settings="{&quot;background_background&quot;:&quot;gradient&quot;,&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:300}">
-                        <div class="elementor-element elementor-element-c5c5e91 elementor-widget elementor-widget-elementskit-heading"
-                            data-id="c5c5e91" data-element_type="widget" data-widget_type="elementskit-heading.default">
-                            <div class="elementor-widget-container">
-                                <div class="ekit-wid-con">
-                                    <div
-                                        class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-   ekit_heading_mobile-text_center">
-                                        <a href="#">
-                                            <h4 class="ekit-heading--title elementskit-section-title ">Appointments <br>
-                                                <span><span>Set</span></span>
-                                            </h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="elementor-element elementor-element-0454ea2 e-con-full e-flex elementor-invisible e-con e-child"
-                        data-id="0454ea2" data-element_type="container"
-                        data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:350}">
-                        <div class="elementor-element elementor-element-1bb575d elementor-widget elementor-widget-elementskit-heading"
-                            data-id="1bb575d" data-element_type="widget" data-widget_type="elementskit-heading.default">
-                            <div class="elementor-widget-container">
-                                <div class="ekit-wid-con">
-                                    <div
-                                        class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-   ekit_heading_mobile-text_center">
-                                        <a href="#">
-                                            <h4 class="ekit-heading--title elementskit-section-title text_fill">Revenue<br>
-                                                <span><span>Optimization</span></span>
-                                            </h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
+
+
+
+        
         <div class="elementor-element elementor-element-87ddf11 e-con-full e-flex e-con e-parent" data-id="87ddf11"
             data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
             <div class="elementor-element elementor-element-f352fab e-con-full e-flex e-con e-child" data-id="f352fab"
@@ -2712,7 +3196,7 @@
                 </div>
             </div>
         </div>
-        <div class="elementor-element elementor-element-24f98ff e-con-full e-flex e-con e-parent e-lazyloaded"
+        <!-- <div class="elementor-element elementor-element-24f98ff e-con-full e-flex e-con e-parent e-lazyloaded"
             data-id="24f98ff" data-element_type="container"
             data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
             <div class="elementor-element elementor-element-3241546 e-flex e-con-boxed e-con e-child" data-id="3241546"
@@ -2748,7 +3232,7 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="elementor-element elementor-element-e4f2d87 e-con-full e-flex e-con e-child" data-id="e4f2d87" data-element_type="container">
+            <div class="elementor-element elementor-element-e4f2d87 e-con-full e-flex e-con e-child" data-id="e4f2d87" data-element_type="container">
                     <div class="elementor-element elementor-element-e07a7b2 e-con-full e-flex e-con e-child animated slideInUp" data-id="e07a7b2" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:150}">
                             <div class="elementor-element elementor-element-5404dbb elementor-widget elementor-widget-image" data-id="5404dbb" data-element_type="widget" data-widget_type="image.default">
                             <div class="elementor-widget-container">
@@ -2917,61 +3401,10 @@
                             </div>
                             </div>
                             </div>
-                            </div> -->
+                            </div> 
 
-            <div class="mobile-frame">
-                <div class="mobile-screen">
-                    <div class="status-bar">
-                        <div class="status-left" style="    margin-bottom: -25px;">
-                            <span>15:42</span>
-                        </div>
-                        <!-- <div class="status-right">
-                            <span>●●●●●</span>
-                            <span>📶</span>
-                            <span>📶</span>
-                            <span>🔋</span>
-                        </div> -->
-                    </div>
 
-                    <div class="chat-header">
-                        <span class="back-btn">‹</span>
-                        <div class="contact-info">
-                            <div class="contact-name">Bella AI</div>
-                            <div class="contact-status">AI Assistant</div>
-                        </div>
-                        <span class="call-btn">📞</span>
-                    </div>
-
-                    <div class="chat-messages" id="chatMessages">
-                        <div class="message received">
-                            <div class="avatar">G</div>
-                            <div class="message-bubble">
-                                Hello! I'm Bella, your friendly AI assistant. I'm here to help you see how your own
-                                custom AI assistant can work for your business. To get started, could you share your
-                                first name with me?
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="typing-indicator" id="typingIndicator">
-                        <div class="typing-dots">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-
-                    <div class="chat-input">
-                        <div class="input-container">
-                            <input type="text" class="input-field" id="messageInput" placeholder="iMessage"
-                                onkeypress="handleKeyPress(event)">
-                        </div>
-                        <button class="send-btn" onclick="sendMessage()" id="sendBtn" disabled=""
-                            style="opacity: 0.5;">↑</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div> -->
 
         <div class="elementor-element elementor-element-24f98ff e-con-full e-flex e-con e-parent e-lazyloaded"
             data-id="24f98ff" data-element_type="container"
@@ -5296,6 +5729,187 @@ function handleFormSubmission(form, formType, source) {
 }
 </script>
 
+<script>
+// Initialize AOS animations
+AOS.init({
+    duration: 600,
+    easing: 'ease-out',
+    once: true,
+    offset: 100
+});
+
+// Chat Widget Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const chatWidgetButton = document.getElementById('chatWidgetButton');
+    const chatWidgetPopup = document.getElementById('chatWidgetPopup');
+    const chatCloseBtn = document.getElementById('chatCloseBtn');
+    const chatNotification = document.getElementById('chatNotification');
+    const chatInputField = document.querySelector('.chat-input-field');
+    const chatSendBtn = document.querySelector('.chat-send-btn');
+    const chatMessages = document.querySelector('.chat-widget-messages');
+    const typingIndicator = document.querySelector('.chat-typing-indicator');
+
+    let isOpen = false;
+
+    // Toggle chat widget
+    function toggleChat() {
+        isOpen = !isOpen;
+        if (isOpen) {
+            chatWidgetPopup.classList.add('show');
+            chatNotification.style.display = 'none';
+            chatInputField.focus();
+        } else {
+            chatWidgetPopup.classList.remove('show');
+        }
+    }
+
+    // Event listeners
+    chatWidgetButton.addEventListener('click', toggleChat);
+    chatCloseBtn.addEventListener('click', toggleChat);
+
+    // Close chat when clicking outside
+    document.addEventListener('click', function(e) {
+        if (isOpen && !chatWidgetPopup.contains(e.target) && !chatWidgetButton.contains(e.target)) {
+            toggleChat();
+        }
+    });
+
+    // Enable/disable send button based on input
+    chatInputField.addEventListener('input', function() {
+        chatSendBtn.disabled = this.value.trim() === '';
+    });
+
+    // Send message on Enter key
+    chatInputField.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' && !chatSendBtn.disabled) {
+            sendChatMessage();
+        }
+    });
+
+    // Send message on button click
+    chatSendBtn.addEventListener('click', function() {
+        if (!this.disabled) {
+            sendChatMessage();
+        }
+    });
+
+    function sendChatMessage() {
+        const message = chatInputField.value.trim();
+        if (!message) return;
+
+        // Add user message to chat
+        addMessageToChat(message, 'sent');
+
+        // Clear input
+        chatInputField.value = '';
+        chatSendBtn.disabled = true;
+
+        // Show typing indicator
+        showTypingIndicator();
+
+        // Simulate AI response (replace with actual n8n integration)
+        setTimeout(() => {
+            hideTypingIndicator();
+            addMessageToChat("Thanks for your message! I'm processing your request and will respond shortly.", 'received');
+        }, 1500);
+    }
+
+    function addMessageToChat(message, type) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `chat-message ${type}`;
+
+        const avatarDiv = document.createElement('div');
+        avatarDiv.className = 'chat-message-avatar';
+        avatarDiv.innerHTML = type === 'sent' ? '<i class="fas fa-user"></i>' : '<i class="fas fa-robot"></i>';
+
+        const bubbleDiv = document.createElement('div');
+        bubbleDiv.className = 'chat-message-bubble';
+        bubbleDiv.textContent = message;
+
+        messageDiv.appendChild(avatarDiv);
+        messageDiv.appendChild(bubbleDiv);
+
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function showTypingIndicator() {
+        typingIndicator.classList.add('show');
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function hideTypingIndicator() {
+        typingIndicator.classList.remove('show');
+    }
+
+    // Show notification after 3 seconds
+    setTimeout(() => {
+        if (!isOpen) {
+            chatNotification.style.display = 'flex';
+        }
+    }, 3000);
+});
+</script>
+
+<!-- Chat Widget -->
+<div class="chat-widget-container">
+    <!-- Chat Widget Button -->
+    <div class="chat-widget-button" id="chatWidgetButton">
+        <div class="chat-widget-icon">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="chat-widget-notification" id="chatNotification">1</div>
+    </div>
+
+    <!-- Chat Widget Popup -->
+    <div class="chat-widget-popup" id="chatWidgetPopup">
+        <div class="chat-widget-header">
+            <div class="chat-header-info">
+                <div class="chat-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="chat-header-text">
+                    <div class="chat-header-title">Bella AI</div>
+                    <div class="chat-header-status">AI Assistant • Online</div>
+                </div>
+            </div>
+            <button class="chat-close-btn" id="chatCloseBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="chat-widget-messages" id="chatMessages">
+            <div class="chat-message received">
+                <div class="chat-message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="chat-message-bubble">
+                    Hello! I'm Bella, your friendly AI assistant. I'm here to help you see how your own
+                    custom AI assistant can work for your business. To get started, could you share your
+                    first name with me?
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-typing-indicator" id="typingIndicator">
+            <div class="chat-typing-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div class="chat-widget-input">
+            <div class="chat-input-container">
+                <input type="text" class="chat-input-field" id="messageInput" placeholder="Type your message..."
+                    onkeypress="handleKeyPress(event)">
+            </div>
+            <button class="chat-send-btn" onclick="sendMessage()" id="sendBtn" disabled>
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+</div>
 
 </body>
 
