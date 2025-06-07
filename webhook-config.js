@@ -1,5 +1,3 @@
-// Webhook Configuration
-// Update these URLs with your actual n8n webhook endpoints
 
 const WEBHOOK_CONFIG = {
     // Replace with your actual n8n webhook URLs
