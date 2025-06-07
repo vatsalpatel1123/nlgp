@@ -45811,6 +45811,282 @@
   <link rel="apple-touch-icon" href="https://brandmode.1onestrong.com/wp-content/uploads/2024/02/Favicon.png" />
   <meta name="msapplication-TileImage"
     content="https://brandmode.1onestrong.com/wp-content/uploads/2024/02/Favicon.png" />
+
+         <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+            --accent: #06b6d4;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --glass: rgba(255, 255, 255, 0.15);
+        }
+        
+
+        
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+        }
+        
+        .timeline-connector {
+            position: relative;
+        }
+        
+        /* .timeline-connector::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            top: 100%;
+            bottom: -2rem;
+            left: 50%;
+            transform: translateX(-50%);
+        } */
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.1), 0 10px 10px -5px rgba(59, 130, 246, 0.04);
+        }
+        
+        .radar {
+            width: 120px;
+            height: 120px;
+            position: relative;
+            background: conic-gradient(from 0deg, rgba(37, 99, 235, 0.1) 0%, rgba(6, 182, 212, 0.3) 30%, rgba(37, 99, 235, 0.1) 70%);
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        
+        .radar::before {
+            content: '';
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            background: var(--glass);
+            border-radius: 50%;
+            top: 10%;
+            left: 10%;
+        }
+        
+        .radar-scan {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.5), transparent);
+            animation: scan 4s linear infinite;
+            transform-origin: left center;
+        }
+        
+        @keyframes scan {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .signal-dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(6, 182, 212, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(6, 182, 212, 0);
+            }
+        }
+        
+        .phone-ring {
+            animation: ring 1.5s ease-in-out infinite;
+            transform-origin: 50% 0;
+        }
+        
+        @keyframes ring {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(10deg);
+            }
+            75% {
+                transform: rotate(-10deg);
+            }
+        }
+        
+        .message-bubble {
+            position: relative;
+            max-width: 220px;
+            padding: 12px;
+            border-radius: 18px;
+            margin: 4px 0;
+            animation: slideIn 0.3s ease-out forwards;
+            opacity: 0;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(10px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .typing-indicator {
+            display: flex;
+            padding: 10px;
+        }
+        
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            margin: 0 2px;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+        
+        .typing-dot:nth-child(1) { animation-delay: 0s; }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .countdown {
+            font-family: monospace;
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+        
+        .reactivating {
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px -5px var(--accent);
+            }
+            100% {
+                box-shadow: 0 0 20px 5px var(--accent);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-connector::after {
+                left: 1.5rem;
+                transform: none;
+            }
+            
+            .mobile-timeline-item {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+        }
+
+        .elementor-message-danger{
+            display: none !important;
+        }
+
+          .elementor-message-danger::before{
+            display: none;
+        }
+    </style>
+    <link rel="icon" href="https://brandmode.1onestrong.com/wp-content/uploads/2024/02/Favicon.png" sizes="32x32" />
+    <link rel="icon" href="https://brandmode.1onestrong.com/wp-content/uploads/2024/02/Favicon.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="https://brandmode.1onestrong.com/wp-content/uploads/2024/02/Favicon.png" />
+    <meta name="msapplication-TileImage"
+        content="https://brandmode.1onestrong.com/wp-content/uploads/2024/02/Favicon.png" />
+
+
+         <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        /* Custom CSS for animated progress bars */
+        .progress-container {
+            height: 12px;
+            background-color: #e5e7eb;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.5s ease, background-color 0.3s;
+        }
+        
+        /* Slider thumb style */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3b82f6;
+            cursor: pointer;
+            box-shadow: 0 0 2px rgba(0,0,0,0.5);
+            transition: all 0.2s;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb:hover {
+            background: #2563eb;
+            transform: scale(1.1);
+        }
+        
+        /* Custom animation for result cards */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse-animate {
+            animation: pulse 0.5s ease-out;
+        }
+        
+        .card-tilt:hover {
+            transform: rotate(1deg) translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
 </head>
 
 <body
@@ -45968,164 +46244,735 @@
       <div class="elementor-element elementor-element-4f49ada e-flex e-con-boxed e-con e-child" data-id="4f49ada"
         data-element_type="container">
         <div class="e-con-inner">
-          <div class="elementor-element elementor-element-0adddc4 e-con-full e-flex elementor-invisible e-con e-child"
-            data-id="0adddc4" data-element_type="container"
-            data-settings="{&quot;background_background&quot;:&quot;gradient&quot;,&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:150}">
-            <div
-              class="elementor-element elementor-element-d6db132 elementor-widget elementor-widget-elementskit-heading"
-              data-id="d6db132" data-element_type="widget" data-widget_type="elementskit-heading.default">
-              <div class="elementor-widget-container">
-                <div class="ekit-wid-con">
-                  <div
-                    class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-   ekit_heading_mobile-text_center">
-                    <a href="#">
-                      <h4 class="ekit-heading--title elementskit-section-title text_fill">Lead Revival <br>
-                        <span><span>Android</span></span>
-                      </h4>
-                    </a>
-                    <div class='ekit-heading__description'>
-                      <p>Turn your database into a <strong>24/7 appointment-setting</strong> machine. Automatically re-engage dormant leads & nurture non-responsive contacts until they are ready.</p>
+                         <div class="max-w-7xl mx-auto">
+        
+        <!-- Lead Lifecycle Timeline -->
+        <div class="relative">
+            <!-- Lead Generation -->
+            <div class="flex flex-col md:flex-row items-center mb-24 mobile-timeline-item" id="lead-generation">
+                <div class="w-full md:w-1/2 mb-8 md:mb-0">
+                    <div class="glass-card p-8 card-hover h-full">
+                        <div class="flex flex-col items-center">
+                            <div class="radar mb-6">
+                                <div class="radar-scan"></div>
+                                <div class="signal-dot" style="top: 30%; left: 60%;"></div>
+                                <div class="signal-dot" style="top: 45%; left: 25%;"></div>
+                                <div class="signal-dot" style="top: 70%; left: 70%;"></div>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-center mb-3">Lead Generation</h3>
+                            <p class="text-center text-gray-600 mb-6">AI finds your ideal customers across multiple data sources</p>
+                            <div class="w-64 h-3 bg-gradient-to-r from-blue-100 via-blue-300 to-cyan-300 rounded-full mb-6"></div>
+ <!-- Request Demo Button -->
+        <div class="flex flex-wrap justify-center items-center gap-4 mb-3">
+    <!-- Request Demo Button -->
+    <button 
+        class="openModalBtn bg-gradient-to-r from-blue-800 to-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105 transform"
+    >
+        <i class="fas fa-calendar-check mr-2"></i> Request Demo
+    </button>
+
+    <!-- Loom Video Icon Button -->
+    <a 
+        href="https://www.loom.com/share/your-video-id" 
+        target="_blank"
+        class="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-r from-blue-800 to-blue-600 text-white shadow-lg hover:shadow-xl transition-all hover:scale-105 transform"
+        aria-label="Watch Loom Video"
+    >
+        <i class="fas fa-play-circle text-2xl"></i>
+    </a>
+</div>
+
+                        </div>
                     </div>
-                    <div class="service-cta" style="margin-top: 20px;">
-                      <a href="contact.html" class="service-demo-btn" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 12px 24px; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease;">Try Demo</a>
-                    </div>
-                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="elementor-element elementor-element-5a37710 e-con-full e-flex elementor-invisible e-con e-child"
-            data-id="5a37710" data-element_type="container"
-            data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:200}">
-            <div
-              class="elementor-element elementor-element-dfc1c8a elementor-widget elementor-widget-elementskit-heading"
-              data-id="dfc1c8a" data-element_type="widget" data-widget_type="elementskit-heading.default">
-              <div class="elementor-widget-container">
-                <div class="ekit-wid-con">
-                  <div
-                    class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-   ekit_heading_mobile-text_center">
-                    <a href="#">
-                      <h4 class="ekit-heading--title elementskit-section-title text_fill">Instant Lead<br>
-                        <span><span>Android</span></span>
-                      </h4>
-                    </a>
-                    <div class='ekit-heading__description'>
-                      <p>Your best salesperson with superpowers - capture, qualify, and <strong>convert every inbound lead</strong> the moment they arrive while they are still fresh. Capable of having unlimited conversations at a time.</p>
+                <div class="w-full md:w-1/2 md:pl-12 timeline-connector">
+                    <h2 class="text-3xl font-bold mb-4">1. AI-Powered Lead Discovery</h2>
+                    <p class="text-lg text-black-300 mb-6">Our system scans millions of data points to identify your perfect customers based on behavior patterns, intent signals, and ideal customer profiles.</p>
+                    <div class="bg-white/50 p-4 rounded-xl mb-4">
+                        <div class="text-sm font-mono text-gray-200 overflow-hidden">
+                            <div class="typing-indicator">
+                                <span class="typing-dot"></span>
+                                <span class="typing-dot"></span>
+                                <span class="typing-dot"></span>
+                            </div>
+                            <div class="pl-4">
+                                >> Scanning LinkedIn, Crunchbase, Google<br>
+                                >> Analyzing 1,243 matching companies<br>
+                                >> Verified 379 decision-maker contacts<br>
+                                >> Loading into automation sequence...
+                            </div>
+                        </div>
                     </div>
-                    <div class="service-cta" style="margin-top: 20px;">
-                      <a href="contact.html" class="service-demo-btn" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 12px 24px; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease;">Try Demo</a>
-                    </div>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
-          <div class="elementor-element elementor-element-36a4676 e-con-full e-flex elementor-invisible e-con e-child"
-            data-id="36a4676" data-element_type="container"
-            data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:250}">
-            <div
-              class="elementor-element elementor-element-a18eb89 elementor-widget elementor-widget-elementskit-heading"
-              data-id="a18eb89" data-element_type="widget" data-widget_type="elementskit-heading.default">
-              <div class="elementor-widget-container">
-                <div class="ekit-wid-con">
-                  <div
-                    class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-   ekit_heading_mobile-text_center">
-                    <a href="#">
-                      <h4 class="ekit-heading--title elementskit-section-title text_fill">Abandoned <br>
-                        <span><span>Cart</span></span>
-                      </h4>
-                    </a>
-                    <div class='ekit-heading__description'>
-                      <p>Most buyers abandon carts before purchase — we bring them back. <strong>Revive lost checkouts</strong> with personalized follow-ups and promotional offers tailored to what they left behind.</p>
+            
+            <!-- Cold Outreach -->
+            <div class="flex flex-col md:flex-row items-center mb-24 mobile-timeline-item" id="cold-outreach">
+                <div class="w-full md:w-1/2 order-1 md:order-2 mb-8 md:mb-0">
+                    <div class="glass-card p-8 card-hover h-full">
+                        <div class="flex flex-col items-center">
+                            <div class="flex space-x-4 mb-6">
+                                <div class="bg-white/90 p-4 rounded-xl shadow-md">
+                                    <i class="fas fa-envelope text-3xl text-blue-500"></i>
+                                </div>
+                                <div class="bg-white/90 p-4 rounded-xl shadow-md">
+                                    <i class="fas fa-comment-dots text-3xl text-green-500"></i>
+                                </div>
+                                <div class="bg-white/90 p-4 rounded-xl shadow-md">
+                                    <i class="fab fa-linkedin text-3xl text-blue-600"></i>
+                                </div>
+                            </div>
+                            <div class="space-y-2 w-full mb-6">
+                                <div class="message-bubble bg-blue-500 text-white ml-auto rounded-tl-xl rounded-bl-xl rounded-br-xl" style="animation-delay: 0.2s;">
+                                    Hi [First Name], noticed your recent [trigger event]...
+                                </div>
+                                <div class="message-bubble bg-gray-200 text-black-300 rounded-tr-xl rounded-bl-xl rounded-br-xl" style="animation-delay: 0.4s;">
+                                    Thanks for reaching out! Can you send more info?
+                                </div>
+                                <div class="message-bubble bg-blue-500 text-white ml-auto rounded-tl-xl rounded-bl-xl rounded-br-xl" style="animation-delay: 0.6s;">
+                                    Absolutely! Here's our case study →
+                                </div>
+                            </div>
+ <!-- Request Demo Button -->
+        <div class="flex flex-wrap justify-center items-center gap-4 mb-3">
+    <!-- Request Demo Button -->
+    <button 
+        class="openModalBtn bg-gradient-to-r from-blue-800 to-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105 transform"
+    >
+        <i class="fas fa-calendar-check mr-2"></i> Request Demo
+    </button>
+
+    <!-- Loom Video Icon Button -->
+    <a 
+        href="https://www.loom.com/share/your-video-id" 
+        target="_blank"
+        class="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-r from-blue-800 to-blue-600 text-white shadow-lg hover:shadow-xl transition-all hover:scale-105 transform"
+        aria-label="Watch Loom Video"
+    >
+        <i class="fas fa-play-circle text-2xl"></i>
+    </a>
+</div>
+
+                        </div>
                     </div>
-                    <div class="service-cta" style="margin-top: 20px;">
-                      <a href="contact.html" class="service-demo-btn" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 12px 24px; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease;">Try Demo</a>
-                    </div>
-                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="elementor-element elementor-element-876a6e2 e-con-full e-flex elementor-invisible e-con e-child"
-            data-id="876a6e2" data-element_type="container"
-            data-settings="{&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:300}">
-            <div class="elementor-element elementor-element-aa2be91 e-con-full e-flex elementor-invisible e-con e-child"
-              data-id="aa2be91" data-element_type="container"
-              data-settings="{&quot;background_background&quot;:&quot;gradient&quot;,&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:200}">
-              <div
-                class="elementor-element elementor-element-461216d elementor-widget elementor-widget-elementskit-heading"
-                data-id="461216d" data-element_type="widget" data-widget_type="elementskit-heading.default">
-                <div class="elementor-widget-container">
-                  <div class="ekit-wid-con">
-                    <div
-                      class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-   ekit_heading_mobile-text_center">
-                      <a href="#">
-                        <h4 class="ekit-heading--title elementskit-section-title text_fill">Out Of <span><span>Hours</span></span></h4>
-                      </a>
-                      <div class='ekit-heading__description'>
-                        <p><strong>Contact every new lead</strong> that comes in, regardless of the time or day. While your business is closed, our android receives out of hours leads, preparing them to be closed when you get back in.</p>
-                      </div>
-                      <div class="service-cta" style="margin-top: 20px;">
-                        <a href="contact.html" class="service-demo-btn" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 12px 24px; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease;">Try Demo</a>
-                      </div>
+                <div class="w-full md:w-1/2 order-2 md:order-1 md:pr-12 timeline-connector">
+                    <h2 class="text-3xl font-bold mb-4">2. Multi-Channel Outreach</h2>
+                    <p class="text-lg text-gray-300 mb-6">Personalized messages across email, SMS, and social channels - with AI optimizing timing, messaging, and follow-ups based on engagement.</p>
+                    <div class="space-y-2">
+                        <div class="flex items-center bg-white/50 p-3 rounded-lg">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-check text-green-200"></i>
+                            </div>
+                            <span class="text-gray-300">87% open rate compared to industry 27%</span>
+                        </div>
+                        <div class="flex items-center bg-white/50 p-3 rounded-lg">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-bolt text-yellow-500"></i>
+                            </div>
+                            <span class="text-gray-300">Automatic response handling for 24/7 coverage</span>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-            <div class="elementor-element elementor-element-e00cd01 e-con-full e-flex elementor-invisible e-con e-child"
-              data-id="e00cd01" data-element_type="container"
-              data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:150}">
-              <div
-                class="elementor-element elementor-element-34202f2 elementor-widget elementor-widget-elementskit-heading"
-                data-id="34202f2" data-element_type="widget" data-widget_type="elementskit-heading.default">
-                <div class="elementor-widget-container">
-                  <div class="ekit-wid-con">
-                    <div
-                      class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-   ekit_heading_mobile-text_center">
-                      <a href="#">
-                        <h4 class="ekit-heading--title elementskit-section-title text_fill">Custom
-                          <span><span>Built</span></span>
-                        </h4>
-                      </a>
-                      <div class='ekit-heading__description'>
-                        <p>Have a specific issue that requires a tailored android? Let our team know and <strong>we will build the solution</strong>!</p>
-                      </div>
-                      <div class="service-cta" style="margin-top: 20px;">
-                        <a href="contact.html" class="service-demo-btn" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 12px 24px; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease;">Try Demo</a>
-                      </div>
+            
+            <!-- Lead Conversion -->
+            <div class="flex flex-col md:flex-row items-center mb-24 mobile-timeline-item" id="lead-conversion">
+                <div class="w-full md:w-1/2 mb-8 md:mb-0">
+                    <div class="glass-card p-8 card-hover h-full">
+                        <div class="flex flex-col items-center">
+                            <div class="relative mb-6">
+                                <div class="w-48 h-32 bg-white/90 rounded-xl shadow-md p-4">
+                                    <div class="flex justify-between mb-2">
+                                        <div class="text-sm font-medium">Incoming Leads</div>
+                                        <div class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">+12 today</div>
+                                    </div>
+                                    <div class="h-16 bg-blue-50 rounded-lg p-2 mb-1 flex items-center">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-2">
+                                            <i class="fas fa-user text-blue-500 text-sm"></i>
+                                        </div>
+                                        <div class="text-sm">
+                                            <div class="font-medium">Sarah Johnson</div>
+                                            <div class="text-xs text-gray-500">VP Marketing</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="absolute -right-4 -top-4 bg-blue-500 text-white p-2 rounded-full text-xs font-bold">
+                                    LIVE
+                                </div>
+                            </div>
+                            <div class="countdown mb-4">00:09.4 response time</div>
+                            <h3 class="text-2xl font-semibold text-center mb-3">Instant Engagement</h3>
+                            <p class="text-center text-gray-600 mb-6">AI responds faster than your competition can</p>
+ <!-- Request Demo Button -->
+        <div class="flex flex-wrap justify-center items-center gap-4 mb-3">
+    <!-- Request Demo Button -->
+    <button 
+        class="openModalBtn bg-gradient-to-r from-blue-800 to-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105 transform"
+    >
+        <i class="fas fa-calendar-check mr-2"></i> Request Demo
+    </button>
+
+    <!-- Loom Video Icon Button -->
+    <a 
+        href="https://www.loom.com/share/your-video-id" 
+        target="_blank"
+        class="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-r from-blue-800 to-blue-600 text-white shadow-lg hover:shadow-xl transition-all hover:scale-105 transform"
+        aria-label="Watch Loom Video"
+    >
+        <i class="fas fa-play-circle text-2xl"></i>
+    </a>
+</div>
+
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="elementor-element elementor-element-dc9f7a1 e-con-full e-flex elementor-invisible e-con e-child"
-            data-id="dc9f7a1" data-element_type="container"
-            data-settings="{&quot;background_background&quot;:&quot;gradient&quot;,&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:350}">
-            <div
-              class="elementor-element elementor-element-a7210c9 elementor-widget elementor-widget-elementskit-heading"
-              data-id="a7210c9" data-element_type="widget" data-widget_type="elementskit-heading.default">
-              <div class="elementor-widget-container">
-                <div class="ekit-wid-con">
-                  <div
-                    class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-   ekit_heading_mobile-text_center">
-                    <a href="#">
-                      <h4 class="ekit-heading--title elementskit-section-title text_fill">Google <br>
-                        <span><span>Reviews</span></span>
-                      </h4>
-                    </a>
-                    <div class='ekit-heading__description'>
-                      <p>Reviews build trust, responding to them builds loyalty. <strong>Optimize your SEO</strong> by replying to every review on autopilot.</p>
+                <div class="w-full md:w-1/2 md:pl-12 timeline-connector">
+                    <h2 class="text-3xl font-bold mb-4">3. AI Speed to Lead</h2>
+                    <p class="text-lg text-gray-300 mb-6">The moment a lead engages, our system responds instantly - dramatically increasing conversion rates compared to manual follow-up.</p>
+                    <div class="bg-blue-50/50 p-4 rounded-xl mb-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="font-medium text-gray-300">Typical Manual Response:</div>
+                            <div class="bg-red-100 text-red-700 px-2 py-1 rounded text-sm">47 hours</div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="font-medium text-gray-300">Bella AI Response:</div>
+                            <div class="bg-green-100 text-green-700 px-2 py-1 rounded text-sm">&lt; 10 seconds</div>
+                        </div>
                     </div>
-                    <div class="service-cta" style="margin-top: 20px;">
-                      <a href="contact.html" class="service-demo-btn" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 12px 24px; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease;">Try Demo</a>
+                    <div class="text-sm text-gray-300">
+                        <i class="fas fa-info-circle text-blue-500 mr-2"></i>
+                        Leads are 21x more likely to convert when contacted within 5 minutes vs. 30 minutes.
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
+            
+            <!-- Database Reactivation -->
+            <div class="flex flex-col md:flex-row items-center mb-24 mobile-timeline-item" id="database-reactivation">
+                <div class="w-full md:w-1/2 order-1 md:order-2 mb-8 md:mb-0">
+                    <div class="glass-card p-8 card-hover h-full">
+    <div class="flex flex-col items-center">
+        <div class="relative mb-6">
+            <div class="w-32 h-32 bg-gray-100 rounded-xl shadow-md p-4 text-center flex flex-col items-center justify-center reactivating">
+                <i class="fas fa-database text-4xl text-gray-400 mb-2"></i>
+                <span class="text-sm font-medium">Old Leads</span>
+                <span class="text-xs text-gray-500">23 dormant accounts</span>
+            </div>
+            <div class="absolute -right-2 -top-2 w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center animate-pulse">
+                <i class="fas fa-bolt"></i>
+            </div>
+        </div>
+        <h3 class="text-2xl font-semibold text-center mb-3">Dormant Lead Revival</h3>
+        <p class="text-center text-gray-600 mb-6">Automatically re-engage cold contacts when conditions change</p>
+        
+        <!-- Request Demo Button -->
+        <div class="flex flex-wrap justify-center items-center gap-4 mb-3">
+    <!-- Request Demo Button -->
+    <button 
+        class="openModalBtn bg-gradient-to-r from-blue-800 to-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105 transform"
+    >
+        <i class="fas fa-calendar-check mr-2"></i> Request Demo
+    </button>
+
+    <!-- Loom Video Icon Button -->
+    <a 
+        href="https://www.loom.com/share/your-video-id" 
+        target="_blank"
+        class="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-r from-blue-800 to-blue-600 text-white shadow-lg hover:shadow-xl transition-all hover:scale-105 transform"
+        aria-label="Watch Loom Video"
+    >
+        <i class="fas fa-play-circle text-2xl"></i>
+    </a>
+</div>
+
+    </div>
+</div>
+
+                </div>
+                <div class="w-full md:w-1/2 order-2 md:order-1 md:pr-12 timeline-connector">
+                    <h2 class="text-3xl font-bold mb-4">4. Smart Reactivation</h2>
+                    <p class="text-lg text-gray-300 mb-6">Our system continuously monitors for trigger events to revive old leads. When a company raises funding, hires new executives, or shows buying signals - we re-engage.</p>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                                <i class="fas fa-calendar-check text-blue-500 text-sm"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">Trigger-Based Followup</div>
+                                <div class="text-sm text-gray-300">When conditions change, AI initiates outreach with relevant context</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                                <i class="fas fa-chart-line text-green-500 text-sm"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">32% Conversion Rate</div>
+                                <div class="text-sm text-gray-300">Reactivated leads convert at higher rates than cold prospects</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Appointment Setting -->
+            <div class="flex flex-col md:flex-row items-center mb-24 mobile-timeline-item" id="appointment-setting">
+                <div class="w-full md:w-1/2 mb-8 md:mb-0">
+                    <div class="glass-card p-8 card-hover h-full">
+                        <div class="flex flex-col items-center">
+                            <div class="relative mb-6">
+                                <div class="w-48 h-48 bg-white/90 rounded-xl shadow-md p-4">
+                                    <div class="text-center font-medium mb-3">Calendar Booking</div>
+                                    <div class="grid grid-cols-7 gap-1 mb-2 text-xs">
+                                        <div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div>
+                                    </div>
+                                    <div class="grid grid-cols-7 gap-1 text-xs">
+                                        <div></div><div></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
+                                        <div>6</div><div class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center">7</div>
+                                        <div>8</div><div>9</div><div>10</div><div>11</div><div>12</div>
+                                    </div>
+                                    <div class="mt-4 space-y-2">
+                                        <div class="bg-blue-50 rounded-lg p-2 text-xs flex items-center">
+                                            <div class="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                                            <span>2:00 PM - Product Demo</span>
+                                        </div>
+                                        <div class="bg-green-50 rounded-lg p-2 text-xs flex items-center">
+                                            <div class="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                                            <span>3:30 PM - Discovery Call</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="absolute -right-4 -top-4">
+                                    <div class="bg-white p-2 rounded-full shadow-lg flex">
+                                        <i class="fas fa-envelope text-blue-500 mx-1"></i>
+                                        <i class="fas fa-sms text-green-500 mx-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+ <!-- Request Demo Button -->
+        <div class="flex flex-wrap justify-center items-center gap-4 mb-3">
+    <!-- Request Demo Button -->
+    <button 
+        class="openModalBtn bg-gradient-to-r from-blue-800 to-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105 transform"
+    >
+        <i class="fas fa-calendar-check mr-2"></i> Request Demo
+    </button>
+
+    <!-- Loom Video Icon Button -->
+    <a 
+        href="https://www.loom.com/share/your-video-id" 
+        target="_blank"
+        class="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-r from-blue-800 to-blue-600 text-white shadow-lg hover:shadow-xl transition-all hover:scale-105 transform"
+        aria-label="Watch Loom Video"
+    >
+        <i class="fas fa-play-circle text-2xl"></i>
+    </a>
+</div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 md:pl-12 timeline-connector">
+                    <h2 class="text-3xl font-bold mb-4">5. Automated Scheduling</h2>
+                    <p class="text-lg text-gray-300 mb-6">AI handles all the back-and-forth of finding meeting times that work for both parties, with automated reminders to reduce no-shows.</p>
+                    <div class="space-y-2">
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-magic text-blue-500 text-sm"></i>
+                            </div>
+                            <span>Smart timezone detection</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-sync-alt text-green-500 text-sm"></i>
+                            </div>
+                            <span>Rescheduling handled automatically</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-bell text-purple-500 text-sm"></i>
+                            </div>
+                            <span>24h & 1h reminder sequences</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Voice AI -->
+            <div class="flex flex-col md:flex-row items-center mb-24 mobile-timeline-item" id="voice-ai">
+                <div class="w-full md:w-1/2 order-1 md:order-2 mb-8 md:mb-0">
+                    <div class="glass-card p-8 card-hover h-full">
+                        <div class="flex flex-col items-center">
+                            <div class="phone-ring mb-6">
+                                <div class="w-24 h-44 bg-white rounded-3xl shadow-xl p-4 relative">
+                                    <div class="absolute top-2 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-gray-200 rounded-full"></div>
+                                    <div class="flex flex-col items-center mt-6">
+                                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                                            <i class="fas fa-headset text-blue-500 text-xl"></i>
+                                        </div>
+                                        <div class="text-sm font-medium mb-2 text-center">Bella AI Assistant</div>
+                                        <div class="w-16 h-4 bg-gray-100 rounded-full mb-4"></div>
+                                        <div class="relative w-16 h-8">
+                                            <div class="absolute inset-0 bg-blue-500 rounded-full"></div>
+                                            <div class="absolute inset-1 bg-white rounded-full flex items-center justify-center">
+                                                <i class="fas fa-phone-alt text-blue-500"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-center mb-3">Voice AI Receptionist</h3>
+                            <p class="text-center text-gray-600 mb-6">Natural conversations that qualify leads 24/7</p>
+ <!-- Request Demo Button -->
+        <div class="flex flex-wrap justify-center items-center gap-4 mb-3">
+    <!-- Request Demo Button -->
+    <button 
+        class="openModalBtn bg-gradient-to-r from-blue-800 to-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105 transform"
+    >
+        <i class="fas fa-calendar-check mr-2"></i> Request Demo
+    </button>
+
+    <!-- Loom Video Icon Button -->
+    <a 
+        href="https://www.loom.com/share/your-video-id" 
+        target="_blank"
+        class="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-r from-blue-800 to-blue-600 text-white shadow-lg hover:shadow-xl transition-all hover:scale-105 transform"
+        aria-label="Watch Loom Video"
+    >
+        <i class="fas fa-play-circle text-2xl"></i>
+    </a>
+</div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 order-2 md:order-1 md:pr-12 timeline-connector">
+                    <h2 class="text-3xl font-bold mb-4">6. AI Voice Conversations</h2>
+                    <p class="text-lg text-gray-300 mb-6">Our AI assistant answers calls with human-like conversations to qualify leads, schedule meetings, and answer common questions.</p>
+                    <div class="bg-blue-50/50 p-4 rounded-xl mb-4">
+                        <div class="flex items-start mb-2">
+                            <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                                <i class="fas fa-quote-left text-blue-500 text-sm"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">Sample Conversation:</div>
+                                <div class="text-sm text-gray-200 italic">
+                                    "Hi this is Sarah with Acme Co, I had some questions about your platform?"
+                                </div>
+                                <div class="text-sm text-gray-200 italic ml-4 mt-1">
+                                    "Hello Sarah! I can help with that. Which features are you most interested in learning about?"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-sm text-gray-600">
+                        <i class="fas fa-chart-pie text-blue-500 mr-2"></i>
+                        74% of callers can't distinguish our AI from human agents.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chat Widget -->
+            <div class="flex flex-col md:flex-row items-center mb-24 mobile-timeline-item" id="chat-widget">
+                <div class="w-full md:w-1/2 mb-8 md:mb-0">
+                    <div class="glass-card p-8 card-hover h-full">
+                        <div class="flex flex-col items-center">
+                            <div class="w-64 bg-white rounded-xl shadow-lg overflow-hidden mb-6" style="max-height: 350px; min-height: 350px">
+                                <div class="bg-gradient-to-r from-blue-500 to-cyan-500 p-3 text-white">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-2">
+                                            <i class="fas fa-robot"></i>
+                                        </div>
+                                        <div>Bella AI Assistant</div>
+                                    </div>
+                                </div>
+                                <div class="p-3 h-40 overflow-y-auto" style="max-height: 300px; min-height: 300px">
+                                    <div class="mb-2">
+                                        <div class="bg-gray-100 rounded-lg p-2 text-sm inline-block">
+                                            Hi there! How can I help you today?
+                                        </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <div class="bg-gray-100 rounded-lg p-2 text-sm inline-block">
+                                            Here are some quick options:
+                                        </div>
+                                    </div>
+                                    <div class="flex space-x-2 mb-2">
+                                        <button class="bg-blue-50 hover:bg-blue-100 text-blue-600 text-xs px-3 py-1 rounded-full">
+                                            Pricing
+                                        </button>
+                                        <button class="bg-blue-50 hover:bg-blue-100 text-blue-600 text-xs px-3 py-1 rounded-full">
+                                            Demo
+                                        </button>
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <div class="typing-indicator bg-gray-100 p-2 rounded-full">
+                                            <span class="typing-dot"></span>
+                                            <span class="typing-dot"></span>
+                                            <span class="typing-dot"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+ <!-- Request Demo Button -->
+        <div class="flex flex-wrap justify-center items-center gap-4 mb-3">
+    <!-- Request Demo Button -->
+    <button 
+        class="openModalBtn bg-gradient-to-r from-blue-800 to-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105 transform"
+    >
+        <i class="fas fa-calendar-check mr-2"></i> Request Demo
+    </button>
+
+    <!-- Loom Video Icon Button -->
+    <a 
+        href="https://www.loom.com/share/your-video-id" 
+        target="_blank"
+        class="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-r from-blue-800 to-blue-600 text-white shadow-lg hover:shadow-xl transition-all hover:scale-105 transform"
+        aria-label="Watch Loom Video"
+    >
+        <i class="fas fa-play-circle text-2xl"></i>
+    </a>
+</div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 md:pl-12 timeline-connector">
+                    <h2 class="text-3xl font-bold mb-4">7. Conversational AI Chat</h2>
+                    <p class="text-lg text-gray-300 mb-6">Website visitors get instant answers from our AI chat that understands context and qualifies leads while your team sleeps.</p>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                                <i class="fas fa-comments text-purple-500 text-sm"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">Natural Language Understanding</div>
+                                <div class="text-sm text-gray-600">Answers complex questions with relevant responses</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                                <i class="fas fa-tasks text-green-500 text-sm"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">Lead Qualification</div>
+                                <div class="text-sm text-gray-600">Captures key details and scores leads for followup</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                                <i class="fas fa-calendar-check text-yellow-500 text-sm"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">Meeting Scheduling</div>
+                                <div class="text-sm text-gray-600">Directly books qualified leads on your calendar</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Abandoned Cart -->
+            <div class="flex flex-col md:flex-row items-center mb-16 mobile-timeline-item" id="abandoned-cart">
+                <div class="w-full md:w-1/2 order-1 md:order-2 mb-8 md:mb-0">
+                    <div class="glass-card p-8 card-hover h-full">
+                        <div class="flex flex-col items-center">
+                            <div class="relative mb-6">
+                                <div class="w-56 bg-white rounded-lg shadow-md p-4">
+                                    <div class="flex justify-between items-center mb-3">
+                                        <h4 class="font-medium" style="color: black">Cart Recovery Sequence</h4>
+                                        <div class="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded">Active</div>
+                                    </div>
+                                    <div class="flex items-center space-x-3 mb-3">
+                                        <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-shopping-cart text-blue-400"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="font-medium text-sm">Your cart is waiting!</div>
+                                            <div class="text-xs text-gray-500">2 items • $247 total</div>
+                                        </div>
+                                    </div>
+                                    <div class="text-xs text-gray-600 mb-4">
+                                        5 customers recovered today ($1,235)
+                                    </div>
+                                    <div class="flex">
+                                        <button class="flex-1 bg-blue-500 hover:bg-blue-600 text-white text-sm py-2 rounded-l-lg">
+                                            Send Offer
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+ <!-- Request Demo Button -->
+        <div class="flex flex-wrap justify-center items-center gap-4 mb-3">
+    <!-- Request Demo Button -->
+    <button 
+        class="openModalBtn bg-gradient-to-r from-blue-800 to-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105 transform"
+    >
+        <i class="fas fa-calendar-check mr-2"></i> Request Demo
+    </button>
+
+    <!-- Loom Video Icon Button -->
+    <a 
+        href="https://www.loom.com/share/your-video-id" 
+        target="_blank"
+        class="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-r from-blue-800 to-blue-600 text-white shadow-lg hover:shadow-xl transition-all hover:scale-105 transform"
+        aria-label="Watch Loom Video"
+    >
+        <i class="fas fa-play-circle text-2xl"></i>
+    </a>
+</div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 order-2 md:order-1 md:pr-12">
+                    <h2 class="text-3xl font-bold mb-4">8. Lost Opportunity Recovery</h2>
+                    <p class="text-lg text-gray-300 mb-6">Our system detects when leads drop off and automatically follows up with tailored messages, special offers, and alternative approaches.</p>
+                    <div class="bg-gradient-to-r from-blue-50 to-cyan-50 p-4 rounded-xl">
+                        <div class="font-medium mb-2">Typical Recovery Workflow:</div>
+                        <ol class="text-sm list-decimal list-inside space-y-1 text-black">
+                            <li>1h after: Friendly reminder with benefit recap</li>
+                            <li>24h after: Customer success story + social proof</li>
+                            <li>48h after: Limited-time offer (if applicable)</li>
+                            <li>72h after: Alternative solution or downsell</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Final CTA -->
+        <!-- <div class="glass-card p-8 md:p-12 rounded-2xl mt-16 mb-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">What Else Can Bella AI Do For You?</h2>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">Complete the picture with our full suite of AI-powered business automation tools.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl">
+                    <h2 class="text-2xl font-semibold text-black mb-6">Adjust Your Metrics</h2>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <label for="monthlyLeads" class="font-medium text-black">Monthly Leads</label>
+                            <span id="monthlyLeadsValue" class="font-bold text-black">100</span>
+                        </div>
+                        <input type="range" id="monthlyLeads" min="10" max="1000" value="100" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                        <div class="flex justify-between text-xs text-gray-500 mt-1">
+                            <span>10</span>
+                            <span>1000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <label for="conversionRate" class="font-medium text-gray-700">Conversion Rate</label>
+                            <span id="conversionRateValue" class="font-bold text-blue-600">2.5%</span>
+                        </div>
+                        <input type="range" id="conversionRate" min="0.5" max="10" step="0.1" value="2.5" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                        <div class="flex justify-between text-xs text-gray-500 mt-1">
+                            <span>0.5%</span>
+                            <span>10%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="flex justify-between mb-2">
+                            <label for="dealSize" class="font-medium text-gray-700">Average Deal Size</label>
+                            <span id="dealSizeValue" class="font-bold text-blue-600">$5,000</span>
+                        </div>
+                        <input type="range" id="dealSize" min="1000" max="100000" step="1000" value="5000" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                        <div class="flex justify-between text-xs text-gray-500 mt-1">
+                            <span>$1K</span>
+                            <span>$100K</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-center">
+                        <button id="resetBtn" class="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300 transition-colors">
+                            Reset Values
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl card-tilt">
+                        <h3 class="text-lg font-semibold text-gray-700 mb-2">Current Performance</h3>
+                        <div class="progress-container mb-3">
+                            <div id="currentProgress" class="progress-bar bg-blue-400" style="width: 0%"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-sm text-gray-600">Monthly Revenue</p>
+                                <p id="currentRevenue" class="text-2xl font-bold text-black-300">$12,500</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Deals Closed</p>
+                                <p id="currentDeals" class="text-2xl font-bold text-black-300">2.5</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl card-tilt">
+                        <h3 class="text-lg font-semibold text-gray-700 mb-2">Projected Performance</h3>
+                        <div class="progress-container mb-3">
+                            <div id="projectedProgress" class="progress-bar bg-green-500" style="width: 0%"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-sm text-gray-600">Monthly Revenue</p>
+                                <p id="projectedRevenue" class="text-2xl font-bold text-black-300">$36,250</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Deals Closed</p>
+                                <p id="projectedDeals" class="text-2xl font-bold text-black-300">7.25</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="roiCard" class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-green-500 pulse-animate">
+                        <h3 class="text-lg font-semibold text-gray-700 mb-1">Revenue Impact</h3>
+                        <div class="flex items-end">
+                            <span id="roiPercentage" class="text-4xl font-bold text-green-600 mr-2">+190%</span>
+                            <p class="text-sm text-gray-600 mb-2">increase in monthly revenue</p>
+                        </div>
+                        <div class="mt-3">
+                            <p class="text-sm text-gray-600">Annual Revenue Increase:</p>
+                            <p id="annualRevenue" class="text-xl font-bold text-black-300">$285,000</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-6 mt-6">
+                <h2 class="text-2xl font-semibold text-black mb-4">Performance Insights</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-blue-300 p-4 rounded-lg">
+                        <h3 class="font-medium text-gray-700 mb-2">Lead Efficiency</h3>
+                        <div class="text-3xl font-bold text-blue-600">
+                            <span id="leadsPerDeal">40</span>
+                            <span class="text-sm">leads/deal</span>
+                        </div>
+                    </div>
+                    <div class="bg-indigo-300 p-4 rounded-lg">
+                        <h3 class="font-medium text-gray-700 mb-2">Revenue per Lead</h3>
+                        <div class="text-3xl font-bold text-indigo-600">
+                            $<span id="revenuePerLead">125</span>
+                        </div>
+                    </div>
+                    <div class="bg-emerald-300 p-4 rounded-lg">
+                        <h3 class="font-medium text-gray-100 mb-2">Close Rate Needed</h3>
+                        <div class="text-3xl font-bold text-emerald-600">
+                            <span id="closeRateNeeded">7.25</span>
+                            <span class="text-sm">deals/month</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 p-4 bg-yellow-200 rounded-lg border-l-4 border-yellow-400">
+                    <h3 class="font-medium text-gray-700 mb-2">Recommendation</h3>
+                    <p id="recommendation" class="text-gray-700">Based on your current metrics, focus on improving your conversion rate first, as it currently requires 40 leads to generate one deal. A small increase in conversion rate would have a significant impact on your revenue.</p>
+                </div>
+            </div>
+        </div> -->
+    </div>
         </div>
       </div>
     </div>
@@ -46192,69 +47039,6 @@
       </div>
     </div>
 
-    <!-- Security & Compliance Section -->
-    <div class="elementor-element elementor-element-615f82b e-con-full e-flex e-con e-parent" data-id="615f82b"
-      data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-      <div class="elementor-element elementor-element-4f49ada e-flex e-con-boxed e-con e-child" data-id="4f49ada"
-        data-element_type="container">
-        <div class="e-con-inner">
-          <div class="elementor-element elementor-element-56e7e66 elementor-widget elementor-widget-elementskit-heading"
-            data-id="56e7e66" data-element_type="widget" data-widget_type="elementskit-heading.default">
-            <div class="elementor-widget-container">
-              <div class="ekit-wid-con">
-                <div
-                  class="ekit-heading elementskit-section-title-wraper text_center   ekit_heading_tablet-   ekit_heading_mobile-">
-                  <h2 class="ekit-heading--title elementskit-section-title text_fill">Security &
-                    <span><span>Compliance</span></span>
-                  </h2>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="elementor-element elementor-element-0adddc4 e-con-full e-flex elementor-invisible e-con e-child"
-            data-id="0adddc4" data-element_type="container"
-            data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:150}">
-            <div
-              class="elementor-element elementor-element-d6db132 elementor-widget elementor-widget-elementskit-heading"
-              data-id="d6db132" data-element_type="widget" data-widget_type="elementskit-heading.default">
-              <div class="elementor-widget-container">
-                <div class="ekit-wid-con">
-                  <div
-                    class="ekit-heading elementskit-section-title-wraper text_center   ekit_heading_tablet-   ekit_heading_mobile-text_center">
-                    <h4 class="ekit-heading--title elementskit-section-title text_fill">Security</h4>
-                    <div class='ekit-heading__description'>
-                      <p>We only use your data to produce your company results.</p>
-                      <p>Your customer data is <strong>secure & never sold</strong>.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="elementor-element elementor-element-5a37710 e-con-full e-flex elementor-invisible e-con e-child"
-            data-id="5a37710" data-element_type="container"
-            data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:200}">
-            <div
-              class="elementor-element elementor-element-dfc1c8a elementor-widget elementor-widget-elementskit-heading"
-              data-id="dfc1c8a" data-element_type="widget" data-widget_type="elementskit-heading.default">
-              <div class="elementor-widget-container">
-                <div class="ekit-wid-con">
-                  <div
-                    class="ekit-heading elementskit-section-title-wraper text_center   ekit_heading_tablet-   ekit_heading_mobile-text_center">
-                    <h4 class="ekit-heading--title elementskit-section-title text_fill">SMS 10 DLC A2P Compliance</h4>
-                    <div class='ekit-heading__description'>
-                      <p>We are <strong>100% compliant</strong> with US SMS laws & regulations.</p>
-                      <p>We won't work with you unless your company works with us to ensure we can run a <strong>legal and compliant</strong> campaign.</p>
-                      <p>We assist your company in making necessary adjustments seamlessly and easily - providing instructions on exactly how.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- CTA Section -->
     <div class="elementor-element elementor-element-615f82b e-con-full e-flex e-con e-parent" data-id="615f82b"
@@ -46524,10 +47308,874 @@
     </div>
   </div>
 
+          <!-- Modal Overlay -->
+    <div 
+        id="modalOverlay" 
+        class="fixed inset-0 bg-black bg-opacity-70 z-50 hidden overlay-enter flex items-center justify-center p-4"
+    >
+        <!-- Modal Container -->
+        <div 
+            id="modalContainer" 
+            class="bg-[#01071a] text-[#A5A5A5] rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl hidden modal-enter scrollbar-thin scrollbar-thumb-blue-800 scrollbar-track-[#0a122e] scrollbar-thumb-rounded-full scrollbar-track-rounded-full"
+        >
+            <!-- Modal Header -->
+            <div class="p-6 border-b border-gray-800 flex justify-between items-center">
+                <div>
+                    <h3 class="text-xl font-bold text-white">Book Your Demo</h3>
+                    <p class="text-sm mt-1">Fill out the form below to schedule your demo</p>
+                </div>
+                <button id="closeModalBtn" class="text-gray-400 hover:text-white focus:outline-none">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Content - Form -->
+            <form class="p-4 md:p-6 pb-6 md:pb-8 space-y-3 md:space-y-4" method="post" name="New Form" id="demoForm">
+                <input type="hidden" name="post_id" value="2672" />
+                <input type="hidden" name="form_id" value="d94708f" />
+                <input type="hidden" name="referer_title" value="Contact" />
+                <input type="hidden" name="queried_id" value="2672" />
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                    <!-- First Name -->
+                    <div>
+                        <label for="form-field-first-name" class="block text-sm font-medium mb-1 text-gray-400">
+                            First Name <span class="text-red-500">*</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            name="form_fields[first_name]" 
+                            id="form-field-first-name" 
+                            class="w-full bg-[#0a122e] border border-gray-800 rounded-lg px-3 md:px-4 py-2 md:py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                            placeholder="First Name" 
+                            required
+                        >
+                    </div>
+                    
+                    <!-- Last Name -->
+                    <div>
+                        <label for="form-field-last-name" class="block text-sm font-medium mb-1 text-gray-400">
+                            Last Name <span class="text-red-500">*</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            name="form_fields[last_name]" 
+                            id="form-field-last-name" 
+                            class="w-full bg-[#0a122e] border border-gray-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                            placeholder="Last Name" 
+                            required
+                        >
+                    </div>
+                    
+                    <!-- Phone -->
+                    <div>
+                        <label for="form-field-phone" class="block text-sm font-medium mb-1 text-gray-400">
+                            Phone <span class="text-red-500">*</span>
+                        </label>
+                        <input 
+                            type="tel" 
+                            name="form_fields[phone]" 
+                            id="form-field-phone" 
+                            class="w-full bg-[#0a122e] border border-gray-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                            placeholder="Phone" 
+                            required
+                        >
+                    </div>
+                    
+                    <!-- Email -->
+                    <div>
+                        <label for="form-field-email" class="block text-sm font-medium mb-1 text-gray-400">
+                            Email <span class="text-red-500">*</span>
+                        </label>
+                        <input 
+                            type="email" 
+                            name="form_fields[email]" 
+                            id="form-field-email" 
+                            class="w-full bg-[#0a122e] border border-gray-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                            placeholder="Email" 
+                            required
+                        >
+                    </div>
+                </div>
+                
+                <!-- Company Name -->
+                <div>
+                    <label for="form-field-company" class="block text-sm font-medium mb-1 text-gray-400">
+                        Company Name <span class="text-red-500">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        name="form_fields[company]" 
+                        id="form-field-company" 
+                        class="w-full bg-[#0a122e] border border-gray-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                        placeholder="Company Name" 
+                        required
+                    >
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Service Interest -->
+                    <div>
+                        <label for="form-field-service" class="block text-sm font-medium mb-1 text-gray-400">
+                            Which service interests you most?
+                        </label>
+                        <div class="relative">
+                            <select 
+                                name="form_fields[service]" 
+                                id="form-field-service" 
+                                class="w-full bg-[#0a122e] border border-gray-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none appearance-none pr-10"
+                            >
+                                <option value="Lead Revival Android">Lead Revival Android</option>
+                                <option value="Instant Lead Android">Instant Lead Android</option>
+                                <option value="Abandoned Cart Recovery">Abandoned Cart Recovery</option>
+                                <option value="Out Of Hours Android">Out Of Hours Android</option>
+                                <option value="Voice AI Receptionist">Voice AI Receptionist</option>
+                                <option value="Convo AI Widget">Convo AI Widget</option>
+                                <option value="Google Reviews Android">Google Reviews Android</option>
+                                <option value="Custom Built Solution">Custom Built Solution</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                <i class="fas fa-chevron-down text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Referral Source -->
+                    <div>
+                        <label for="form-field-referral" class="block text-sm font-medium mb-1 text-gray-400">
+                            How did you hear about us?
+                        </label>
+                        <div class="relative">
+                            <select 
+                                name="form_fields[referral]" 
+                                id="form-field-referral" 
+                                class="w-full bg-[#0a122e] border border-gray-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none appearance-none pr-10"
+                            >
+                                <option value="Google Search">Google Search</option>
+                                <option value="Social Media">Social Media</option>
+                                <option value="Referral">Referral</option>
+                                <option value="LinkedIn">LinkedIn</option>
+                                <option value="Facebook">Facebook</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                <i class="fas fa-chevron-down text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Message -->
+                <div>
+                    <label for="form-field-message" class="block text-sm font-medium mb-1 text-gray-400">
+                        Tell us about your business and goals:
+                    </label>
+                    <textarea 
+                        name="form_fields[message]" 
+                        id="form-field-message" 
+                        rows="4" 
+                        class="w-full bg-[#0a122e] border border-gray-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                        placeholder="Describe your business, current challenges, and what you hope to achieve with AI automation..."
+                    ></textarea>
+                </div>
+                
+                <!-- SMS Consent -->
+                <div class="pt-2">
+                    <div class="flex items-start">
+                        <div class="flex items-center h-5">
+                            <input 
+                                type="checkbox" 
+                                value="yes" 
+                                id="form-field-sms-consent" 
+                                name="form_fields[sms_consent]" 
+                                class="w-4 h-4 bg-[#0a122e] border-gray-800 rounded focus:ring-blue-500 text-blue-600"
+                                required
+                            >
+                        </div>
+                        <label for="form-field-sms-consent" class="ml-3 text-sm text-gray-400">
+                            I consent to receive SMS messages from Next Level Growth Partners. Message and data rates may apply. Reply STOP to opt out. <span class="text-red-500">*</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Terms Consent -->
+                <div class="pb-2">
+                    <div class="flex items-start">
+                        <div class="flex items-center h-5">
+                            <input 
+                                type="checkbox" 
+                                value="yes" 
+                                id="form-field-terms" 
+                                name="form_fields[terms]" 
+                                class="w-4 h-4 bg-[#0a122e] border-gray-800 rounded focus:ring-blue-500 text-blue-600"
+                                required
+                            >
+                        </div>
+                        <label for="form-field-terms" class="ml-3 text-sm text-gray-400">
+                            I agree to the <a href="#" target="_blank" class="text-blue-400 hover:text-blue-300">Terms of Service</a> and <a href="#" target="_blank" class="text-blue-400 hover:text-blue-300">Privacy Policy</a>. <span class="text-red-500">*</span>
+                        </label>
+                    </div>
+                </div>
+                
+            <!-- Submit Button -->
+                <div class="pt-3 md:pt-4">
+                    <button 
+                     id="bookDemoBtn"
+                        type="submit" 
+                        class="w-full bg-gradient-to-r from-blue-800 to-blue-600 hover:from-blue-700 hover:to-blue-500 text-white font-semibold py-3 md:py-4 px-4 md:px-6 rounded-full shadow-md hover:shadow-lg transition-all transform hover:scale-[1.01]"
+                    >
+                        <i class="fas fa-calendar-check mr-2"></i> Book My Demo
+                    </button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+
   <script data-cfasync="false"
     src="https://brandmode.1onestrong.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/hello-elementor\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+    <script>
+        // Initialize ScrollReveal
+        ScrollReveal().reveal('.mobile-timeline-item', {
+            delay: 200,
+            distance: '50px',
+            origin: 'bottom',
+            interval: 100
+        });
+
+        // GSAP animations for more complex elements
+        document.addEventListener('DOMContentLoaded', () => {
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Animate timeline connectors
+            gsap.from(".timeline-connector::after", {
+                scrollTrigger: {
+                    trigger: ".timeline-connector",
+                    start: "top bottom",
+                    toggleActions: "play none none none"
+                },
+                scaleY: 0,
+                transformOrigin: "top center",
+                duration: 1.5,
+                ease: "power3.out"
+            });
+            
+            // Message bubble animations
+            gsap.to(".message-bubble", {
+                scrollTrigger: {
+                    trigger: "#cold-outreach",
+                    start: "top 80%"
+                },
+                stagger: 0.2,
+                duration: 0.6,
+                opacity: 1,
+                y: 0,
+                ease: "back.out(1)"
+            });
+            
+            // Countdown animation
+            let countdown = document.querySelector('.countdown');
+            if (countdown) {
+                let time = 9.4;
+                let interval = setInterval(() => {
+                    time -= 0.1;
+                    if (time <= 0) {
+                        clearInterval(interval);
+                        countdown.textContent = "00:00.0 response time";
+                    } else {
+                        countdown.textContent = `00:0${Math.floor(time)}.${(time % 1).toFixed(1).slice(2)} response time`;
+                    }
+                }, 100);
+            }
+            
+            // Add hover effects to all demo buttons
+            document.querySelectorAll('[id^="experience-demo"]').forEach(button => {
+                button.addEventListener('mouseenter', () => {
+                    gsap.to(button, {
+                        scale: 1.05,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+                button.addEventListener('mouseleave', () => {
+                    gsap.to(button, {
+                        scale: 1,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+            });
+            
+            // ROI calculator interaction
+            const roiSlider = document.querySelector('input[type="range"]');
+            if (roiSlider) {
+                roiSlider.addEventListener('input', () => {
+                    const value = parseInt(roiSlider.value);
+                    const dealSizeSelect = document.querySelector('select');
+                    const dealSize = parseInt(dealSizeSelect.value.replace(/\D/g, '')) || 10000;
+                    
+                    // Simple ROI calculation - adjust as needed
+                    const estimatedValue = Math.round(value * dealSize * 0.25); // Assuming 25% conversion
+                    
+                    document.querySelector('.text-2xl.font-bold.text-blue-600').textContent = 
+                        `$${estimatedValue.toLocaleString()}`;
+                });
+            }
+        });
+    </script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const monthlyLeadsInput = document.getElementById('monthlyLeads');
+            const conversionRateInput = document.getElementById('conversionRate');
+            const dealSizeInput = document.getElementById('dealSize');
+            const resetBtn = document.getElementById('resetBtn');
+            
+            // Display elements
+            const monthlyLeadsValue = document.getElementById('monthlyLeadsValue');
+            const conversionRateValue = document.getElementById('conversionRateValue');
+            const dealSizeValue = document.getElementById('dealSizeValue');
+            const currentRevenue = document.getElementById('currentRevenue');
+            const currentDeals = document.getElementById('currentDeals');
+            const projectedRevenue = document.getElementById('projectedRevenue');
+            const projectedDeals = document.getElementById('projectedDeals');
+            const roiPercentage = document.getElementById('roiPercentage');
+            const annualRevenue = document.getElementById('annualRevenue');
+            const currentProgress = document.getElementById('currentProgress');
+            const projectedProgress = document.getElementById('projectedProgress');
+            const roiCard = document.getElementById('roiCard');
+            const leadsPerDeal = document.getElementById('leadsPerDeal');
+            const revenuePerLead = document.getElementById('revenuePerLead');
+            const closeRateNeeded = document.getElementById('closeRateNeeded');
+            const recommendation = document.getElementById('recommendation');
+            
+            // Default values
+            const defaultValues = {
+                monthlyLeads: 100,
+                conversionRate: 2.5,
+                dealSize: 5000
+            };
+            
+            // Initialize calculator
+            function initCalculator() {
+                calculateROI();
+                
+                // Event listeners for sliders
+                monthlyLeadsInput.addEventListener('input', function() {
+                    monthlyLeadsValue.textContent = this.value;
+                    calculateROI();
+                });
+                
+                conversionRateInput.addEventListener('input', function() {
+                    conversionRateValue.textContent = this.value + '%';
+                    calculateROI();
+                });
+                
+                dealSizeInput.addEventListener('input', function() {
+                    const value = parseInt(this.value);
+                    dealSizeValue.textContent = '$' + value.toLocaleString();
+                    calculateROI();
+                });
+                
+                resetBtn.addEventListener('click', function() {
+                    monthlyLeadsInput.value = defaultValues.monthlyLeads;
+                    conversionRateInput.value = defaultValues.conversionRate;
+                    dealSizeInput.value = defaultValues.dealSize;
+                    
+                    monthlyLeadsValue.textContent = defaultValues.monthlyLeads;
+                    conversionRateValue.textContent = defaultValues.conversionRate + '%';
+                    dealSizeValue.textContent = '$' + defaultValues.dealSize.toLocaleString();
+                    
+                    calculateROI();
+                    
+                    // GSAP animation for reset
+                    gsap.from([monthlyLeadsInput, conversionRateInput, dealSizeInput], {
+                        duration: 0.5,
+                        scale: 1.05,
+                        ease: "power2.out"
+                    });
+                });
+            }
+            
+            // Calculate ROI and update display
+            function calculateROI() {
+                const monthlyLeads = parseFloat(monthlyLeadsInput.value);
+                const conversionRate = parseFloat(conversionRateInput.value) / 100;
+                const dealSize = parseFloat(dealSizeInput.value);
+                
+                // Current values
+                const currentDealsCount = 2.5; // Fixed for comparision
+                const currentRev = 12500;      // Fixed for comparision
+                
+                // Calculate projected values
+                const dealsClosed = monthlyLeads * conversionRate;
+                const monthlyRev = dealsClosed * dealSize;
+                const annualRev = (monthlyRev - currentRev) * 12;
+                
+                // Calculate ROI percentage
+                let roi = ((monthlyRev - currentRev) / currentRev) * 100;
+                roi = Math.round(roi * 10) / 10; // Round to 1 decimal
+                
+                // Calculate metrics
+                const leadEfficiency = conversionRate > 0 ? Math.round(1 / conversionRate) : '∞';
+                const revPerLead = monthlyRev / monthlyLeads;
+                const dealsNeededForCurrentRev = currentRev / dealSize;
+                
+                // Update display
+                currentRevenue.textContent = '$' + currentRev.toLocaleString();
+                currentDeals.textContent = currentDealsCount;
+                projectedRevenue.textContent = '$' + monthlyRev.toLocaleString();
+                projectedDeals.textContent = dealsClosed.toFixed(2);
+                roiPercentage.textContent = (roi >= 0 ? '+' : '') + roi + '%';
+                annualRevenue.textContent = '$' + annualRev.toLocaleString();
+                leadsPerDeal.textContent = leadEfficiency;
+                revenuePerLead.textContent = revPerLead.toFixed(0);
+                closeRateNeeded.textContent = dealsNeededForCurrentRev.toFixed(2);
+                
+                // Update progress bars with animation
+                const maxRevenue = 100000; // For progress bar scaling
+                const currentProgressPercent = Math.min((currentRev / maxRevenue) * 100, 100);
+                const projectedProgressPercent = Math.min((monthlyRev / maxRevenue) * 100, 100);
+                
+                // Animate progress bars with GSAP
+                gsap.to(currentProgress, { 
+                    width: currentProgressPercent + '%', 
+                    backgroundColor: roi < 0 ? '#ef4444' : '#60a5fa',
+                    duration: 0.7,
+                    ease: "power2.out"
+                });
+                
+                gsap.to(projectedProgress, { 
+                    width: projectedProgressPercent + '%',
+                    backgroundColor: roi >= 0 ? '#10b981' : '#ef4444',
+                    duration: 0.7,
+                    ease: "power2.out"
+                });
+                
+                // Add pulse animation to ROI card
+                roiCard.classList.add('pulse-animate');
+                setTimeout(() => {
+                    roiCard.classList.remove('pulse-animate');
+                }, 500);
+                
+                // Update recommendation based on metrics
+                updateRecommendation(monthlyLeads, conversionRate, dealSize, monthlyRev);
+            }
+            
+            function updateRecommendation(leads, rate, dealSize, revenue) {
+                let rec = '';
+                const currentRev = 12500; // Baseline
+                const improvementRatio = revenue / currentRev;
+                
+                if (improvementRatio < 1.2) {
+                    // Need significant improvement
+                    if (rate < 0.03) { // Under 3%
+                        rec = "Your conversion rate is very low. Prioritize optimizing your conversion process, as this will have the greatest impact with your current lead volume.";
+                    } else {
+                        if (leads < 200) {
+                            rec = "Your lead volume is limiting your revenue potential. Consider increasing marketing efforts to generate more leads while maintaining your current conversion rate.";
+                        } else {
+                            rec = "Consider increasing both lead volume and conversion rate to maximize your revenue. Also evaluate if your average deal size aligns with market expectations.";
+                        }
+                    }
+                } else if (improvementRatio < 1.5) {
+                    // Moderate improvement
+                    rec = "You're seeing good results with these metrics. Focus on incremental improvements to conversion rate and lead quality to further increase revenue.";
+                } else {
+                    // Significant improvement
+                    rec = "Your projections show excellent revenue growth potential! Maintain these metrics while optimizing your sales process to handle the increased volume efficiently.";
+                }
+                
+                recommendation.textContent = rec;
+            }
+            
+            // Initialize the calculator
+            initCalculator();
+        });
+    </script>
+        <!-- <script>
+        // Modal functionality
+        // const modalOverlay = document.getElementById('modalOverlay');
+        // const modalContainer = document.getElementById('modalContainer');
+        // const openModalBtn = document.getElementById('openModalBtn');
+        // const closeModalBtn = document.getElementById('closeModalBtn');
+        
+        // function openModal() {
+        //     modalOverlay.classList.remove('hidden');
+        //     modalOverlay.classList.add('flex');
+            
+        //     // Small delay to allow display property to change before animation
+        //     setTimeout(() => {
+        //         modalContainer.classList.remove('hidden');
+        //     }, 10);
+            
+        //     document.body.style.overflow = 'hidden';
+        // }
+        
+        // function closeModal() {
+        //     modalContainer.classList.add('hidden');
+        //     modalOverlay.classList.add('opacity-0');
+            
+        //     setTimeout(() => {
+        //         modalOverlay.classList.add('hidden');
+        //         modalOverlay.classList.remove('opacity-0', 'flex');
+        //         document.body.style.overflow = 'auto';
+        //     }, 300);
+        // }
+        
+        // openModalBtn.addEventListener('click', openModal);
+        // closeModalBtn.addEventListener('click', closeModal);
+        
+        // // Close modal when clicking outside the form
+        // modalOverlay.addEventListener('click', function(e) {
+        //     if (e.target === modalOverlay) {
+        //         closeModal();
+        //     }
+        // });
+        
+        // // Close modal with Escape key
+        // document.addEventListener('keydown', function(e) {
+        //     if (e.key === 'Escape') {
+        //         closeModal();
+        //     }
+        // });
+        
+        // // Form submission
+        // const form = document.querySelector('form[name="New Form"]');
+        // form.addEventListener('submit', function(e) {
+        //     e.preventDefault();
+        //     // Here you would normally handle form submission
+        //     alert('Demo request submitted! We will contact you soon.');
+        //     closeModal();
+        // });
+
+        // Modal functionality
+const modalOverlay = document.getElementById('modalOverlay');
+const modalContainer = document.getElementById('modalContainer');
+const closeModalBtn = document.getElementById('closeModalBtn');
+
+// Attach open modal event to all buttons with class 'openModalBtn'
+const openModalBtns = document.querySelectorAll('.openModalBtn');
+openModalBtns.forEach(button => {
+    button.addEventListener('click', openModal);
+});
+
+function openModal() {
+    modalOverlay.classList.remove('hidden');
+    modalOverlay.classList.add('flex');
+
+    setTimeout(() => {
+        modalContainer.classList.remove('hidden');
+    }, 10);
+
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    modalContainer.classList.add('hidden');
+    modalOverlay.classList.add('opacity-0');
+
+    setTimeout(() => {
+        modalOverlay.classList.add('hidden');
+        modalOverlay.classList.remove('opacity-0', 'flex');
+        document.body.style.overflow = 'auto';
+    }, 300);
+}
+
+closeModalBtn.addEventListener('click', closeModal);
+
+// Close modal when clicking outside the form
+modalOverlay.addEventListener('click', function (e) {
+    if (e.target === modalOverlay) {
+        closeModal();
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+});
+
+// Form submission
+// const form = document.querySelector('form[name="New Form"]');
+// form.addEventListener('submit', function (e) {
+//     e.preventDefault();
+
+//     // Show loading state
+//     // const submitBtn = form.querySelector('button[type="submit"]');
+//     const submitBtn = document.getElementById('bookDemoBtn');
+//     const originalText = submitBtn.innerHTML;
+//     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Submitting...';
+//     submitBtn.disabled = true;
+
+//     // Collect form data
+//     const formData = new FormData(form);
+//     const data = {
+//         form_type: 'demo_request',
+//         source: 'index_page_popup',
+//         timestamp: new Date().toISOString(),
+//         first_name: formData.get('form_fields[first_name]'),
+//         last_name: formData.get('form_fields[last_name]'),
+//         email: formData.get('form_fields[email]'),
+//         phone: formData.get('form_fields[phone]'),
+//         company: formData.get('form_fields[company]'),
+//         service_interest: formData.get('form_fields[service]'),
+//         referral_source: formData.get('form_fields[referral]'),
+//         message: formData.get('form_fields[message]'),
+//         sms_consent: formData.get('form_fields[sms_consent]') === 'yes',
+//         terms_consent: formData.get('form_fields[terms]') === 'yes',
+//         page_url: window.location.href,
+//         user_agent: navigator.userAgent
+//     };
+
+//     // Send to n8n webhook
+//     const webhookUrl = window.WEBHOOK_CONFIG ?
+//         window.WEBHOOK_CONFIG.DEMO_FORM_WEBHOOK :
+//         'https://someco.app.n8n.cloud/webhook/contact-form';
+//         console.log("webhookUrl", webhookUrl);
+//     fetch(webhookUrl, {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(data)
+//     })
+//     .then(response => {
+//         if (!response.ok) {
+//             throw new Error('Network response was not ok');
+//         }
+//         return response.json();
+//     })
+//     .then(result => {
+//         // Success
+//         submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Success!';
+//         setTimeout(() => {
+//             alert('Demo request submitted successfully! We will contact you soon.');
+//             closeModal();
+//             // Reset form
+//             form.reset();
+//             submitBtn.innerHTML = originalText;
+//             submitBtn.disabled = false;
+//         }, 1500);
+//     })
+//     .catch(error => {
+//         console.error('Error:', error);
+//         submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i> Error - Try Again';
+//         setTimeout(() => {
+//             submitBtn.innerHTML = originalText;
+//             submitBtn.disabled = false;
+//         }, 3000);
+//         alert('There was an error submitting your request. Please try again or contact us directly.');
+//     });
+// });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form[name="New Form"]');
+
+    if (!form) return;
+
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalContainer = document.getElementById('modalContainer');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const submitBtn = document.getElementById('bookDemoBtn');
+
+    modalContainer.addEventListener('click', e => e.stopPropagation());
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Submitting...';
+        submitBtn.disabled = true;
+
+        const formData = new FormData(form);
+        const data = {
+            form_type: 'demo_request',
+            source: 'index_page_popup',
+            timestamp: new Date().toISOString(),
+            first_name: formData.get('form_fields[first_name]'),
+            last_name: formData.get('form_fields[last_name]'),
+            email: formData.get('form_fields[email]'),
+            phone: formData.get('form_fields[phone]'),
+            company: formData.get('form_fields[company]'),
+            service_interest: formData.get('form_fields[service]'),
+            referral_source: formData.get('form_fields[referral]'),
+            message: formData.get('form_fields[message]'),
+            sms_consent: formData.get('form_fields[sms_consent]') === 'yes',
+            terms_consent: formData.get('form_fields[terms]') === 'yes',
+            page_url: window.location.href,
+            user_agent: navigator.userAgent
+        };
+
+        const webhookUrl = window.WEBHOOK_CONFIG?.DEMO_FORM_WEBHOOK || 'https://someco.app.n8n.cloud/webhook/contact-form';
+
+        fetch(webhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.text(); // safer for webhooks
+        })
+        .then(() => {
+            submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Success!';
+            setTimeout(() => {
+                alert('Demo request submitted successfully! We will contact you soon.');
+                closeModal();
+                form.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i> Error - Try Again';
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 3000);
+            alert('There was an error submitting your request. Please try again or contact us directly.');
+        });
+    });
+});
+
+    </script> -->
+    
+    <script>
+// Modal functionality
+const modalOverlay = document.getElementById('modalOverlay');
+const modalContainer = document.getElementById('modalContainer');
+const closeModalBtn = document.getElementById('closeModalBtn');
+
+// Attach open modal event to all buttons with class 'openModalBtn'
+const openModalBtns = document.querySelectorAll('.openModalBtn');
+openModalBtns.forEach(button => {
+    button.addEventListener('click', openModal);
+});
+
+function openModal() {
+    modalOverlay.classList.remove('hidden');
+    modalOverlay.classList.add('flex');
+    setTimeout(() => {
+        modalContainer.classList.remove('hidden');
+    }, 10);
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    modalContainer.classList.add('hidden');
+    modalOverlay.classList.add('opacity-0');
+    setTimeout(() => {
+        modalOverlay.classList.add('hidden');
+        modalOverlay.classList.remove('opacity-0', 'flex');
+        document.body.style.overflow = 'auto';
+    }, 300);
+}
+
+closeModalBtn.addEventListener('click', closeModal);
+
+// Close modal on overlay click
+modalOverlay.addEventListener('click', function (e) {
+    if (e.target === modalOverlay) {
+        closeModal();
+    }
+});
+
+// Close modal on Escape key
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+});
+
+// Modal form submission handler
+document.addEventListener('DOMContentLoaded', function () {
+    const modalForm = document.querySelector('#modalContainer form');
+    if (modalForm) {
+        modalForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            handleFormSubmission(this, 'demo_request', 'index_page_popup');
+        });
+    }
+});
+
+// Reusable form submission handler
+function handleFormSubmission(form, formType, source) {
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Submitting...';
+    submitBtn.disabled = true;
+
+    const formData = new FormData(form);
+    let data = {
+        form_type: formType,
+        source: source,
+        timestamp: new Date().toISOString(),
+        page_url: window.location.href,
+        user_agent: navigator.userAgent
+    };
+
+    if (formType === 'demo_request' || formType === 'contact_form') {
+        data = {
+            ...data,
+            first_name: formData.get('form_fields[first_name]'),
+            last_name: formData.get('form_fields[last_name]'),
+            email: formData.get('form_fields[email]'),
+            phone: formData.get('form_fields[phone]'),
+            company: formData.get('form_fields[company]'),
+            service_interest: formData.get('form_fields[service]'),
+            referral_source: formData.get('form_fields[referral]'),
+            message: formData.get('form_fields[message]'),
+            sms_consent: formData.get('form_fields[sms_consent]') === 'yes',
+            terms_consent: formData.get('form_fields[terms]') === 'yes'
+        };
+    } else if (formType === 'newsletter_signup') {
+        data.email = formData.get('form_fields[email]');
+    }
+
+    const webhookUrl = window.WEBHOOK_CONFIG ?
+        window.WEBHOOK_CONFIG.DEMO_FORM_WEBHOOK :
+        'https://someco.app.n8n.cloud/webhook/contact-form';
+
+    fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(result => {
+            submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Success!';
+            setTimeout(() => {
+                // alert(formType === 'demo_request' ? 'Demo request submitted successfully! We will contact you soon.' : 'Success!');
+                closeModal();
+                form.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i> Error - Try Again';
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 3000);
+            // alert('There was an error submitting your request. Please try again or contact us directly.');
+        });
+}
 </script>
   <script>
     const lazyloadRunObserver = () => {
