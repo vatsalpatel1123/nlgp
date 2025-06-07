@@ -670,6 +670,32 @@
             opacity: 0.3;
         }
 
+        /* Animated particles background */
+        .process-flow-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.3), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.2), transparent),
+                radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.4), transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.3), transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: float 20s infinite linear;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) translateX(0px); }
+            33% { transform: translateY(-10px) translateX(10px); }
+            66% { transform: translateY(5px) translateX(-5px); }
+            100% { transform: translateY(0px) translateX(0px); }
+        }
+
         .process-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -718,23 +744,41 @@
             align-items: flex-start;
             margin-bottom: 40px;
             opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.6s ease;
+            transform: translateX(-50px) scale(0.9);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
         }
 
         .process-step.animate {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateX(0) scale(1);
         }
 
         .process-step:nth-child(even) {
             flex-direction: row-reverse;
-            transform: translateX(50px);
+            transform: translateX(50px) scale(0.9);
         }
 
         .process-step:nth-child(even).animate {
-            transform: translateX(0);
+            transform: translateX(0) scale(1);
+        }
+
+        /* Timeline progress indicator */
+        .timeline-progress {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 4px;
+            height: 0%;
+            background: linear-gradient(to bottom, #4facfe, #00f2fe);
+            transform: translateX(-50%);
+            transition: height 1s ease-out;
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(79, 172, 254, 0.5);
+        }
+
+        .timeline-progress.active {
+            height: 100%;
         }
 
         .step-number {
@@ -753,6 +797,126 @@
             position: relative;
             z-index: 2;
             flex-shrink: 0;
+            animation: pulse-glow 2s infinite;
+        }
+
+        .step-number::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            animation: ripple 3s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 8px 25px rgba(0,123,255,0.4), 0 0 20px rgba(0, 123, 255, 0.3); }
+            50% { box-shadow: 0 12px 35px rgba(0,123,255,0.6), 0 0 30px rgba(0, 123, 255, 0.6); }
+        }
+
+        @keyframes ripple {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 0.4; }
+            100% { transform: scale(1.4); opacity: 0; }
+        }
+
+        /* Enhanced Process Flow Styles */
+        .process-flow-container {
+            position: relative;
+        }
+
+        .timeline-progress-vertical {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 4px;
+            height: 0%;
+            background: linear-gradient(to bottom, #4facfe, #00f2fe);
+            transform: translateX(-50%);
+            transition: height 2s ease-out;
+            border-radius: 2px;
+            box-shadow: 0 0 15px rgba(79, 172, 254, 0.6);
+            z-index: 1;
+        }
+
+        .timeline-progress-vertical.active {
+            height: 100%;
+        }
+
+        .process-step-item {
+            position: relative;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .process-step-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: all 0.8s ease;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .process-step-item.animate::before {
+            transform: translate(-50%, -50%) scale(1);
+            animation: pulse-step 2s infinite;
+        }
+
+        .process-step-item[data-step="1"]::before { content: "1"; }
+        .process-step-item[data-step="2"]::before { content: "2"; }
+        .process-step-item[data-step="3"]::before { content: "3"; }
+        .process-step-item[data-step="4"]::before { content: "4"; }
+
+        @keyframes pulse-step {
+            0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(102, 126, 234, 0.8); }
+        }
+
+        .process-step-item.animate {
+            transform: translateY(0) scale(1);
+        }
+
+        .process-step-item:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        .process-step-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(79, 172, 254, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .process-step-item.animate::after {
+            opacity: 1;
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
 
         .step-content {
@@ -2414,10 +2578,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="elementor-element elementor-element-7cde1bd e-grid e-con-full e-con e-child"
+                    <div class="elementor-element elementor-element-7cde1bd e-grid e-con-full e-con e-child process-flow-container"
                         data-id="7cde1bd" data-element_type="container">
-                        <div class="elementor-element elementor-element-0bfb753 ekit-equal-height-disable elementor-invisible elementor-widget elementor-widget-elementskit-icon-box"
-                            data-id="0bfb753" data-element_type="widget"
+                        <div class="timeline-progress-vertical"></div>
+                        <div class="elementor-element elementor-element-0bfb753 ekit-equal-height-disable elementor-invisible elementor-widget elementor-widget-elementskit-icon-box process-step-item"
+                            data-id="0bfb753" data-element_type="widget" data-step="1"
                             data-settings="{&quot;_animation&quot;:&quot;slideInUp&quot;,&quot;_animation_delay&quot;:150}"
                             data-widget_type="elementskit-icon-box.default">
                             <div class="elementor-widget-container">
@@ -2445,8 +2610,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="elementor-element elementor-element-b2cb098 ekit-equal-height-disable elementor-invisible elementor-widget elementor-widget-elementskit-icon-box"
-                            data-id="b2cb098" data-element_type="widget"
+                        <div class="elementor-element elementor-element-b2cb098 ekit-equal-height-disable elementor-invisible elementor-widget elementor-widget-elementskit-icon-box process-step-item"
+                            data-id="b2cb098" data-element_type="widget" data-step="2"
                             data-settings="{&quot;_animation&quot;:&quot;slideInUp&quot;,&quot;_animation_delay&quot;:200}"
                             data-widget_type="elementskit-icon-box.default">
                             <div class="elementor-widget-container">
@@ -2474,8 +2639,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="elementor-element elementor-element-8bd6906 ekit-equal-height-disable elementor-invisible elementor-widget elementor-widget-elementskit-icon-box"
-                            data-id="8bd6906" data-element_type="widget"
+                        <div class="elementor-element elementor-element-8bd6906 ekit-equal-height-disable elementor-invisible elementor-widget elementor-widget-elementskit-icon-box process-step-item"
+                            data-id="8bd6906" data-element_type="widget" data-step="3"
                             data-settings="{&quot;_animation&quot;:&quot;slideInUp&quot;,&quot;_animation_delay&quot;:250}"
                             data-widget_type="elementskit-icon-box.default">
                             <div class="elementor-widget-container">
@@ -2503,8 +2668,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="elementor-element elementor-element-96be2b5 ekit-equal-height-disable elementor-invisible elementor-widget elementor-widget-elementskit-icon-box"
-                            data-id="96be2b5" data-element_type="widget"
+                        <div class="elementor-element elementor-element-96be2b5 ekit-equal-height-disable elementor-invisible elementor-widget elementor-widget-elementskit-icon-box process-step-item"
+                            data-id="96be2b5" data-element_type="widget" data-step="4"
                             data-settings="{&quot;_animation&quot;:&quot;slideInUp&quot;,&quot;_animation_delay&quot;:300}"
                             data-widget_type="elementskit-icon-box.default">
                             <div class="elementor-widget-container">
@@ -4273,21 +4438,75 @@
             }
         }
 
-        // Process Flow Animation
+        // Enhanced Process Flow Animation
         function initProcessFlowAnimations() {
             const processSteps = document.querySelectorAll('.process-step');
+            const processStepItems = document.querySelectorAll('.process-step-item');
+            const processTimeline = document.querySelector('.process-timeline');
+            const timelineProgressVertical = document.querySelector('.timeline-progress-vertical');
+
+            // Create timeline progress indicator for original process flow
+            if (processTimeline && !document.querySelector('.timeline-progress')) {
+                const progressBar = document.createElement('div');
+                progressBar.className = 'timeline-progress';
+                processTimeline.appendChild(progressBar);
+            }
 
             const observerOptions = {
                 threshold: 0.3,
                 rootMargin: '0px 0px -50px 0px'
             };
 
+            let animatedSteps = 0;
+            let animatedStepItems = 0;
+            const totalSteps = processSteps.length;
+            const totalStepItems = processStepItems.length;
+
+            // Observer for original process steps
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
+                    if (entry.isIntersecting && !entry.target.classList.contains('animate')) {
                         setTimeout(() => {
                             entry.target.classList.add('animate');
-                        }, index * 200); // Stagger animation
+                            animatedSteps++;
+
+                            // Update timeline progress
+                            const progressBar = document.querySelector('.timeline-progress');
+                            if (progressBar) {
+                                const progress = (animatedSteps / totalSteps) * 100;
+                                progressBar.style.height = progress + '%';
+                                if (progress >= 100) {
+                                    progressBar.classList.add('active');
+                                }
+                            }
+
+                            // Add sparkle effect
+                            createSparkleEffect(entry.target);
+                        }, index * 300);
+                    }
+                });
+            }, observerOptions);
+
+            // Observer for new process step items
+            const stepItemObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('animate')) {
+                        setTimeout(() => {
+                            entry.target.classList.add('animate');
+                            animatedStepItems++;
+
+                            // Update vertical timeline progress
+                            if (timelineProgressVertical) {
+                                const progress = (animatedStepItems / totalStepItems) * 100;
+                                timelineProgressVertical.style.height = progress + '%';
+                                if (progress >= 100) {
+                                    timelineProgressVertical.classList.add('active');
+                                }
+                            }
+
+                            // Add enhanced sparkle effect
+                            createEnhancedSparkleEffect(entry.target);
+                        }, index * 400); // Staggered animation
                     }
                 });
             }, observerOptions);
@@ -4295,6 +4514,111 @@
             processSteps.forEach(step => {
                 observer.observe(step);
             });
+
+            processStepItems.forEach(stepItem => {
+                stepItemObserver.observe(stepItem);
+            });
+        }
+
+        // Create sparkle effect for animated elements
+        function createSparkleEffect(element) {
+            const sparkles = 5;
+            for (let i = 0; i < sparkles; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.style.cssText = `
+                        position: absolute;
+                        width: 4px;
+                        height: 4px;
+                        background: #4facfe;
+                        border-radius: 50%;
+                        pointer-events: none;
+                        z-index: 1000;
+                        animation: sparkle 1s ease-out forwards;
+                    `;
+
+                    const rect = element.getBoundingClientRect();
+                    sparkle.style.left = (rect.left + Math.random() * rect.width) + 'px';
+                    sparkle.style.top = (rect.top + Math.random() * rect.height) + 'px';
+
+                    document.body.appendChild(sparkle);
+
+                    setTimeout(() => sparkle.remove(), 1000);
+                }, i * 100);
+            }
+        }
+
+        // Enhanced sparkle effect for process step items
+        function createEnhancedSparkleEffect(element) {
+            const sparkles = 8;
+            const colors = ['#4facfe', '#00f2fe', '#667eea', '#764ba2'];
+
+            for (let i = 0; i < sparkles; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    const size = Math.random() * 6 + 3; // 3-9px
+
+                    sparkle.style.cssText = `
+                        position: absolute;
+                        width: ${size}px;
+                        height: ${size}px;
+                        background: ${color};
+                        border-radius: 50%;
+                        pointer-events: none;
+                        z-index: 1000;
+                        animation: enhancedSparkle 1.5s ease-out forwards;
+                        box-shadow: 0 0 10px ${color};
+                    `;
+
+                    const rect = element.getBoundingClientRect();
+                    sparkle.style.left = (rect.left + Math.random() * rect.width) + 'px';
+                    sparkle.style.top = (rect.top + Math.random() * rect.height) + 'px';
+
+                    document.body.appendChild(sparkle);
+
+                    setTimeout(() => sparkle.remove(), 1500);
+                }, i * 150);
+            }
+        }
+
+        // Add sparkle animation CSS
+        const sparkleCSS = `
+            @keyframes sparkle {
+                0% { transform: scale(0) rotate(0deg); opacity: 1; }
+                50% { transform: scale(1) rotate(180deg); opacity: 1; }
+                100% { transform: scale(0) rotate(360deg); opacity: 0; }
+            }
+
+            @keyframes enhancedSparkle {
+                0% {
+                    transform: scale(0) rotate(0deg) translateY(0px);
+                    opacity: 1;
+                }
+                25% {
+                    transform: scale(1.2) rotate(90deg) translateY(-10px);
+                    opacity: 1;
+                }
+                50% {
+                    transform: scale(1) rotate(180deg) translateY(-20px);
+                    opacity: 0.8;
+                }
+                75% {
+                    transform: scale(0.8) rotate(270deg) translateY(-30px);
+                    opacity: 0.4;
+                }
+                100% {
+                    transform: scale(0) rotate(360deg) translateY(-40px);
+                    opacity: 0;
+                }
+            }
+        `;
+
+        if (!document.querySelector('#sparkle-styles')) {
+            const style = document.createElement('style');
+            style.id = 'sparkle-styles';
+            style.textContent = sparkleCSS;
+            document.head.appendChild(style);
         }
 
         // Initialize the chat interface
