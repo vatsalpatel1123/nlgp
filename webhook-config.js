@@ -1,8 +1,8 @@
 
 const WEBHOOK_CONFIG = {
     // Replace with your actual n8n webhook URLs
-    DEMO_FORM_WEBHOOK: 'https://someco.app.n8n.cloud/webhook/demo-form',
-    CONTACT_FORM_WEBHOOK: 'https://someco.app.n8n.cloud/webhook/contact-form',
+    DEMO_FORM_WEBHOOK: 'https://n8n.srv791889.hstgr.cloud/webhook/113e4481-4a78-43a7-ac35-fd4e059b02ce',
+    CONTACT_FORM_WEBHOOK: 'https://n8n.srv791889.hstgr.cloud/webhook/113e4481-4a78-43a7-ac35-fd4e059b02ce',
     
     // Optional: Add timeout and retry settings
     TIMEOUT: 10000, // 10 seconds
