@@ -4759,7 +4759,7 @@
     <script>
 
         // const N8N_WEBHOOK_URL = 'https://someco.app.n8n.cloud/webhook-test/a8205c39-11e6-4be8-a95f-6f9ad5df6a25';
-        const N8N_WEBHOOK_URL = 'https://someco.app.n8n.cloud/webhook/a8205c39-11e6-4be8-a95f-6f9ad5df6a25';
+        // const N8N_WEBHOOK_URL = 'https://someco.app.n8n.cloud/webhook/a8205c39-11e6-4be8-a95f-6f9ad5df6a25';
 
 
         let conversationHistory = [
@@ -5770,75 +5770,99 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Reusable form submission handler
-function handleFormSubmission(form, formType, source) {
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Submitting...';
-    submitBtn.disabled = true;
+      function handleFormSubmission(form, formType, source) {
+            // Show loading state
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Submitting...';
+            submitBtn.disabled = true;
 
-    const formData = new FormData(form);
-    let data = {
-        form_type: formType,
-        source: source,
-        timestamp: new Date().toISOString(),
-        page_url: window.location.href,
-        user_agent: navigator.userAgent
-    };
+            // Collect form data
+            const formData = new FormData(form);
+            let data = {
+                form_type: formType,
+                source: source,
+                timestamp: new Date().toISOString(),
+                page_url: window.location.href,
+                user_agent: navigator.userAgent
+            };
 
-    if (formType === 'demo_request' || formType === 'contact_form') {
-        data = {
-            ...data,
-            first_name: formData.get('form_fields[first_name]'),
-            last_name: formData.get('form_fields[last_name]'),
-            email: formData.get('form_fields[email]'),
-            phone: formData.get('form_fields[phone]'),
-            company: formData.get('form_fields[company]'),
-            service_interest: formData.get('form_fields[service]'),
-            referral_source: formData.get('form_fields[referral]'),
-            message: formData.get('form_fields[message]'),
-            sms_consent: formData.get('form_fields[sms_consent]') === 'yes',
-            terms_consent: formData.get('form_fields[terms]') === 'yes'
-        };
-    } else if (formType === 'newsletter_signup') {
-        data.email = formData.get('form_fields[email]');
-    }
+            // Add form-specific data
+            if (formType === 'contact_form') {
+                data = {
+                    ...data,
+                    first_name: formData.get('form_fields[first_name]'),
+                    last_name: formData.get('form_fields[last_name]'),
+                    email: formData.get('form_fields[email]'),
+                    phone: formData.get('form_fields[phone]'),
+                    company: formData.get('form_fields[company]'),
+                    service_interest: formData.get('form_fields[service]'),
+                    referral_source: formData.get('form_fields[referral]'),
+                    message: formData.get('form_fields[message]'),
+                    sms_consent: formData.get('form_fields[sms_consent]') === 'yes',
+                    terms_consent: formData.get('form_fields[terms]') === 'yes'
+                };
+            } else if (formType === 'newsletter_signup') {
+                data = {
+                    ...data,
+                    email: formData.get('form_fields[email]')
+                };
+            }
 
-    const webhookUrl = window.WEBHOOK_CONFIG ?
-        window.WEBHOOK_CONFIG.DEMO_FORM_WEBHOOK :
-        'https://someco.app.n8n.cloud/webhook/contact-form';
 
-    fetch(webhookUrl, {
+            const webhookTestUrl = 'https://n8n.srv791889.hstgr.cloud/webhook/contact-form';
+const webhookProdUrl = window.WEBHOOK_CONFIG
+    ? window.WEBHOOK_CONFIG.CONTACT_FORM_WEBHOOK
+    : 'https://n8n.srv791889.hstgr.cloud/webhook/demo-form-submission';
+
+fetch(webhookTestUrl, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data)
+})
+.then(testResponse => {
+    if (!testResponse.ok) throw new Error('Test webhook failed');
+    return testResponse.json();
+})
+.then(() => {
+    // After test webhook succeeds, send to production webhook
+    return fetch(webhookProdUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(data)
-    })
-        .then(response => {
-            if (!response.ok) throw new Error('Network response was not ok');
-            return response.json();
-        })
-        .then(result => {
-            submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Success!';
-            setTimeout(() => {
-                // alert(formType === 'demo_request' ? 'Demo request submitted successfully! We will contact you soon.' : 'Success!');
-                closeModal();
-                form.reset();
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }, 1500);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i> Error - Try Again';
-            setTimeout(() => {
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }, 3000);
-            // alert('There was an error submitting your request. Please try again or contact us directly.');
-        });
-}
-</script>
+    });
+})
+.then(prodResponse => {
+    if (!prodResponse.ok) throw new Error('Production webhook failed');
+    return prodResponse.json();
+})
+.then(() => {
+    submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Success!';
+    setTimeout(() => {
+        if (formType === 'contact_form') {
+            alert('Thank you! Your message has been sent successfully. We will contact you soon.');
+        }
+        form.reset();
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    }, 1500);
+})
+.catch(error => {
+    console.error('Error:', error);
+    submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i> Error - Try Again';
+    setTimeout(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    }, 3000);
+    // Optionally: alert('There was an error submitting your request.');
+});
+
+        }
+        </script>
 
 <script>
 // Initialize AOS animations

@@ -30,8 +30,7 @@ function handleNewsletterFormSubmission(form, submitBtn) {
     email: formData.get('form_fields[email]')
   };
 
-  const webhookUrl = window.WEBHOOK_CONFIG?.DEMO_FORM_WEBHOOK ||
-    'https://someco.app.n8n.cloud/webhook/contact-form';
+  const webhookUrl = 'https://n8n.srv791889.hstgr.cloud/webhook/newsletter';
 
   fetch(webhookUrl, {
     method: 'POST',
