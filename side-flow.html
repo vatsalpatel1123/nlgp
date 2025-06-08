@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Lifecycle Flow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-12">
+        <header class="text-center mb-16">
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">Lead Lifecycle Flow</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Discover our seamless lead management process that transforms prospects into loyal customers</p>
+        </header>
+
+        <!-- Lead Lifecycle Flow Container -->
+        <div class="relative">
+            <!-- Horizontal Flow for Desktop -->
+            <div class="hidden md:block overflow-x-auto pb-8 hide-scrollbar">
+                <div class="flex space-x-4 md:space-x-0 md:grid md:grid-cols-7 gap-4 justify-center min-w-max">
+                    <!-- Stages will be inserted here -->
+                </div>
+                
+                <!-- Connection lines (desktop only) -->
+                <div class="absolute top-1/3 left-0 right-0 h-px bg-gradient-to-r from-blue-400 to-purple-500 mx-4 opacity-30 z-0"></div>
+                <div class="absolute top-1/3 left-0 right-0 flex justify-between px-4">
+                    <div class="w-full h-8 flex justify-between items-center">
+                        <div class="hidden md:block">
+                            <div class="relative h-0.5 w-24 bg-gradient-to-r from-blue-400 to-purple-500 opacity-30"></div>
+                            <div class="absolute right-0 top-0 h-3 w-3 border-t-4 border-r-4 border-blue-500 transform rotate-45 -translate-y-1/2"></div>
+                        </div>
+                        <!-- Repeating arrows between the dots -->
+                        <div class="hidden md:block">
+                            <div class="relative h-0.5 w-24 bg-gradient-to-r from-blue-400 to-purple-500 opacity-30"></div>
+                            <div class="absolute right-0 top-0 h-3 w-3 border-t-4 border-r-4 border-blue-500 transform rotate-45 -translate-y-1/2"></div>
+                        </div>
+                        <div class="hidden md:block">
+                            <div class="relative h-0.5 w-24 bg-gradient-to-r from-blue-400 to-purple-500 opacity-30"></div>
+                            <div class="absolute right-0 top-0 h-3 w-3 border-t-4 border-r-4 border-blue-500 transform rotate-45 -translate-y-1/2"></div>
+                        </div>
+                        <div class="hidden md:block">
+                            <div class="relative h-0.5 w-24 bg-gradient-to-r from-blue-400 to-purple-500 opacity-30"></div>
+                            <div class="absolute right-0 top-0 h-3 w-3 border-t-4 border-r-4 border-blue-500 transform rotate-45 -translate-y-1/2"></div>
+                        </div>
+                        <div class="hidden md:block">
+                            <div class="relative h-0.5 w-24 bg-gradient-to-r from-blue-400 to-purple-500 opacity-30"></div>
+                            <div class="absolute right-0 top-0 h-3 w-3 border-t-4 border-r-4 border-blue-500 transform rotate-45 -translate-y-1/2"></div>
+                        </div>
+                        <div class="hidden md:block">
+                            <div class="relative h-0.5 w-24 bg-gradient-to-r from-blue-400 to-purple-500 opacity-30"></div>
+                            <div class="absolute right-0 top-0 h-3 w-3 border-t-4 border-r-4 border-blue-500 transform rotate-45 -translate-y-1/2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vertical Flow for Mobile -->
+            <div class="md:hidden space-y-8">
+                <!-- Stages will be inserted here (mobile version) -->
+            </div>
+        </div>
+
+        <!-- Demo Section Placeholder -->
+        <div id="demo-section" class="mt-32 py-16 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl text-center">
+            <div class="max-w-4xl mx-auto px-4">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6">Experience Our Demo</h2>
+                <p class="text-gray-600 mb-8">Select a stage above to see it in action or explore our full platform demo below.</p>
+                <button class="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                    View Full Platform Demo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Custom CSS */
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .stage-card {
+            transition: all 0.3s ease;
+            z-index: 10;
+            position: relative;
+        }
+        
+        .stage-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .stage-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .stage-card:hover .stage-icon {
+            transform: scale(1.1);
+        }
+        
+        .tooltip {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s;
+            position: absolute;
+            z-index: 100;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 100%;
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 6px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        
+        .stage-card:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        /* Animation classes */
+        .animate-in {
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lifecycle stages data
+            const stages = [
+                {
+                    title: "Lead Generation",
+                    icon: "fa-bullseye",
+                    description: "Capture high-quality leads through targeted campaigns and smart forms",
+                    info: "Multi-channel lead capture forms with smart validation",
+                    color: "from-blue-400 to-blue-600"
+                },
+                {
+                    title: "Automated Outreach",
+                    icon: "fa-paper-plane",
+                    description: "Instant follow-up with personalized messages at scale",
+                    info: "AI-powered message personalization with dynamic fields",
+                    color: "from-blue-500 to-indigo-600"
+                },
+                {
+                    title: "Speed to Lead",
+                    icon: "fa-bolt",
+                    description: "Respond to leads in seconds with our lightning-fast system",
+                    info: "Real-time lead distribution with response time tracking",
+                    color: "from-indigo-500 to-purple-600"
+                },
+                {
+                    title: "Database Reactivation",
+                    icon: "fa-recycle",
+                    description: "Revive old leads with intelligent re-engagement sequences",
+                    info: "Automated win-backs for cold leads based on behavior",
+                    color: "from-purple-500 to-purple-700"
+                },
+                {
+                    title: "Appointment Booking",
+                    icon: "fa-calendar-check",
+                    description: "Seamless scheduling integrated with your calendar",
+                    info: "Two-way calendar sync with automated reminders",
+                    color: "from-purple-600 to-pink-600"
+                },
+                {
+                    title: "AI Voice Receptionist",
+                    icon: "fa-robot",
+                    description: "24/7 AI answering service to never miss a call",
+                    info: "Natural language processing with human-like responses",
+                    color: "from-pink-500 to-red-500"
+                },
+                {
+                    title: "AI Convo Widget",
+                    icon: "fa-comments",
+                    description: "Smart chat widget that qualifies leads automatically",
+                    info: "Context-aware conversations that adapt to visitor needs",
+                    color: "from-red-500 to-orange-500"
+                }
+            ];
+
+            const desktopContainer = document.querySelector('.md\\:block .min-w-max');
+            const mobileContainer = document.querySelector('.md\\:hidden');
+            
+            // Create stages for desktop
+            stages.forEach((stage, index) => {
+                desktopContainer.appendChild(createStageElement(stage, index, false));
+            });
+            
+            // Create stages for mobile
+            stages.forEach((stage, index) => {
+                mobileContainer.appendChild(createStageElement(stage, index, true));
+            });
+            
+            // Add animation classes with delay
+            document.querySelectorAll('.stage-card').forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('animate-in');
+                }, index * 100);
+            });
+            
+            // Demo button click handlers
+            document.querySelectorAll('.demo-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const stageTitle = this.getAttribute('data-stage');
+                    console.log(`Demo requested for: ${stageTitle}`);
+                    
+                    // Scroll to demo section with smooth behavior
+                    document.getElementById('demo-section').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Create stage element function
+            function createStageElement(stage, index, isMobile) {
+                const stageElement = document.createElement('div');
+                
+                if (isMobile) {
+                    stageElement.className = `stage-card bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 opacity-0 relative border-l-4 border-${stage.color.split(' ')[1]}`;
+                    
+                    stageElement.innerHTML = `
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-gradient-to-r ${stage.color} p-3 rounded-lg text-white mr-4 stage-icon">
+                                <i class="fas ${stage.icon} text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">${stage.title}</h3>
+                                <p class="text-gray-600 mb-4">${stage.description}</p>
+                                <button class="demo-btn px-4 py-2 bg-gradient-to-r ${stage.color} text-white rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity" data-stage="${stage.title}">
+                                    See Demo <i class="fas fa-play ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tooltip">${stage.info}</div>
+                    `;
+                } else {
+                    stageElement.className = `stage-card w-64 flex-shrink-0 bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 opacity-0 md:w-auto ${index === 0 ? 'md:ml-0' : 'md:ml-4'} ${index === stages.length - 1 ? 'md:mr-0' : 'md:mr-4'}`;
+                    
+                    stageElement.innerHTML = `
+                        <div class="text-center">
+                            <div class="bg-gradient-to-r ${stage.color} p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 stage-icon">
+                                <i class="fas ${stage.icon} text-2xl text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">${stage.title}</h3>
+                            <p class="text-gray-600 mb-4">${stage.description}</p>
+                            <button class="demo-btn px-4 py-2 bg-gradient-to-r ${stage.color} text-white rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity" data-stage="${stage.title}">
+                                See Demo <i class="fas fa-play ml-1"></i>
+                            </button>
+                        </div>
+                        <div class="tooltip">${stage.info}</div>
+                    `;
+                }
+                
+                return stageElement;
+            }
+            
+            // Intersection Observer for scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            document.querySelectorAll('.stage-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
