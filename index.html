@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
-    <title>Brandmode &#8211; Digital Marketing Agency</title>
+    <title>Next Level Growth Partners - AI Lead Conversion Experts</title>
     <meta name='robots' content='max-image-preview:large' />
     <style>
         img:is([sizes="auto" i], [sizes^="auto," i]) {
@@ -608,6 +608,289 @@
                 height: 600px;
             }
         }
+
+        /* Process Flow Section Styles */
+        .process-flow-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .process-flow-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .process-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .process-emoji {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        .process-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            font-family: 'Inter Tight', sans-serif;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .process-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .process-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+            position: relative;
+        }
+
+        .process-step.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .process-step:nth-child(even) {
+            flex-direction: row-reverse;
+            transform: translateX(50px);
+        }
+
+        .process-step:nth-child(even).animate {
+            transform: translateX(0);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin: 0 30px;
+            box-shadow: 0 8px 25px rgba(0,123,255,0.4);
+            position: relative;
+            z-index: 2;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .step-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .step-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+            font-family: 'Inter Tight', sans-serif;
+        }
+
+        .step-description {
+            color: #666;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .step-connector {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 80px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.3));
+            z-index: 1;
+        }
+
+        .process-step:last-child .step-connector {
+            display: none;
+        }
+
+        .process-cta {
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out 0.5s both;
+        }
+
+        .process-btn-primary {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,123,255,0.4);
+            margin-bottom: 15px;
+        }
+
+        .process-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,123,255,0.5);
+        }
+
+        .process-cta-note {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Process Flow Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Process Flow Responsive Styles */
+        @media (max-width: 768px) {
+            .process-title {
+                font-size: 2.5rem;
+            }
+
+            .process-subtitle {
+                font-size: 1.1rem;
+                padding: 0 10px;
+            }
+
+            .process-step {
+                flex-direction: column !important;
+                align-items: center;
+                text-align: center;
+                transform: translateY(30px) !important;
+            }
+
+            .process-step.animate {
+                transform: translateY(0) !important;
+            }
+
+            .step-number {
+                margin: 0 0 20px 0;
+            }
+
+            .step-content {
+                max-width: 100%;
+                margin: 0 10px;
+            }
+
+            .step-connector {
+                left: 30px;
+                top: 80px;
+                height: 60px;
+            }
+
+            .process-container {
+                padding: 0 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .process-flow-section {
+                padding: 60px 0;
+            }
+
+            .process-title {
+                font-size: 2rem;
+            }
+
+            .process-emoji {
+                font-size: 3rem;
+            }
+
+            .step-content {
+                padding: 20px;
+            }
+
+            .step-title {
+                font-size: 1.25rem;
+            }
+
+            .step-description {
+                font-size: 0.9rem;
+            }
+
+            .process-btn-primary {
+                padding: 15px 30px;
+                font-size: 1rem;
+            }
+        }
     </style>
     <style id='global-styles-inline-css'>
         :root {
@@ -1173,11 +1456,7 @@
                         data-id="f0c84a9" data-element_type="widget" data-widget_type="theme-site-logo.default">
                         <div class="elementor-widget-container">
                             <a href="https://brandmode.1onestrong.com">
-                                <img width="603" height="80"
-                                    src="https://brandmode.1onestrong.com/wp-content/uploads/2024/02/Logo-001.png"
-                                    class="attachment-full size-full wp-image-3840" alt=""
-                                    srcset="https://brandmode.1onestrong.com/wp-content/uploads/2024/02/Logo-001.png 603w, https://brandmode.1onestrong.com/wp-content/uploads/2024/02/Logo-001-300x40.png 300w"
-                                    sizes="(max-width: 603px) 100vw, 603px" /> </a>
+                                </a>
                         </div>
                     </div>
                 </div>
@@ -1209,10 +1488,6 @@
                                     <li
                                         class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3811">
                                         <a class="elementor-item" href="faq.html">FAQs</a>
-                                    </li>
-                                    <li
-                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-4375">
-                                        <a class="elementor-item" href="pricing.html"> Pricing</a>
                                     </li>
                                     <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3798">
                                         <a href="contact.html"
@@ -1247,11 +1522,6 @@
                                     <li
                                         class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3810">
                                         <a class="elementor-item" tabindex="-1" href="about.html">About</a>
-                                    </li>
-                                    <li
-                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3811">
-                                        <a class="elementor-item" tabindex="-1" href="pricing.html">Pricing</a>
-
                                     </li>
                                     <li
                                         class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-4375">
@@ -1307,9 +1577,9 @@
                             <div class="ekit-wid-con">
                                 <div
                                     class="ekit-heading elementskit-section-title-wraper text_center   ekit_heading_tablet-   ekit_heading_mobile-">
-                                    <h1 class="ekit-heading--title elementskit-section-title text_fill">We are a leading
-                                        <span><span>Ai agency</span></span> with global reach &amp;
-                                        <span><span>services</span></span>
+                                    <h1 class="ekit-heading--title elementskit-section-title text_fill">Automated
+                                        <span><span>Lead Conversion</span></span><br>
+                                        Powered By <span><span>AI + SMS</span></span>
                                     </h1>
                                 </div>
                             </div>
@@ -1328,8 +1598,7 @@
                         <div class="elementor-element elementor-element-96bb3b0 elementor-widget elementor-widget-heading"
                             data-id="96bb3b0" data-element_type="widget" data-widget_type="heading.default">
                             <div class="elementor-widget-container">
-                                <h4 class="elementor-heading-title elementor-size-default">Trusted by startups,
-                                    creatives, and suits alike</h4>
+                                <h4 class="elementor-heading-title elementor-size-default">Trusted by 500+ businesses generating $10M+ in additional revenue</h4>
                             </div>
                         </div>
                         <div class="elementor-element elementor-element-e934052 elementor-widget elementor-widget-elementskit-client-logo"
@@ -1588,7 +1857,7 @@
                                       </div> -->
                                             </div>
 
-                                        </div><!-- .elementskit-clients-slider END -->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1622,10 +1891,10 @@
                                 <div class="ekit-wid-con">
                                     <div
                                         class="ekit-heading elementskit-section-title-wraper text_center   ekit_heading_tablet-   ekit_heading_mobile-">
-                                        <h2 class="ekit-heading--title elementskit-section-title text_fill">What can we
-                                            do <span><span>for you? </span></span></h2>
+                                        <h2 class="ekit-heading--title elementskit-section-title text_fill">The 24/7
+                                            <span><span>Sales Machine</span></span></h2>
                                         <div class='ekit-heading__description'>
-                                            <p>We hold exceptional expertise in five main areas</p>
+                                            <p>Uncover Lost Revenue with AI-Powered Lead Engagement</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1642,8 +1911,8 @@
                                     <div
                                         class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-   ekit_heading_mobile-text_center">
                                         <a href="#">
-                                            <h4 class="ekit-heading--title elementskit-section-title text_fill"> Social
-                                                Media <br> <span><span>Automation</span></span></h4>
+                                            <h4 class="ekit-heading--title elementskit-section-title text_fill"> Lead
+                                                <br> <span><span>Engagement</span></span></h4>
                                         </a>
                                     </div>
                                 </div>
@@ -1660,8 +1929,8 @@
                                     <div
                                         class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-   ekit_heading_mobile-text_center">
                                         <a href="#">
-                                            <h4 class="ekit-heading--title elementskit-section-title "> Website <br>
-                                                <span><span>Development</span></span>
+                                            <h4 class="ekit-heading--title elementskit-section-title ">
+                                                <span><span>Sales Qualifying</span></span>
                                             </h4>
                                         </a>
                                     </div>
@@ -1679,8 +1948,8 @@
                                     <div
                                         class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-   ekit_heading_mobile-text_center">
                                         <a href="#">
-                                            <h4 class="ekit-heading--title elementskit-section-title text_fill"> App
-                                                <br> <span><span>Development</span></span>
+                                            <h4 class="ekit-heading--title elementskit-section-title text_fill"> Lead
+                                                <br> <span><span>Nurturing</span></span>
                                             </h4>
                                         </a>
                                     </div>
@@ -1698,8 +1967,8 @@
                                     <div
                                         class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-   ekit_heading_mobile-text_center">
                                         <a href="#">
-                                            <h4 class="ekit-heading--title elementskit-section-title ">Voice <br>
-                                                <span><span>AI Agent</span></span>
+                                            <h4 class="ekit-heading--title elementskit-section-title ">Appointments <br>
+                                                <span><span>Set</span></span>
                                             </h4>
                                         </a>
                                     </div>
@@ -1717,7 +1986,7 @@
                                     <div
                                         class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-   ekit_heading_mobile-text_center">
                                         <a href="#">
-                                            <h4 class="ekit-heading--title elementskit-section-title text_fill">SEO<br>
+                                            <h4 class="ekit-heading--title elementskit-section-title text_fill">Revenue<br>
                                                 <span><span>Optimization</span></span>
                                             </h4>
                                         </a>
@@ -1751,7 +2020,7 @@
                         <div class="elementor-element elementor-element-ad54a23 elementor-widget elementor-widget-text-editor"
                             data-id="ad54a23" data-element_type="widget" data-widget_type="text-editor.default">
                             <div class="elementor-widget-container">
-                                <p>We ground our work in AI concepts, strategize thoughtfully, and execute creatively, developing intelligent systems, automating processes, and delivering data-driven insights
+                                <p>Stop losing money on dead leads. Our AI-powered SMS system resurrects cold prospects and converts them into booked appointments while you sleep.
                                 </p>
                             </div>
                         </div>
@@ -1764,10 +2033,9 @@
                                 <div class="ekit-wid-con">
                                     <div
                                         class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-text_center   ekit_heading_mobile-">
-                                        <h2 class="ekit-heading--title elementskit-section-title text_fill">Using ,
-                                            machine learning, automation, and <span><span>advanced technologies</span></span>, we shape
-                                            <span><span>Intelligent Business Solutions</span></span> that propel your
-                                            <span><span>success</span></span> in the digital realm.
+                                        <h2 class="ekit-heading--title elementskit-section-title text_fill">Turn your
+                                            <span><span>dead lead database</span></span> into a <span><span>revenue-generating machine</span></span>
+                                            with AI that works <span><span>24/7</span></span> to book qualified appointments.
                                         </h2>
                                     </div>
                                 </div>
@@ -1775,386 +2043,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="elementor-element elementor-element-e949777 e-grid e-con-full e-con e-child" data-id="e949777"
-                data-element_type="container">
-                <div class="elementor-element elementor-element-f038eb8 elementor-widget elementor-widget-elementskit-funfact"
-                    data-id="f038eb8" data-element_type="widget" data-widget_type="elementskit-funfact.default">
-                    <div class="elementor-widget-container">
-                        <div class="ekit-wid-con">
-                            <div class="elementskit-funfact text-center     ">
-
-                                <div class="elementskit-funfact-inner ">
-
-                                    <div class="funfact-content">
-                                        <div class="number-percentage-wraper">
-                                            <span class="number-percentage" data-value="254"
-                                                data-animation-duration="3500" data-style="static">0</span>
-                                            M <span class="super">+</span>
-                                        </div>
-
-                                        <h4 class="funfact-title">Successful Projects</h4>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-                <div class="elementor-element elementor-element-54cdad5 elementor-widget elementor-widget-elementskit-funfact"
-                    data-id="54cdad5" data-element_type="widget" data-widget_type="elementskit-funfact.default">
-                    <div class="elementor-widget-container">
-                        <div class="ekit-wid-con">
-                            <div class="elementskit-funfact text-center     ">
-
-                                <div class="elementskit-funfact-inner ">
-
-                                    <div class="funfact-content">
-                                        <div class="number-percentage-wraper">
-                                            <span class="number-percentage" data-value="13"
-                                                data-animation-duration="3500" data-style="static">0</span>
-                                            Y
-                                        </div>
-
-                                        <h4 class="funfact-title">Years in business</h4>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-                <div class="elementor-element elementor-element-6b70808 elementor-widget elementor-widget-elementskit-funfact"
-                    data-id="6b70808" data-element_type="widget" data-widget_type="elementskit-funfact.default">
-                    <div class="elementor-widget-container">
-                        <div class="ekit-wid-con">
-                            <div class="elementskit-funfact text-center     ">
-
-                                <div class="elementskit-funfact-inner ">
-
-                                    <div class="funfact-content">
-                                        <div class="number-percentage-wraper">
-                                            <span class="number-percentage" data-value="25"
-                                                data-animation-duration="3500" data-style="static">0</span>
-                                            <span class="super">+</span>
-                                        </div>
-
-                                        <h4 class="funfact-title">Team Members</h4>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-                <div class="elementor-element elementor-element-e9b1623 elementor-widget elementor-widget-elementskit-funfact"
-                    data-id="e9b1623" data-element_type="widget" data-widget_type="elementskit-funfact.default">
-                    <div class="elementor-widget-container">
-                        <div class="ekit-wid-con">
-                            <div class="elementskit-funfact text-center     ">
-
-                                <div class="elementskit-funfact-inner ">
-
-                                    <div class="funfact-content">
-                                        <div class="number-percentage-wraper">
-                                            <span class="number-percentage" data-value="34"
-                                                data-animation-duration="3500" data-style="static">0</span>
-                                            M <span class="super">+</span>
-                                        </div>
-
-                                        <h4 class="funfact-title"> Award winning</h4>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div>         
         </div>
-        <div class="elementor-element elementor-element-24f98ff e-con-full e-flex e-con e-parent" data-id="24f98ff"
-            data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-            <div class="elementor-element elementor-element-3241546 e-flex e-con-boxed e-con e-child" data-id="3241546"
-                data-element_type="container">
-                <div class="e-con-inner">
-                    <div class="elementor-element elementor-element-5ec1ac1 e-con-full e-flex e-con e-child"
-                        data-id="5ec1ac1" data-element_type="container">
-                        <div class="elementor-element elementor-element-975151c elementor-widget elementor-widget-heading"
-                            data-id="975151c" data-element_type="widget" data-widget_type="heading.default">
-                            <div class="elementor-widget-container">
-                                <div class="elementor-heading-title elementor-size-default">📂</div>
-                            </div>
-                        </div>
-                        <div class="elementor-element elementor-element-f6c0fc7 elementor-widget elementor-widget-heading"
-                            data-id="f6c0fc7" data-element_type="widget" data-widget_type="heading.default">
-                            <div class="elementor-widget-container">
-                                <h2 class="elementor-heading-title elementor-size-default">Our work</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="elementor-element elementor-element-5cc2029 elementor-widget elementor-widget-elementskit-heading"
-                        data-id="5cc2029" data-element_type="widget" data-widget_type="elementskit-heading.default">
-                        <div class="elementor-widget-container">
-                            <div class="ekit-wid-con">
-                                <div
-                                    class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-text_center   ekit_heading_mobile-text_center">
-                                    <h2 class="ekit-heading--title elementskit-section-title text_fill">
-                                        <span><span>Projects, </span></span> we are proud of
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="elementor-element elementor-element-e4f2d87 e-con-full e-flex e-con e-child" data-id="e4f2d87"
-                data-element_type="container">
-                <div class="elementor-element elementor-element-e07a7b2 e-con-full e-flex elementor-invisible e-con e-child"
-                    data-id="e07a7b2" data-element_type="container"
-                    data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:150}">
-                    <div class="elementor-element elementor-element-5404dbb elementor-widget elementor-widget-image"
-                        data-id="5404dbb" data-element_type="widget" data-widget_type="image.default">
-                        <div class="elementor-widget-container">
-                            <a href="#">
-                                <img loading="lazy" decoding="async" width="1024" height="683"
-                                    src="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-03.jpg"
-                                    class="attachment-full size-full wp-image-791" alt=""
-                                    srcset="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-03.jpg 1024w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-03-300x200.jpg 300w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-03-768x512.jpg 768w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-03-800x534.jpg 800w"
-                                    sizes="(max-width: 1024px) 100vw, 1024px" /> </a>
-                        </div>
-                    </div>
-                    <div class="elementor-element elementor-element-4f7c8bf e-con-full e-flex e-con e-child"
-                        data-id="4f7c8bf" data-element_type="container">
-                        <div class="elementor-element elementor-element-bc066b9 elementor-widget elementor-widget-heading"
-                            data-id="bc066b9" data-element_type="widget" data-widget_type="heading.default">
-                            <div class="elementor-widget-container">
-                                <h4 class="elementor-heading-title elementor-size-default"><a href="#">Orizon Web
-                                        development</a></h4>
-                            </div>
-                        </div>
-                        <div class="elementor-element elementor-element-b8a0fdb elementor-icon-list--layout-inline elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
-                            data-id="b8a0fdb" data-element_type="widget" data-widget_type="icon-list.default">
-                            <div class="elementor-widget-container">
-                                <ul class="elementor-icon-list-items elementor-inline-items">
-                                    <li class="elementor-icon-list-item elementor-inline-item">
-                                        <span class="elementor-icon-list-text">Web Development,</span>
-                                    </li>
-                                    <li class="elementor-icon-list-item elementor-inline-item">
-                                        <span class="elementor-icon-list-text">Wireframe & Prototyping</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="elementor-element elementor-element-88e8303 e-con-full e-flex elementor-invisible e-con e-child"
-                    data-id="88e8303" data-element_type="container"
-                    data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:200}">
-                    <div class="elementor-element elementor-element-8d2ad88 elementor-widget elementor-widget-image"
-                        data-id="8d2ad88" data-element_type="widget" data-widget_type="image.default">
-                        <div class="elementor-widget-container">
-                            <a href="#">
-                                <img loading="lazy" decoding="async" width="1024" height="683"
-                                    src="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-07.jpg"
-                                    class="attachment-full size-full wp-image-795" alt=""
-                                    srcset="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-07.jpg 1024w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-07-300x200.jpg 300w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-07-768x512.jpg 768w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-07-800x534.jpg 800w"
-                                    sizes="(max-width: 1024px) 100vw, 1024px" /> </a>
-                        </div>
-                    </div>
-                    <div class="elementor-element elementor-element-15cca69 e-con-full e-flex e-con e-child"
-                        data-id="15cca69" data-element_type="container">
-                        <div class="elementor-element elementor-element-51b1d3f elementor-widget elementor-widget-heading"
-                            data-id="51b1d3f" data-element_type="widget" data-widget_type="heading.default">
-                            <div class="elementor-widget-container">
-                                <h4 class="elementor-heading-title elementor-size-default"><a href="#">Arno Business
-                                        Consulting</a></h4>
-                            </div>
-                        </div>
-                        <div class="elementor-element elementor-element-903e61a elementor-icon-list--layout-inline elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
-                            data-id="903e61a" data-element_type="widget" data-widget_type="icon-list.default">
-                            <div class="elementor-widget-container">
-                                <ul class="elementor-icon-list-items elementor-inline-items">
-                                    <li class="elementor-icon-list-item elementor-inline-item">
-                                        <span class="elementor-icon-list-text">Web Development,</span>
-                                    </li>
-                                    <li class="elementor-icon-list-item elementor-inline-item">
-                                        <span class="elementor-icon-list-text">Branding, </span>
-                                    </li>
-                                    <li class="elementor-icon-list-item elementor-inline-item">
-                                        <span class="elementor-icon-list-text">Marketing</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="elementor-element elementor-element-b5e00d3 e-con-full e-flex elementor-invisible e-con e-child"
-                    data-id="b5e00d3" data-element_type="container"
-                    data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:250}">
-                    <div class="elementor-element elementor-element-881e125 elementor-widget elementor-widget-image"
-                        data-id="881e125" data-element_type="widget" data-widget_type="image.default">
-                        <div class="elementor-widget-container">
-                            <a href="#">
-                                <img loading="lazy" decoding="async" width="1024" height="683"
-                                    src="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-04.jpg"
-                                    class="attachment-full size-full wp-image-792" alt=""
-                                    srcset="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-04.jpg 1024w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-04-300x200.jpg 300w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-04-768x512.jpg 768w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-04-800x534.jpg 800w"
-                                    sizes="(max-width: 1024px) 100vw, 1024px" /> </a>
-                        </div>
-                    </div>
-                    <div class="elementor-element elementor-element-aba5dea e-con-full e-flex e-con e-child"
-                        data-id="aba5dea" data-element_type="container">
-                        <div class="elementor-element elementor-element-5a55a53 elementor-widget elementor-widget-heading"
-                            data-id="5a55a53" data-element_type="widget" data-widget_type="heading.default">
-                            <div class="elementor-widget-container">
-                                <h4 class="elementor-heading-title elementor-size-default"><a href="#">Palet
-                                        Branding</a></h4>
-                            </div>
-                        </div>
-                        <div class="elementor-element elementor-element-e49eb02 elementor-icon-list--layout-inline elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
-                            data-id="e49eb02" data-element_type="widget" data-widget_type="icon-list.default">
-                            <div class="elementor-widget-container">
-                                <ul class="elementor-icon-list-items elementor-inline-items">
-                                    <li class="elementor-icon-list-item elementor-inline-item">
-                                        <span class="elementor-icon-list-text">Branding, </span>
-                                    </li>
-                                    <li class="elementor-icon-list-item elementor-inline-item">
-                                        <span class="elementor-icon-list-text">User Research,</span>
-                                    </li>
-                                    <li class="elementor-icon-list-item elementor-inline-item">
-                                        <span class="elementor-icon-list-text">Corporate Identity</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="elementor-element elementor-element-b9002d7 e-con-full e-flex elementor-invisible e-con e-child"
-                    data-id="b9002d7" data-element_type="container"
-                    data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:300}">
-                    <div class="elementor-element elementor-element-d59ab23 elementor-widget elementor-widget-image"
-                        data-id="d59ab23" data-element_type="widget" data-widget_type="image.default">
-                        <div class="elementor-widget-container">
-                            <a href="#">
-                                <img loading="lazy" decoding="async" width="1024" height="683"
-                                    src="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-05.jpg"
-                                    class="attachment-full size-full wp-image-793" alt=""
-                                    srcset="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-05.jpg 1024w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-05-300x200.jpg 300w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-05-768x512.jpg 768w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-05-800x534.jpg 800w"
-                                    sizes="(max-width: 1024px) 100vw, 1024px" /> </a>
-                        </div>
-                    </div>
-                    <div class="elementor-element elementor-element-0c454ac e-con-full e-flex e-con e-child"
-                        data-id="0c454ac" data-element_type="container">
-                        <div class="elementor-element elementor-element-894ba8a elementor-widget elementor-widget-heading"
-                            data-id="894ba8a" data-element_type="widget" data-widget_type="heading.default">
-                            <div class="elementor-widget-container">
-                                <h4 class="elementor-heading-title elementor-size-default"><a href="#">Gista Hosting
-                                        provider</a></h4>
-                            </div>
-                        </div>
-                        <div class="elementor-element elementor-element-79ff7bf elementor-icon-list--layout-inline elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
-                            data-id="79ff7bf" data-element_type="widget" data-widget_type="icon-list.default">
-                            <div class="elementor-widget-container">
-                                <ul class="elementor-icon-list-items elementor-inline-items">
-                                    <li class="elementor-icon-list-item elementor-inline-item">
-                                        <span class="elementor-icon-list-text">Web Development,</span>
-                                    </li>
-                                    <li class="elementor-icon-list-item elementor-inline-item">
-                                        <span class="elementor-icon-list-text">User Interface,</span>
-                                    </li>
-                                    <li class="elementor-icon-list-item elementor-inline-item">
-                                        <span class="elementor-icon-list-text">Web Design</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="elementor-element elementor-element-4be58f5 e-con-full e-flex elementor-invisible e-con e-child"
-                    data-id="4be58f5" data-element_type="container"
-                    data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:350}">
-                    <div class="elementor-element elementor-element-50ca790 elementor-widget elementor-widget-image"
-                        data-id="50ca790" data-element_type="widget" data-widget_type="image.default">
-                        <div class="elementor-widget-container">
-                            <a href="#">
-                                <img loading="lazy" decoding="async" width="1024" height="683"
-                                    src="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-02.jpg"
-                                    class="attachment-full size-full wp-image-790" alt=""
-                                    srcset="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-02.jpg 1024w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-02-300x200.jpg 300w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-02-768x512.jpg 768w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-02-800x534.jpg 800w"
-                                    sizes="(max-width: 1024px) 100vw, 1024px" /> </a>
-                        </div>
-                    </div>
-                    <div class="elementor-element elementor-element-b7cc9b5 e-con-full e-flex e-con e-child"
-                        data-id="b7cc9b5" data-element_type="container">
-                        <div class="elementor-element elementor-element-7bfae53 elementor-widget elementor-widget-heading"
-                            data-id="7bfae53" data-element_type="widget" data-widget_type="heading.default">
-                            <div class="elementor-widget-container">
-                                <h2 class="elementor-heading-title elementor-size-default"><a href="#">integra SEO
-                                        Strategy</a></h2>
-                            </div>
-                        </div>
-                        <div class="elementor-element elementor-element-376289f elementor-icon-list--layout-inline elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
-                            data-id="376289f" data-element_type="widget" data-widget_type="icon-list.default">
-                            <div class="elementor-widget-container">
-                                <ul class="elementor-icon-list-items elementor-inline-items">
-                                    <li class="elementor-icon-list-item elementor-inline-item">
-                                        <span class="elementor-icon-list-text">UI & UX design,</span>
-                                    </li>
-                                    <li class="elementor-icon-list-item elementor-inline-item">
-                                        <span class="elementor-icon-list-text">Branding, </span>
-                                    </li>
-                                    <li class="elementor-icon-list-item elementor-inline-item">
-                                        <span class="elementor-icon-list-text">Marketing</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="elementor-element elementor-element-a886b0e e-con-full e-flex elementor-invisible e-con e-child"
-                    data-id="a886b0e" data-element_type="container"
-                    data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:350}">
-                    <div class="elementor-element elementor-element-e43bd74 elementor-widget elementor-widget-image"
-                        data-id="e43bd74" data-element_type="widget" data-widget_type="image.default">
-                        <div class="elementor-widget-container">
-                            <a href="#">
-                                <img loading="lazy" decoding="async" width="1024" height="683"
-                                    src="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-01.jpg"
-                                    class="attachment-full size-full wp-image-789" alt=""
-                                    srcset="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-01.jpg 1024w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-01-300x200.jpg 300w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-01-768x512.jpg 768w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Porto-01-800x534.jpg 800w"
-                                    sizes="(max-width: 1024px) 100vw, 1024px" /> </a>
-                        </div>
-                    </div>
-                    <div class="elementor-element elementor-element-52dd9a3 e-con-full e-flex e-con e-child"
-                        data-id="52dd9a3" data-element_type="container">
-                        <div class="elementor-element elementor-element-e158e0a elementor-widget elementor-widget-heading"
-                            data-id="e158e0a" data-element_type="widget" data-widget_type="heading.default">
-                            <div class="elementor-widget-container">
-                                <h2 class="elementor-heading-title elementor-size-default"><a href="#">Counter
-                                        Accounting Firm</a></h2>
-                            </div>
-                        </div>
-                        <div class="elementor-element elementor-element-85fd486 elementor-icon-list--layout-inline elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
-                            data-id="85fd486" data-element_type="widget" data-widget_type="icon-list.default">
-                            <div class="elementor-widget-container">
-                                <ul class="elementor-icon-list-items elementor-inline-items">
-                                    <li class="elementor-icon-list-item elementor-inline-item">
-                                        <span class="elementor-icon-list-text">Front-End Development,</span>
-                                    </li>
-                                    <li class="elementor-icon-list-item elementor-inline-item">
-                                        <span class="elementor-icon-list-text">Product Design</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
 
         <div class="elementor-element elementor-element-2b45c02 e-con-full e-flex e-con e-parent" data-id="2b45c02"
             data-element_type="container">
@@ -2641,575 +2532,9 @@
                     </div>
                 </div>
             </div>
-            <div class="mobile-frame">
-                <div class="mobile-screen">
-                    <div class="status-bar">
-                        <div class="status-left">
-                            <span>15:42</span>
-                        </div>
-                        <div class="status-right">
-                            <span>●●●●●</span>
-                            <span>📶</span>
-                            <span>📶</span>
-                            <span>🔋</span>
-                        </div>
-                    </div>
-
-                    <div class="chat-header">
-                        <span class="back-btn">‹</span>
-                        <div class="contact-info">
-                            <div class="contact-name">Grace</div>
-                            <div class="contact-status">AI Assistant</div>
-                        </div>
-                        <span class="call-btn">📞</span>
-                    </div>
-
-                    <div class="chat-messages" id="chatMessages">
-                        <div class="message received">
-                            <div class="avatar">G</div>
-                            <div class="message-bubble">
-                                Hello! I'm Grace, your friendly AI assistant. I'm here to help you see how your own
-                                custom AI assistant can work for your business. To get started, could you share your
-                                first name with me?
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="typing-indicator" id="typingIndicator">
-                        <div class="typing-dots">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-
-                    <div class="chat-input">
-                        <div class="input-container">
-                            <input type="text" class="input-field" id="messageInput" placeholder="iMessage"
-                                onkeypress="handleKeyPress(event)">
-                        </div>
-                        <button class="send-btn" onclick="sendMessage()" id="sendBtn" disabled=""
-                            style="opacity: 0.5;">↑</button>
-                    </div>
-                </div>
-            </div>
+           
         </div>
-        <div class="elementor-element elementor-element-537b383 e-con-full e-flex e-con e-parent" data-id="537b383"
-            data-element_type="container">
-            <div class="elementor-element elementor-element-d8934ca e-flex e-con-boxed e-con e-child" data-id="d8934ca"
-                data-element_type="container">
-                <div class="e-con-inner">
-                    <div class="elementor-element elementor-element-c83e53e e-con-full e-flex e-con e-child"
-                        data-id="c83e53e" data-element_type="container">
-                        <div class="elementor-element elementor-element-77b572b e-con-full e-flex e-con e-child"
-                            data-id="77b572b" data-element_type="container">
-                            <div class="elementor-element elementor-element-3272c71 elementor-widget elementor-widget-heading"
-                                data-id="3272c71" data-element_type="widget" data-widget_type="heading.default">
-                                <div class="elementor-widget-container">
-                                    <div class="elementor-heading-title elementor-size-default">⭐</div>
-                                </div>
-                            </div>
-                            <div class="elementor-element elementor-element-ba77f7f elementor-widget elementor-widget-heading"
-                                data-id="ba77f7f" data-element_type="widget" data-widget_type="heading.default">
-                                <div class="elementor-widget-container">
-                                    <h2 class="elementor-heading-title elementor-size-default">Testimonials</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="elementor-element elementor-element-12f7a13 elementor-widget elementor-widget-elementskit-heading"
-                            data-id="12f7a13" data-element_type="widget" data-widget_type="elementskit-heading.default">
-                            <div class="elementor-widget-container">
-                                <div class="ekit-wid-con">
-                                    <div
-                                        class="ekit-heading elementskit-section-title-wraper text_center   ekit_heading_tablet-   ekit_heading_mobile-text_center">
-                                        <h2 class="ekit-heading--title elementskit-section-title text_fill">First
-                                            impression, <span><span>our clients</span></span></h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="elementor-element elementor-element-de42ce8 e-grid e-con-full e-con e-child" data-id="de42ce8"
-                data-element_type="container">
-                <div class="elementor-element elementor-element-210e840 elementor-invisible elementor-widget elementor-widget-elementskit-testimonial"
-                    data-id="210e840" data-element_type="widget"
-                    data-settings="{&quot;_animation&quot;:&quot;slideInUp&quot;,&quot;_animation_delay&quot;:150}"
-                    data-widget_type="elementskit-testimonial.default">
-                    <div class="elementor-widget-container">
-                        <div class="ekit-wid-con">
-                            <div class="elementskit-testimonial-slider ekit_testimonial_style_5 arrow_inside "
-                                data-config="{&quot;rtl&quot;:false,&quot;arrows&quot;:false,&quot;dots&quot;:false,&quot;pauseOnHover&quot;:false,&quot;autoplay&quot;:false,&quot;speed&quot;:1000,&quot;slidesPerGroup&quot;:1,&quot;slidesPerView&quot;:1,&quot;loop&quot;:false,&quot;spaceBetween&quot;:0,&quot;breakpoints&quot;:{&quot;320&quot;:{&quot;slidesPerView&quot;:1,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:10},&quot;768&quot;:{&quot;slidesPerView&quot;:1,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:10},&quot;1024&quot;:{&quot;slidesPerView&quot;:1,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:15}}}">
-                                <div class="ekit-main-swiper swiper">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="swiper-slide-inner">
-                                                <div
-                                                    class="elementskit-single-testimonial-slider elementskit-testimonial-slider-block-style elementskit-testimonial-slider-block-style-two   elementor-repeater-item-c9b513f">
-                                                    <div class="elementskit-commentor-header">
-                                                        <ul class="elementskit-stars">
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                        </ul>
-
-                                                    </div>
-
-                                                    <div class="elementskit-commentor-content">
-                                                        <p>BrandMode's innovative approach revitalized our online
-                                                            presence, driving remarkable growth, outstanding!</p>
-                                                    </div>
-
-                                                    <div class="elementskit-commentor-bio">
-                                                        <div class="elementkit-commentor-details ">
-                                                            <div
-                                                                class="elementskit-commentor-image ekit-testimonial--avatar">
-                                                                <img loading="lazy" decoding="async" width="558"
-                                                                    height="558"
-                                                                    src="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-02.jpg"
-                                                                    class="attachment-full size-full" alt=""
-                                                                    srcset="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-02.jpg 558w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-02-300x300.jpg 300w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-02-150x150.jpg 150w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/elementor/thumbs/Testimonial-02-150x150.jpg 1000w"
-                                                                    sizes="(max-width: 558px) 100vw, 558px" />
-                                                            </div>
-                                                            <div class="elementskit-profile-info">
-                                                                <strong class="elementskit-author-name">Daniel
-                                                                    Clark</strong>
-                                                                <span class="elementskit-author-des">HealthPlus</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="elementor-element elementor-element-0df5f7e elementor-invisible elementor-widget elementor-widget-elementskit-testimonial"
-                    data-id="0df5f7e" data-element_type="widget"
-                    data-settings="{&quot;_animation&quot;:&quot;slideInUp&quot;,&quot;_animation_delay&quot;:200}"
-                    data-widget_type="elementskit-testimonial.default">
-                    <div class="elementor-widget-container">
-                        <div class="ekit-wid-con">
-                            <div class="elementskit-testimonial-slider ekit_testimonial_style_5 arrow_inside "
-                                data-config="{&quot;rtl&quot;:false,&quot;arrows&quot;:false,&quot;dots&quot;:false,&quot;pauseOnHover&quot;:true,&quot;autoplay&quot;:true,&quot;speed&quot;:1000,&quot;slidesPerGroup&quot;:1,&quot;slidesPerView&quot;:1,&quot;loop&quot;:false,&quot;spaceBetween&quot;:0,&quot;breakpoints&quot;:{&quot;320&quot;:{&quot;slidesPerView&quot;:1,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:10},&quot;768&quot;:{&quot;slidesPerView&quot;:1,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:10},&quot;1024&quot;:{&quot;slidesPerView&quot;:1,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:15}}}">
-                                <div class="ekit-main-swiper swiper">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="swiper-slide-inner">
-                                                <div
-                                                    class="elementskit-single-testimonial-slider elementskit-testimonial-slider-block-style elementskit-testimonial-slider-block-style-two   elementor-repeater-item-c9b513f">
-                                                    <div class="elementskit-commentor-header">
-                                                        <ul class="elementskit-stars">
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                        </ul>
-
-                                                    </div>
-
-                                                    <div class="elementskit-commentor-content">
-                                                        <p>Thanks to Brandmode, our social media engagement soared and
-                                                            our brand visibility improved tremendously.</p>
-                                                    </div>
-
-                                                    <div class="elementskit-commentor-bio">
-                                                        <div class="elementkit-commentor-details ">
-                                                            <div
-                                                                class="elementskit-commentor-image ekit-testimonial--avatar">
-                                                                <img loading="lazy" decoding="async" width="558"
-                                                                    height="558"
-                                                                    src="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-03.jpg"
-                                                                    class="attachment-full size-full" alt=""
-                                                                    srcset="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-03.jpg 558w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-03-300x300.jpg 300w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-03-150x150.jpg 150w"
-                                                                    sizes="(max-width: 558px) 100vw, 558px" />
-                                                            </div>
-                                                            <div class="elementskit-profile-info">
-                                                                <strong class="elementskit-author-name">Jessica
-                                                                    Lee</strong>
-                                                                <span class="elementskit-author-des">StyleFusion</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="elementor-element elementor-element-8c3c454 elementor-invisible elementor-widget elementor-widget-elementskit-testimonial"
-                    data-id="8c3c454" data-element_type="widget"
-                    data-settings="{&quot;_animation&quot;:&quot;slideInUp&quot;,&quot;_animation_delay&quot;:250}"
-                    data-widget_type="elementskit-testimonial.default">
-                    <div class="elementor-widget-container">
-                        <div class="ekit-wid-con">
-                            <div class="elementskit-testimonial-slider ekit_testimonial_style_5 arrow_inside "
-                                data-config="{&quot;rtl&quot;:false,&quot;arrows&quot;:false,&quot;dots&quot;:false,&quot;pauseOnHover&quot;:true,&quot;autoplay&quot;:true,&quot;speed&quot;:1000,&quot;slidesPerGroup&quot;:1,&quot;slidesPerView&quot;:1,&quot;loop&quot;:false,&quot;spaceBetween&quot;:0,&quot;breakpoints&quot;:{&quot;320&quot;:{&quot;slidesPerView&quot;:1,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:10},&quot;768&quot;:{&quot;slidesPerView&quot;:1,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:10},&quot;1024&quot;:{&quot;slidesPerView&quot;:1,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:15}}}">
-                                <div class="ekit-main-swiper swiper">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="swiper-slide-inner">
-                                                <div
-                                                    class="elementskit-single-testimonial-slider elementskit-testimonial-slider-block-style elementskit-testimonial-slider-block-style-two   elementor-repeater-item-c9b513f">
-                                                    <div class="elementskit-commentor-header">
-                                                        <ul class="elementskit-stars">
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                        </ul>
-
-                                                    </div>
-
-                                                    <div class="elementskit-commentor-content">
-                                                        <p>Brandmode’s SEO and content marketing expertise boosted our
-                                                            search rankings and organic traffic noticeably</p>
-                                                    </div>
-
-                                                    <div class="elementskit-commentor-bio">
-                                                        <div class="elementkit-commentor-details ">
-                                                            <div
-                                                                class="elementskit-commentor-image ekit-testimonial--avatar">
-                                                                <img loading="lazy" decoding="async" width="558"
-                                                                    height="558"
-                                                                    src="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-07.jpg"
-                                                                    class="attachment-full size-full" alt=""
-                                                                    srcset="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-07.jpg 558w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-07-300x300.jpg 300w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-07-150x150.jpg 150w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/elementor/thumbs/Testimonial-07-150x150.jpg 1000w"
-                                                                    sizes="(max-width: 558px) 100vw, 558px" />
-                                                            </div>
-                                                            <div class="elementskit-profile-info">
-                                                                <strong class="elementskit-author-name">Michael
-                                                                    Thompson</strong>
-                                                                <span class="elementskit-author-des">GreenGrocer</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="elementor-element elementor-element-8d01401 elementor-invisible elementor-widget elementor-widget-elementskit-testimonial"
-                    data-id="8d01401" data-element_type="widget"
-                    data-settings="{&quot;_animation&quot;:&quot;slideInUp&quot;,&quot;_animation_delay&quot;:300}"
-                    data-widget_type="elementskit-testimonial.default">
-                    <div class="elementor-widget-container">
-                        <div class="ekit-wid-con">
-                            <div class="elementskit-testimonial-slider ekit_testimonial_style_5 arrow_inside "
-                                data-config="{&quot;rtl&quot;:false,&quot;arrows&quot;:false,&quot;dots&quot;:false,&quot;pauseOnHover&quot;:true,&quot;autoplay&quot;:true,&quot;speed&quot;:1000,&quot;slidesPerGroup&quot;:1,&quot;slidesPerView&quot;:1,&quot;loop&quot;:false,&quot;spaceBetween&quot;:0,&quot;breakpoints&quot;:{&quot;320&quot;:{&quot;slidesPerView&quot;:1,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:10},&quot;768&quot;:{&quot;slidesPerView&quot;:1,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:10},&quot;1024&quot;:{&quot;slidesPerView&quot;:1,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:15}}}">
-                                <div class="ekit-main-swiper swiper">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="swiper-slide-inner">
-                                                <div
-                                                    class="elementskit-single-testimonial-slider elementskit-testimonial-slider-block-style elementskit-testimonial-slider-block-style-two   elementor-repeater-item-c9b513f">
-                                                    <div class="elementskit-commentor-header">
-                                                        <ul class="elementskit-stars">
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                        </ul>
-
-                                                    </div>
-
-                                                    <div class="elementskit-commentor-content">
-                                                        <p>Working with Brandmode was the best decision. Their digital
-                                                            marketing solutions increased our online sales
-                                                            significantly.</p>
-                                                    </div>
-
-                                                    <div class="elementskit-commentor-bio">
-                                                        <div class="elementkit-commentor-details ">
-                                                            <div
-                                                                class="elementskit-commentor-image ekit-testimonial--avatar">
-                                                                <img loading="lazy" decoding="async" width="558"
-                                                                    height="558"
-                                                                    src="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-05.jpg"
-                                                                    class="attachment-full size-full" alt=""
-                                                                    srcset="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-05.jpg 558w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-05-300x300.jpg 300w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-05-150x150.jpg 150w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/elementor/thumbs/Testimonial-05-150x150.jpg 1000w"
-                                                                    sizes="(max-width: 558px) 100vw, 558px" />
-                                                            </div>
-                                                            <div class="elementskit-profile-info">
-                                                                <strong class="elementskit-author-name">Emily
-                                                                    Clark</strong>
-                                                                <span class="elementskit-author-des">FashionFlair</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="elementor-element elementor-element-1d72863 elementor-invisible elementor-widget elementor-widget-elementskit-testimonial"
-                    data-id="1d72863" data-element_type="widget"
-                    data-settings="{&quot;_animation&quot;:&quot;slideInUp&quot;,&quot;_animation_delay&quot;:300}"
-                    data-widget_type="elementskit-testimonial.default">
-                    <div class="elementor-widget-container">
-                        <div class="ekit-wid-con">
-                            <div class="elementskit-testimonial-slider ekit_testimonial_style_5 arrow_inside "
-                                data-config="{&quot;rtl&quot;:false,&quot;arrows&quot;:false,&quot;dots&quot;:false,&quot;pauseOnHover&quot;:true,&quot;autoplay&quot;:true,&quot;speed&quot;:1000,&quot;slidesPerGroup&quot;:1,&quot;slidesPerView&quot;:1,&quot;loop&quot;:false,&quot;spaceBetween&quot;:0,&quot;breakpoints&quot;:{&quot;320&quot;:{&quot;slidesPerView&quot;:1,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:10},&quot;768&quot;:{&quot;slidesPerView&quot;:1,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:10},&quot;1024&quot;:{&quot;slidesPerView&quot;:1,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:15}}}">
-                                <div class="ekit-main-swiper swiper">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="swiper-slide-inner">
-                                                <div
-                                                    class="elementskit-single-testimonial-slider elementskit-testimonial-slider-block-style elementskit-testimonial-slider-block-style-two   elementor-repeater-item-c9b513f">
-                                                    <div class="elementskit-commentor-header">
-                                                        <ul class="elementskit-stars">
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                        </ul>
-
-                                                    </div>
-
-                                                    <div class="elementskit-commentor-content">
-                                                        <p>Brandmode’s innovative strategies helped us reach a wider
-                                                            audience and achieve our business goals quickly</p>
-                                                    </div>
-
-                                                    <div class="elementskit-commentor-bio">
-                                                        <div class="elementkit-commentor-details ">
-                                                            <div
-                                                                class="elementskit-commentor-image ekit-testimonial--avatar">
-                                                                <img loading="lazy" decoding="async" width="558"
-                                                                    height="558"
-                                                                    src="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-06.jpg"
-                                                                    class="attachment-full size-full" alt=""
-                                                                    srcset="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-06.jpg 558w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-06-300x300.jpg 300w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-06-150x150.jpg 150w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/elementor/thumbs/Testimonial-06-150x150.jpg 1000w"
-                                                                    sizes="(max-width: 558px) 100vw, 558px" />
-                                                            </div>
-                                                            <div class="elementskit-profile-info">
-                                                                <strong class="elementskit-author-name">Kevin
-                                                                    Martinez</strong>
-                                                                <span class="elementskit-author-des">FitLife</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="elementor-element elementor-element-dd65289 elementor-invisible elementor-widget elementor-widget-elementskit-testimonial"
-                    data-id="dd65289" data-element_type="widget"
-                    data-settings="{&quot;_animation&quot;:&quot;slideInUp&quot;,&quot;_animation_delay&quot;:350}"
-                    data-widget_type="elementskit-testimonial.default">
-                    <div class="elementor-widget-container">
-                        <div class="ekit-wid-con">
-                            <div class="elementskit-testimonial-slider ekit_testimonial_style_5 arrow_inside "
-                                data-config="{&quot;rtl&quot;:false,&quot;arrows&quot;:false,&quot;dots&quot;:false,&quot;pauseOnHover&quot;:true,&quot;autoplay&quot;:true,&quot;speed&quot;:1000,&quot;slidesPerGroup&quot;:1,&quot;slidesPerView&quot;:1,&quot;loop&quot;:false,&quot;spaceBetween&quot;:0,&quot;breakpoints&quot;:{&quot;320&quot;:{&quot;slidesPerView&quot;:1,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:10},&quot;768&quot;:{&quot;slidesPerView&quot;:1,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:10},&quot;1024&quot;:{&quot;slidesPerView&quot;:1,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:15}}}">
-                                <div class="ekit-main-swiper swiper">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="swiper-slide-inner">
-                                                <div
-                                                    class="elementskit-single-testimonial-slider elementskit-testimonial-slider-block-style elementskit-testimonial-slider-block-style-two   elementor-repeater-item-c9b513f">
-                                                    <div class="elementskit-commentor-header">
-                                                        <ul class="elementskit-stars">
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                            <li><a><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 576 512">
-                                                                        <path
-                                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                                                                    </svg></a></li>
-                                                        </ul>
-
-                                                    </div>
-
-                                                    <div class="elementskit-commentor-content">
-                                                        <p>The results from Brandmode’s services are impressive. Their
-                                                            dedication has truly elevated our brand.</p>
-                                                    </div>
-
-                                                    <div class="elementskit-commentor-bio">
-                                                        <div class="elementkit-commentor-details ">
-                                                            <div
-                                                                class="elementskit-commentor-image ekit-testimonial--avatar">
-                                                                <img loading="lazy" decoding="async" width="558"
-                                                                    height="558"
-                                                                    src="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-01.jpg"
-                                                                    class="attachment-full size-full" alt=""
-                                                                    srcset="https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-01.jpg 558w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-01-300x300.jpg 300w, https://brandmode.1onestrong.com/wp-content/uploads/2024/03/Testimonial-01-150x150.jpg 150w"
-                                                                    sizes="(max-width: 558px) 100vw, 558px" />
-                                                            </div>
-                                                            <div class="elementskit-profile-info">
-                                                                <strong class="elementskit-author-name">Rachel
-                                                                    Adams</strong>
-                                                                <span class="elementskit-author-des">PureBeauty</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      
         <div class="elementor-element elementor-element-1485941 e-con-full e-flex e-con e-parent" data-id="1485941"
             data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;gradient&quot;}">
             <div class="elementor-element elementor-element-5b01882 e-flex e-con-boxed e-con e-child" data-id="5b01882"
@@ -3233,7 +2558,7 @@
                         <div class="elementor-widget-container">
                             <div class="ekit-wid-con">
                                 <div class="ekit-btn-wraper">
-                                    <a href="#" class="elementskit-btn  whitespace--normal" id="">
+                                    <a href="/contact.html" class="elementskit-btn  whitespace--normal" id="">
                                         Let&#039;s Discuss a project<i class="icon icon-right-arrow1"></i> </a>
                                 </div>
                             </div>
@@ -3243,6 +2568,7 @@
             </div>
         </div>
     </div>
+
     <div data-elementor-type="footer" data-elementor-id="1764"
         class="elementor elementor-1764 elementor-location-footer" data-elementor-post-type="elementor_library">
         <div class="elementor-element elementor-element-78cad96 e-flex e-con-boxed e-con e-parent" data-id="78cad96"
@@ -3464,19 +2790,14 @@
                         data-id="6f4b759" data-element_type="widget" data-widget_type="theme-site-logo.default">
                         <div class="elementor-widget-container">
                             <a href="https://brandmode.1onestrong.com">
-                                <img width="603" height="80"
-                                    src="https://brandmode.1onestrong.com/wp-content/uploads/2024/02/Logo-001.png"
-                                    class="attachment-full size-full wp-image-3840" alt=""
-                                    srcset="https://brandmode.1onestrong.com/wp-content/uploads/2024/02/Logo-001.png 603w, https://brandmode.1onestrong.com/wp-content/uploads/2024/02/Logo-001-300x40.png 300w"
-                                    sizes="(max-width: 603px) 100vw, 603px" /> </a>
+                                
                         </div>
                     </div>
                     <div class="elementor-element elementor-element-49dd403 elementor-widget elementor-widget-theme-site-title elementor-widget-heading"
                         data-id="49dd403" data-element_type="widget" data-widget_type="theme-site-title.default">
                         <div class="elementor-widget-container">
                             <h2 class="elementor-heading-title elementor-size-default"><a
-                                    href="https://brandmode.1onestrong.com">Copyright © 2024 Brandmode| Powered by
-                                    Onecontributor</a></h2>
+                                    href="index.html">Copyright © 2024 Next Level Growth Partners | AI Lead Conversion Experts</a></h2>
                         </div>
                     </div>
                 </div>
@@ -3578,7 +2899,7 @@
         id="elementskit-elementor-js"></script>
     <script>
 
-        const N8N_WEBHOOK_URL = 'https://hega.app.n8n.cloud/webhook/22d210c4-4b12-4580-a38b-f53b9629dfce';
+        const N8N_WEBHOOK_URL = 'https://someco.app.n8n.cloud/webhook/a8205c39-11e6-4be8-a95f-6f9ad5df6a25';
 
         let conversationHistory = [
             {
@@ -3800,21 +3121,49 @@
             }
         }
 
+        // Process Flow Animation
+        function initProcessFlowAnimations() {
+            const processSteps = document.querySelectorAll('.process-step');
+
+            const observerOptions = {
+                threshold: 0.3,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('animate');
+                        }, index * 200); // Stagger animation
+                    }
+                });
+            }, observerOptions);
+
+            processSteps.forEach(step => {
+                observer.observe(step);
+            });
+        }
+
         // Initialize the chat interface
         window.onload = function () {
             const input = document.getElementById('messageInput');
 
             // Add input event listener for send button state
-            input.addEventListener('input', updateSendButton);
-
-            // Initialize send button state
-            updateSendButton();
+            if (input) {
+                input.addEventListener('input', updateSendButton);
+                // Initialize send button state
+                updateSendButton();
+            }
 
             // Handle initial navbar visibility
             handleResize();
 
             // Add resize listener
             window.addEventListener('resize', handleResize);
+
+            // Initialize process flow animations
+            initProcessFlowAnimations();
 
             // Add keyboard shortcuts
             document.addEventListener('keydown', function (event) {
@@ -3823,7 +3172,6 @@
                     event.preventDefault();
                     toggleFullscreen();
                 }
-
 
                 if (event.key === 'Escape' && isFullscreen) {
                     toggleFullscreen();
