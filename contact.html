@@ -1300,7 +1300,7 @@
                 if (form !== mainContactForm) {
                     form.addEventListener('submit', function(e) {
                         e.preventDefault();
-                        handleFormSubmission(this, 'newsletter_signup', 'contact_page_newsletter');
+                        handleNewsSubmission(this, 'newsletter_signup', 'contact_page_newsletter');
                     });
                 }
             });
@@ -1345,48 +1345,121 @@
                 };
             }
 
-            // Send to n8n webhook
-            const webhookUrl = window.WEBHOOK_CONFIG ?
-                window.WEBHOOK_CONFIG.CONTACT_FORM_WEBHOOK :
-                'https://n8n.srv791889.hstgr.cloud/webhook-test/113e4481-4a78-43a7-ac35-fd4e059b02ce';
 
-            fetch(webhookUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(result => {
-                // Success
-                submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Success!';
-                setTimeout(() => {
-                    if (formType === 'contact_form') {
-                        alert('Thank you! Your message has been sent successfully. We will contact you soon.');
-                    } else {
-                        // alert('Thank you for subscribing to our newsletter!');
-                    }
-                    // Reset form
-                    form.reset();
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }, 1500);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i> Error - Try Again';
-                setTimeout(() => {
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }, 3000);
-                // alert('There was an error submitting your request. Please try again or contact us directly.');
-            });
+            const webhookTestUrl = 'https://n8n.srv791889.hstgr.cloud/webhook/contact-form';
+const webhookProdUrl = window.WEBHOOK_CONFIG
+    ? window.WEBHOOK_CONFIG.CONTACT_FORM_WEBHOOK
+    : 'https://n8n.srv791889.hstgr.cloud/webhook/demo-form-submission';
+
+fetch(webhookTestUrl, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data)
+})
+.then(testResponse => {
+    if (!testResponse.ok) throw new Error('Test webhook failed');
+    return testResponse.json();
+})
+.then(() => {
+    // After test webhook succeeds, send to production webhook
+    return fetch(webhookProdUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    });
+})
+.then(prodResponse => {
+    if (!prodResponse.ok) throw new Error('Production webhook failed');
+    return prodResponse.json();
+})
+.then(() => {
+    submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Success!';
+    setTimeout(() => {
+        if (formType === 'contact_form') {
+            alert('Thank you! Your message has been sent successfully. We will contact you soon.');
+        }
+        form.reset();
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    }, 1500);
+})
+.catch(error => {
+    console.error('Error:', error);
+    submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i> Error - Try Again';
+    setTimeout(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    }, 3000);
+    // Optionally: alert('There was an error submitting your request.');
+});
+
+        }
+
+        function handleNewsSubmission(form, formType, source) {
+            // Show loading state
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Submitting...';
+            submitBtn.disabled = true;
+
+            // Collect form data
+            const formData = new FormData(form);
+            let data = {
+                form_type: formType,
+                source: source,
+                timestamp: new Date().toISOString(),
+                page_url: window.location.href,
+                user_agent: navigator.userAgent
+            };
+
+            if (formType === 'newsletter_signup') {
+                data = {
+                    ...data,
+                    email: formData.get('form_fields[email]')
+                };
+            }
+
+
+            const webhookTestUrl = 'https://n8n.srv791889.hstgr.cloud/webhook/newsletter';
+
+
+fetch(webhookTestUrl, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data)
+})
+.then(testResponse => {
+    if (!testResponse.ok) throw new Error('Test webhook failed');
+    return testResponse.json();
+})
+
+.then(() => {
+    submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Success!';
+    setTimeout(() => {
+        if (formType === 'contact_form') {
+            alert('Thank you! Your message has been sent successfully. We will contact you soon.');
+        }
+        form.reset();
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    }, 1500);
+})
+.catch(error => {
+    console.error('Error:', error);
+    submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i> Error - Try Again';
+    setTimeout(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    }, 3000);
+    // Optionally: alert('There was an error submitting your request.');
+});
+
         }
     </script>
 
