@@ -1295,15 +1295,15 @@
             }
 
             // Handle newsletter form
-            const newsletterForms = document.querySelectorAll('form.elementor-form');
-            newsletterForms.forEach(form => {
-                if (form !== mainContactForm) {
-                    form.addEventListener('submit', function(e) {
-                        e.preventDefault();
-                        handleNewsSubmission(this, 'newsletter_signup', 'contact_page_newsletter');
-                    });
-                }
-            });
+            // const newsletterForms = document.querySelectorAll('form.elementor-form');
+            // newsletterForms.forEach(form => {
+            //     if (form !== mainContactForm) {
+            //         form.addEventListener('submit', function(e) {
+            //             e.preventDefault();
+            //             handleNewsSubmission(this, 'newsletter_signup', 'contact_page_newsletter');
+            //         });
+            //     }
+            // });
         });
 
         function handleFormSubmission(form, formType, source) {
@@ -1399,68 +1399,68 @@ fetch(webhookTestUrl, {
 
         }
 
-        function handleNewsSubmission(form, formType, source) {
-            // Show loading state
-            const submitBtn = form.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Submitting...';
-            submitBtn.disabled = true;
+//         function handleNewsSubmission(form, formType, source) {
+//             // Show loading state
+//             const submitBtn = form.querySelector('button[type="submit"]');
+//             const originalText = submitBtn.innerHTML;
+//             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Submitting...';
+//             submitBtn.disabled = true;
 
-            // Collect form data
-            const formData = new FormData(form);
-            let data = {
-                form_type: formType,
-                source: source,
-                timestamp: new Date().toISOString(),
-                page_url: window.location.href,
-                user_agent: navigator.userAgent
-            };
+//             // Collect form data
+//             const formData = new FormData(form);
+//             let data = {
+//                 form_type: formType,
+//                 source: source,
+//                 timestamp: new Date().toISOString(),
+//                 page_url: window.location.href,
+//                 user_agent: navigator.userAgent
+//             };
 
-            if (formType === 'newsletter_signup') {
-                data = {
-                    ...data,
-                    email: formData.get('form_fields[email]')
-                };
-            }
-
-
-            const webhookTestUrl = 'https://n8n.srv791889.hstgr.cloud/webhook/newsletter';
+//             if (formType === 'newsletter_signup') {
+//                 data = {
+//                     ...data,
+//                     email: formData.get('form_fields[email]')
+//                 };
+//             }
 
 
-fetch(webhookTestUrl, {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data)
-})
-.then(testResponse => {
-    if (!testResponse.ok) throw new Error('Test webhook failed');
-    return testResponse.json();
-})
+//             const webhookTestUrl = 'https://n8n.srv791889.hstgr.cloud/webhook/newsletter';
 
-.then(() => {
-    submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Success!';
-    setTimeout(() => {
-        if (formType === 'contact_form') {
-            alert('Thank you! Your message has been sent successfully. We will contact you soon.');
-        }
-        form.reset();
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-    }, 1500);
-})
-.catch(error => {
-    console.error('Error:', error);
-    submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i> Error - Try Again';
-    setTimeout(() => {
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-    }, 3000);
-    // Optionally: alert('There was an error submitting your request.');
-});
 
-        }
+// fetch(webhookTestUrl, {
+//     method: 'POST',
+//     headers: {
+//         'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(data)
+// })
+// .then(testResponse => {
+//     if (!testResponse.ok) throw new Error('Test webhook failed');
+//     return testResponse.json();
+// })
+
+// .then(() => {
+//     submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Success!';
+//     setTimeout(() => {
+//         if (formType === 'contact_form') {
+//             alert('Thank you! Your message has been sent successfully. We will contact you soon.');
+//         }
+//         form.reset();
+//         submitBtn.innerHTML = originalText;
+//         submitBtn.disabled = false;
+//     }, 1500);
+// })
+// .catch(error => {
+//     console.error('Error:', error);
+//     submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i> Error - Try Again';
+//     setTimeout(() => {
+//         submitBtn.innerHTML = originalText;
+//         submitBtn.disabled = false;
+//     }, 3000);
+//     // Optionally: alert('There was an error submitting your request.');
+// });
+
+//         }
     </script>
 
 
