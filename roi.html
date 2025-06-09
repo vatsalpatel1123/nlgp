@@ -48599,13 +48599,395 @@
               <div class="ekit-wid-con">
                 <div
                   class="ekit-heading elementskit-section-title-wraper text_center   ekit_heading_tablet-   ekit_heading_mobile-">
-                  <h2 class="ekit-heading--title elementskit-section-title text_fill">About Next Level Growth Partners
+                  <h2 class="ekit-heading--title elementskit-section-title text_fill">Advanced Revenue Potential Calculator
                   </h2>
-                  <div class='ekit-heading__description'>
-                    <p>We specialize in AI-powered lead conversion systems that transform your business operations. Our advanced automation solutions help companies capture, nurture, and convert leads 24/7 without the overhead of traditional sales teams.</p>
-                    <br>
-                    <p>We are in the business of getting our client's results. We simply leverage AI & our marketing expertise to do so. We use our AI services to streamline sales processes, increase productivity and turn time-sucking tasks into profit centers</p>
-                  </div>
+                  <div class="container mx-auto px-4 py-12 max-w-4xl">
+                    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#10B981',
+                        dark: '#1F2937',
+                        light: '#F3F4F6'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes grow {
+            from { width: 0%; }
+            to { width: var(--target-width); }
+        }
+        
+        .progress-bar {
+            transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .tooltip {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.2s;
+            transform: translateY(5px);
+        }
+        
+        .has-tooltip:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .shadow-xs {
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        }
+    </style>
+
+        <!-- Calculator Card -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-12 relative">
+            <!-- <div class="absolute inset-0 bg-gradient-to-r from-primary to-indigo-700 opacity-5 pointer-events-none"></div> -->
+            
+            <div class="p-6 md:p-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <!-- Input Fields -->
+                    <div>
+                        <label for="leads" style="color: black;" class="block text-sm font-medium text-gray-700 mb-1">Number of Unconverted Leads in Database</label>
+                        <div class="relative">
+                            <input type="number" style="border-radius: 10px; background-color: lightgray; color: black; " id="leads" min="0" value="0" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                            <!-- <div class="absolute right-3 top-3 text-gray-400">
+                                <i class="fas fa-users"></i>
+                            </div> -->
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="value" style="color: black;"  class="block text-sm font-medium text-gray-700 mb-1">Average Sale Value</label>
+                        <div class="flex gap-2">
+                            <select style="border-radius: 10px; background-color: lightgray;"  id="currency" class="px-3 py-3 border border-r-0 border-gray-300 rounded-l-lg bg-gray-100 text-gray-700 focus:ring-primary focus:border-primary">
+                                <option>$</option>
+                                <option>€</option>
+                                <option>£</option>
+                                <option>¥</option>
+                            </select>
+                            <input style="border-radius: 10px; background-color: lightgray; color: black; "  type="number" id="value" min="0" value="0" class="w-full px-4 py-3 border border-l-0 border-gray-300 rounded-r-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stats Display -->
+                <div class="relative p-6 mb-8">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg opacity-60"></div>
+                    <div class="relative z-10">
+                        <h3 style="color: black;" class="text-lg font-semibold text-primary mb-6">Lead Data Overview</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-xs hover:shadow-md transition-all">
+                                <div class="flex items-center justify-between mb-2">
+                                    <p class="text-sm text-gray-500 font-medium">Total Leads</p>
+                                    <i class="fas fa-users text-primary text-opacity-70"></i>
+                                </div>
+                                <p id="leads-display" class="text-3xl font-bold text-dark animate-[pulse_1s_ease-in-out]">0</p>
+                                <div class="h-1 mt-3 bg-gray-100 rounded-full overflow-hidden">
+                                    <div id="leads-progress" class="progress-bar h-full bg-gradient-to-r from-blue-400 to-blue-600" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-xs hover:shadow-md transition-all">
+                                <div class="flex items-center justify-between mb-2">
+                                    <p class="text-sm text-gray-500 font-medium">Avg. Value</p>
+                                    <i class="fas fa-dollar-sign text-secondary text-opacity-70"></i>
+                                </div>
+                                <p id="value-display" class="text-3xl font-bold text-dark animate-[pulse_1s_ease-in-out]">$0</p>
+                                <div class="h-1 mt-3 bg-gray-100 rounded-full overflow-hidden">
+                                    <div id="value-progress" class="progress-bar h-full bg-gradient-to-r from-green-400 to-green-600" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Conversion Visualization -->
+                <div class="mb-8">
+                    <h3 style="color: black;"  class="text-lg font-semibold text-primary mb-6">Potential Revenue Visualization</h3>
+                    <div class="relative h-80 bg-gray-50 rounded-xl p-4">
+                        <canvas id="conversionChart"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Detailed Conversion Data -->
+                <div class="space-y-6">
+                    <div class="bg-white rounded-lg border border-gray-200 overflow-hidden transition-all hover:shadow-md hover:border-primary">
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium text-blue-600 flex items-center">
+                                    <span class="w-3 h-3 rounded-full bg-blue-400 mr-2"></span>
+                                    <span>1% Conversion</span>
+                                </span>
+                                <span id="rev-1" class="text-lg font-bold text-dark">$0</span>
+                            </div>
+                            <div class="h-2.5 w-full bg-gray-200 rounded-full overflow-hidden">
+                                <div id="bar-1" class="progress-bar h-full bg-gradient-to-r from-blue-300 to-blue-500 animate-[grow_0.6s_ease-out]" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg border border-gray-200 overflow-hidden transition-all hover:shadow-md hover:border-indigo-500">
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium text-indigo-600 flex items-center">
+                                    <span class="w-3 h-3 rounded-full bg-indigo-400 mr-2"></span>
+                                    <span>3% Conversion</span>
+                                </span>
+                                <span id="rev-3" class="text-lg font-bold text-dark">$0</span>
+                            </div>
+                            <div class="h-2.5 w-full bg-gray-200 rounded-full overflow-hidden">
+                                <div id="bar-3" class="progress-bar h-full bg-gradient-to-r from-indigo-300 to-indigo-500 animate-[grow_0.6s_ease-out]" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg border border-gray-200 overflow-hidden transition-all hover:shadow-md hover:border-purple-500">
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium text-purple-600 flex items-center">
+                                    <span class="w-3 h-3 rounded-full bg-purple-400 mr-2"></span>
+                                    <span>5% Conversion</span>
+                                </span>
+                                <span id="rev-5" class="text-lg font-bold text-dark">$0</span>
+                            </div>
+                            <div class="h-2.5 w-full bg-gray-200 rounded-full overflow-hidden">
+                                <div id="bar-5" class="progress-bar h-full bg-gradient-to-r from-purple-300 to-purple-500 animate-[grow_0.6s_ease-out]" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg border border-gray-200 overflow-hidden transition-all hover:shadow-md hover:border-blue-600">
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium text-blue-700 flex items-center">
+                                    <span class="w-3 h-3 rounded-full bg-blue-500 mr-2"></span>
+                                    <span>8% Conversion</span>
+                                </span>
+                                <span id="rev-8" class="text-lg font-bold text-dark">$0</span>
+                            </div>
+                            <div class="h-2.5 w-full bg-gray-200 rounded-full overflow-hidden">
+                                <div id="bar-8" class="progress-bar h-full bg-gradient-to-r from-blue-400 to-blue-600 animate-[grow_0.6s_ease-out]" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Calculation Explanation -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div class="p-6 md:p-8">
+                <h3 style="color: black;"  class="text-xl font-semibold text-dark mb-4 flex items-center">
+                    <i class="fas fa-calculator mr-2 text-secondary"></i> How this is calculated
+                </h3>
+                <div class="prose prose-gray max-w-none">
+                    <p class="text-gray-700 mb-4">This calculator shows the potential revenue you could generate by converting different percentages of your unconverted leads. The industry average for successful database revival campaigns ranges from 1-8%, depending on the age of the leads, industry, and approach.</p>
+                    
+                    <p class="text-gray-700 mb-4">Each bar represents the potential revenue if you were able to convert that percentage of your previously unconverted leads in your database.</p>
+                    
+                    <div class="bg-blue-50 p-4 rounded-lg mb-4 border border-blue-100">
+                        <p class="font-semibold text-blue-700 mb-2">For example, if you have 10,000 unconverted leads and an average sale value of 1,000:</p>
+                        <ul class="list-disc pl-5 space-y-1 text-blue-800">
+                            <li>At 1% conversion: 100 leads × $1,000 = $100,000 revenue</li>
+                            <li>At 5% conversion: 500 leads × $1,000 = $500,000 revenue</li>
+                            <li>At 8% conversion: 800 leads × $1,000 = $800,000 revenue</li>
+                        </ul>
+                    </div>
+                    
+                    <p class="text-gray-700 relative has-tooltip">
+                        Most companies can expect conversion rates in the 1-3% range for a revival campaign, with top-performing campaigns reaching 5-8% for warm leads.
+                        <span class="tooltip absolute z-10 w-64 p-2 mt-2 text-sm text-white bg-gray-800 rounded-lg shadow-lg">
+                            <span class="font-semibold">Tip:</span> The quality of your follow-up process significantly impacts conversion rates.
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="mt-12 text-center text-gray-500 text-sm">
+            <p>© 2023 Next Level Growth Partner. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let conversionChart;
+            
+            // Initialize Chart
+            const ctx = document.getElementById('conversionChart').getContext('2d');
+            
+            const leadsInput = document.getElementById('leads');
+            const valueInput = document.getElementById('value');
+            const currencySelect = document.getElementById('currency');
+            
+            const leadsDisplay = document.getElementById('leads-display');
+            const valueDisplay = document.getElementById('value-display');
+            
+            const rev1 = document.getElementById('rev-1');
+            const rev3 = document.getElementById('rev-3');
+            const rev5 = document.getElementById('rev-5');
+            const rev8 = document.getElementById('rev-8');
+            
+            const bar1 = document.getElementById('bar-1');
+            const bar3 = document.getElementById('bar-3');
+            const bar5 = document.getElementById('bar-5');
+            const bar8 = document.getElementById('bar-8');
+            
+            function calculateRevenue() {
+                const leads = parseInt(leadsInput.value) || 0;
+                const value = parseInt(valueInput.value) || 0;
+                const currency = currencySelect.value;
+                
+                // Update displays with animations
+                leadsDisplay.textContent = leads.toLocaleString();
+                leadsDisplay.classList.add('animate-[pulse_0.5s_ease-in-out]');
+                
+                valueDisplay.textContent = currency + value.toLocaleString();
+                valueDisplay.classList.add('animate-[pulse_0.5s_ease-in-out]');
+                
+                // Update progress indicators
+                const leadsProgress = Math.min(100, leads / 10000 * 100);
+                document.getElementById('leads-progress').style.width = `${leadsProgress}%`;
+                
+                const valueProgress = Math.min(100, value / 10000 * 100);
+                document.getElementById('value-progress').style.width = `${valueProgress}%`;
+                
+                // Calculate revenue at different conversion rates
+                const revAt1 = Math.round(leads * 0.01 * value);
+                const revAt3 = Math.round(leads * 0.03 * value);
+                const revAt5 = Math.round(leads * 0.05 * value);
+                const revAt8 = Math.round(leads * 0.08 * value);
+                
+                // Update revenue displays with animation
+                [rev1, rev3, rev5, rev8].forEach(el => {
+                    el.classList.add('animate-[pulse_0.3s_ease-in-out]');
+                    setTimeout(() => el.classList.remove('animate-[pulse_0.3s_ease-in-out]'), 300);
+                });
+                
+                rev1.textContent = currency + revAt1.toLocaleString();
+                rev3.textContent = currency + revAt3.toLocaleString();
+                rev5.textContent = currency + revAt5.toLocaleString();
+                rev8.textContent = currency + revAt8.toLocaleString();
+                
+                // Update chart
+                if (conversionChart) {
+                    updateChart(leads, value, currency);
+                } else {
+                    initChart(leads, value, currency);
+                }
+                
+                // Calculate percentages for bar widths
+                const maxValue = leads * 0.08 * value;
+                const widths = {
+                    'bar-1': maxValue > 0 ? `${Math.min(100, (revAt1 / maxValue * 100))}%` : '0%',
+                    'bar-3': maxValue > 0 ? `${Math.min(100, (revAt3 / maxValue * 100))}%` : '0%',
+                    'bar-5': maxValue > 0 ? `${Math.min(100, (revAt5 / maxValue * 100))}%` : '0%',
+                    'bar-8': maxValue > 0 ? `${Math.min(100, (revAt8 / maxValue * 100))}%` : '0%'
+                };
+                
+                Object.entries(widths).forEach(([id, width]) => {
+                    document.getElementById(id).style.width = width;
+                });
+            }
+            
+            function initChart(leads, value, currency) {
+                conversionChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: getChartData(leads, value, currency),
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return currency + context.raw.toLocaleString();
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: function(value) {
+                                        return currency + value.toLocaleString();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            function updateChart(leads, value, currency) {
+                conversionChart.data = getChartData(leads, value, currency);
+                conversionChart.update();
+            }
+            
+            function getChartData(leads, value, currency) {
+                return {
+                    labels: ['1%', '3%', '5%', '8%'],
+                    datasets: [{
+                        label: 'Potential Revenue',
+                        data: [
+                            Math.round(leads * 0.01 * value),
+                            Math.round(leads * 0.03 * value),
+                            Math.round(leads * 0.05 * value),
+                            Math.round(leads * 0.08 * value)
+                        ],
+                        backgroundColor: [
+                            'rgba(99, 102, 241, 0.7)',
+                            'rgba(129, 140, 248, 0.7)',
+                            'rgba(167, 139, 250, 0.7)',
+                            'rgba(79, 70, 229, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(99, 102, 241, 1)',
+                            'rgba(129, 140, 248, 1)',
+                            'rgba(167, 139, 250, 1)',
+                            'rgba(79, 70, 229, 1)'
+                        ],
+                        borderWidth: 1,
+                        borderRadius: 6,
+                        hoverBackgroundColor: [
+                            'rgba(99, 102, 241, 1)',
+                            'rgba(129, 140, 248, 1)',
+                            'rgba(167, 139, 250, 1)',
+                            'rgba(79, 70, 229, 1)'
+                        ]
+                    }]
+                };
+            }
+            
+            // Add event listeners
+            leadsInput.addEventListener('input', calculateRevenue);
+            valueInput.addEventListener('input', calculateRevenue);
+            currencySelect.addEventListener('change', calculateRevenue);
+            
+            // Initial calculation
+            setTimeout(() => {
+                calculateRevenue();
+                
+                // Remove animation after initial load
+                setTimeout(() => {
+                    document.getElementById('leads-display').classList.remove('animate-[pulse_1s_ease-in-out]');
+                    document.getElementById('value-display').classList.remove('animate-[pulse_1s_ease-in-out]');
+                }, 1000);
+            }, 100);
+        });
+    </script>
+
                 </div>
               </div>
             </div>
@@ -48613,199 +48995,7 @@
         </div>
       </div>
     </div>
-        <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <style>
-        /* Custom scrollbar */
-        .benefits-container::-webkit-scrollbar {
-            height: 8px;
-        }
-        .benefits-container::-webkit-scrollbar-track {
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-        }
-        .benefits-container::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,0.3);
-            border-radius: 10px;
-        }
-        .benefits-container::-webkit-scrollbar-thumb:hover {
-            background: rgba(255,255,255,0.5);
-        }
         
-        /* Hide scrollbar but keep functionality */
-        .benefits-container {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-        }
-        .benefits-container::-webkit-scrollbar {
-            display: none;  /* Chrome, Safari and Opera */
-        }
-        
-        /* Smooth hover effect for cards */
-        .benefit-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .benefit-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Navigation buttons */
-        .nav-button {
-            opacity: 0.6;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-        .nav-button:hover {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-    </style>
-   <div class="container mx-auto px-4 py-20">
-        <!-- Header Section -->
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">The Benefits of Working With Us</h2>
-            <p class="text-xl text-gray-300 max-w-3xl mx-auto">Experience transformative growth with our cutting-edge AI solutions designed to optimize every aspect of your business.</p>
-        </div>
-        
-        <!-- Benefits Cards Container -->
-        <div class="relative">
-            <div class="benefits-container flex overflow-x-auto space-x-6 py-4 px-2" id="benefitsContainer" style="scroll-behavior: smooth;">
-                <!-- Advanced AI -->
-                <div class="benefit-card flex-shrink-0 w-80 md:w-96 bg-gray-800 rounded-xl p-8 shadow-lg border border-gray-700">
-                    <div class="w-16 h-16 bg-indigo-600 rounded-lg flex items-center justify-center mb-6 text-white">
-                        <i class="fas fa-brain text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Advanced AI</h3>
-                    <p class="text-gray-300">AI is changing at a rapid pace and it's easy to get left behind. We stay ahead and simplify everything so you're always at the forefront. Our systems continuously improve to ensure we provide the most advanced solutions.</p>
-                </div>
-                
-                <!-- Reclaimed Time -->
-                <div class="benefit-card flex-shrink-0 w-80 md:w-96 bg-gray-800 rounded-xl p-8 shadow-lg border border-gray-700">
-                    <div class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mb-6 text-white">
-                        <i class="fas fa-clock text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Reclaimed Time</h3>
-                    <p class="text-gray-300">With AI-powered systems and intelligent automation, your business can eliminate manual processes. Free up your team to focus on what truly drives growth—serving clients and closing new deals.</p>
-                </div>
-                
-                <!-- Increased Revenue -->
-                <div class="benefit-card flex-shrink-0 w-80 md:w-96 bg-gray-800 rounded-xl p-8 shadow-lg border border-gray-700">
-                    <div class="w-16 h-16 bg-green-600 rounded-lg flex items-center justify-center mb-6 text-white">
-                        <i class="fas fa-chart-line text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Increased Revenue</h3>
-                    <p class="text-gray-300">Our proven system guarantees consistent and predictable results, empowering you to scale your business to new levels. We'll help you maximize earnings and profit as much as possible.</p>
-                </div>
-                
-                <!-- Elevated Profit Margins -->
-                <div class="benefit-card flex-shrink-0 w-80 md:w-96 bg-gray-800 rounded-xl p-8 shadow-lg border border-gray-700">
-                    <div class="w-16 h-16 bg-purple-600 rounded-lg flex items-center justify-center mb-6 text-white">
-                        <i class="fas fa-coins text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Elevated Profit Margins</h3>
-                    <p class="text-gray-300">Replace costly outdated processes with efficient advanced alternatives. Our solutions run your sales process autonomously and drastically reduce your company's overhead.</p>
-                </div>
-                
-                <!-- Higher Valuation -->
-                <div class="benefit-card flex-shrink-0 w-80 md:w-96 bg-gray-800 rounded-xl p-8 shadow-lg border border-gray-700">
-                    <div class="w-16 h-16 bg-yellow-600 rounded-lg flex items-center justify-center mb-6 text-white">
-                        <i class="fas fa-briefcase text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Higher Valuation</h3>
-                    <p class="text-gray-300">Instantly own a more valuable business with streamlined processes, more revenue, and less overhead. We'll show you how to utilize proprietary technology to ensure continuous growth.</p>
-                </div>
-                
-                <!-- Guaranteed Results -->
-                <div class="benefit-card flex-shrink-0 w-80 md:w-96 bg-gray-800 rounded-xl p-8 shadow-lg border border-gray-700">
-                    <div class="w-16 h-16 bg-red-600 rounded-lg flex items-center justify-center mb-6 text-white">
-                        <i class="fas fa-medal text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Guaranteed Results</h3>
-                    <p class="text-gray-300">We guarantee a return on our partner's investments. As our client, we ensure complete satisfaction and work relentlessly to achieve your business goals.</p>
-                </div>
-                
-                <!-- Top-Tier Partnerships -->
-                <div class="benefit-card flex-shrink-0 w-80 md:w-96 bg-gray-800 rounded-xl p-8 shadow-lg border border-gray-700">
-                    <div class="w-16 h-16 bg-teal-600 rounded-lg flex items-center justify-center mb-6 text-white">
-                        <i class="fas fa-handshake text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Top-Tier Partnerships</h3>
-                    <p class="text-gray-300">Many of our clients are ideal referral partners for one another. Becoming our client grants you access to our network of high-performing companies and business owners.</p>
-                </div>
-            </div>
-            
-            <!-- Navigation Buttons -->
-            <button id="prevBtn" class="nav-button absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-gray-800 text-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button id="nextBtn" class="nav-button absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-gray-800 text-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </div>
-        
-        <!-- Mobile Indicator -->
-        <div class="flex justify-center mt-6 md:hidden">
-            <div class="flex space-x-2">
-                <div class="w-2 h-2 rounded-full bg-gray-600"></div>
-                <div class="w-2 h-2 rounded-full bg-gray-600"></div>
-                <div class="w-2 h-2 rounded-full bg-gray-400"></div>
-                <div class="w-2 h-2 rounded-full bg-gray-600"></div>
-                <div class="w-2 h-2 rounded-full bg-gray-600"></div>
-                <div class="w-2 h-2 rounded-full bg-gray-600"></div>
-                <div class="w-2 h-2 rounded-full bg-gray-600"></div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const container = document.getElementById('benefitsContainer');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            
-            // Card width + gap (24px in this case)
-            const scrollAmount = 384; // 80 (card width) + 24 (gap) = 104 * 3.69 for proper scrolling
-            
-            nextBtn.addEventListener('click', function() {
-                container.scrollBy({
-                    left: scrollAmount,
-                    behavior: 'smooth'
-                });
-            });
-            
-            prevBtn.addEventListener('click', function() {
-                container.scrollBy({
-                    left: -scrollAmount,
-                    behavior: 'smooth'
-                });
-            });
-            
-            // Hide/show buttons based on scroll position
-            container.addEventListener('scroll', function() {
-                const maxScrollLeft = container.scrollWidth - container.clientWidth;
-                
-                if (container.scrollLeft <= 0) {
-                    prevBtn.style.opacity = '0.2';
-                    prevBtn.style.pointerEvents = 'none';
-                } else {
-                    prevBtn.style.opacity = '0.7';
-                    prevBtn.style.pointerEvents = 'auto';
-                }
-                
-                if (container.scrollLeft >= maxScrollLeft - 5) {
-                    nextBtn.style.opacity = '0.2';
-                    nextBtn.style.pointerEvents = 'none';
-                } else {
-                    nextBtn.style.opacity = '0.7';
-                    nextBtn.style.pointerEvents = 'auto';
-                }
-            });
-            
-            // Initialize button states
-            prevBtn.style.opacity = '0.2';
-            prevBtn.style.pointerEvents = 'none';
-        });
-    </script>
 
       
     <!-- <div class="elementor-element elementor-element-6a0ac55 e-flex e-con-boxed e-con e-parent" data-id="6a0ac55"
@@ -48832,332 +49022,6 @@
         </div>
       </div>
     </div> -->
-    <div class="elementor-element elementor-element-73e92d4 e-flex e-con-boxed e-con e-parent" data-id="73e92d4"
-      data-element_type="container">
-      <div class="e-con-inner">
-        <div class="elementor-element elementor-element-808104b e-con-full e-flex e-con e-child" data-id="808104b"
-          data-element_type="container">
-          <div class="elementor-element elementor-element-bf62d9c e-con-full e-flex e-con e-child" data-id="bf62d9c"
-            data-element_type="container">
-            
-          </div>
-          <div class="elementor-element elementor-element-b152c9a elementor-widget elementor-widget-elementskit-heading"
-            data-id="b152c9a" data-element_type="widget" data-widget_type="elementskit-heading.default">
-            <div class="elementor-widget-container">
-              <div class="ekit-wid-con">
-                <div
-                  class="ekit-heading elementskit-section-title-wraper text_left   ekit_heading_tablet-text_center   ekit_heading_mobile-text_center">
-                  <h2 class="ekit-heading--title elementskit-section-title text_fill">Our AI Governance
-                    <span><span>Principles</span></span>
-                  </h2>
-                  <div class='ekit-heading__description'>
-                    <p>We maintain the highest standards of AI ethics and governance to ensure responsible automation that benefits your business and customers.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="elementor-element elementor-element-267b982 e-con-full e-flex e-con e-child" data-id="267b982"
-          data-element_type="container">
-          <div class="elementor-element elementor-element-75d56a0 e-con-full e-flex e-con e-child" data-id="75d56a0"
-            data-element_type="container">
-            <div
-              class="elementor-element elementor-element-fd8f295 elementor-widget__width-initial elementor-widget elementor-widget-heading"
-              data-id="fd8f295" data-element_type="widget" data-widget_type="heading.default">
-              <div class="elementor-widget-container">
-                <p class="elementor-heading-title elementor-size-default">01</p>
-              </div>
-            </div>
-            <div
-              class="elementor-element elementor-element-cfcf528 elementor-widget__width-initial elementor-widget elementor-widget-elementskit-accordion"
-              data-id="cfcf528" data-element_type="widget" data-widget_type="elementskit-accordion.default">
-              <div class="elementor-widget-container">
-                <div class="ekit-wid-con">
-                  <div class="elementskit-accordion accoedion-primary" id="accordion-68374019e4691">
-
-
-                    <div class="elementskit-card ">
-                      <div class="elementskit-card-header" id="primaryHeading-0-cfcf528">
-                        <a href="#collapse-97e05e368374019e4691"
-                          class="ekit-accordion--toggler elementskit-btn-link collapsed" data-ekit-toggle="collapse"
-                          data-target="#Collapse-97e05e368374019e4691" aria-expanded="false"
-                          aria-controls="Collapse-97e05e368374019e4691">
-
-                          <span class="ekit-accordion-title">Transparency & Explainability</span>
-
-
-                          <div class="ekit_accordion_icon_group">
-                            <div class="ekit_accordion_normal_icon">
-
-                              <i class="icon icon-down-arrow1"></i>
-                            </div>
-
-                            <div class="ekit_accordion_active_icon">
-
-                              <i class="icon icon-cancel"></i>
-                            </div>
-                          </div>
-
-
-                        </a>
-                      </div>
-
-                      <div id="Collapse-97e05e368374019e4691" class=" collapse"
-                        aria-labelledby="primaryHeading-0-cfcf528" data-parent="#accordion-68374019e4691">
-
-                        <div class="elementskit-card-body ekit-accordion--content">
-                          <p>Our AI systems are designed with transparency at their core. Every decision made by our automation can be traced and explained, ensuring you understand exactly how leads are being processed and converted.</p>
-                        </div>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="elementor-element elementor-element-d1a9dfc e-con-full e-flex e-con e-child" data-id="d1a9dfc"
-            data-element_type="container">
-            <div
-              class="elementor-element elementor-element-5b92828 elementor-widget__width-initial elementor-widget elementor-widget-heading"
-              data-id="5b92828" data-element_type="widget" data-widget_type="heading.default">
-              <div class="elementor-widget-container">
-                <p class="elementor-heading-title elementor-size-default">02</p>
-              </div>
-            </div>
-            <div
-              class="elementor-element elementor-element-8af2640 elementor-widget__width-initial elementor-widget elementor-widget-elementskit-accordion"
-              data-id="8af2640" data-element_type="widget" data-widget_type="elementskit-accordion.default">
-              <div class="elementor-widget-container">
-                <div class="ekit-wid-con">
-                  <div class="elementskit-accordion accoedion-primary" id="accordion-68374019e4da2">
-
-
-                    <div class="elementskit-card ">
-                      <div class="elementskit-card-header" id="primaryHeading-0-8af2640">
-                        <a href="#collapse-97e05e368374019e4da2"
-                          class="ekit-accordion--toggler elementskit-btn-link collapsed" data-ekit-toggle="collapse"
-                          data-target="#Collapse-97e05e368374019e4da2" aria-expanded="false"
-                          aria-controls="Collapse-97e05e368374019e4da2">
-
-                          <span class="ekit-accordion-title">Privacy & Data Protection</span>
-
-
-                          <div class="ekit_accordion_icon_group">
-                            <div class="ekit_accordion_normal_icon">
-
-                              <i class="icon icon-down-arrow1"></i>
-                            </div>
-
-                            <div class="ekit_accordion_active_icon">
-
-                              <i class="icon icon-cancel"></i>
-                            </div>
-                          </div>
-
-
-                        </a>
-                      </div>
-
-                      <div id="Collapse-97e05e368374019e4da2" class=" collapse"
-                        aria-labelledby="primaryHeading-0-8af2640" data-parent="#accordion-68374019e4da2">
-
-                        <div class="elementskit-card-body ekit-accordion--content">
-                          <p>We implement robust data protection measures and comply with all privacy regulations. Your customer data is encrypted, secure, and never shared with third parties. We only use data to improve your business outcomes.</p>
-                        </div>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="elementor-element elementor-element-cc69783 e-con-full e-flex e-con e-child" data-id="cc69783"
-            data-element_type="container">
-            <div
-              class="elementor-element elementor-element-f50c8b6 elementor-widget__width-initial elementor-widget elementor-widget-heading"
-              data-id="f50c8b6" data-element_type="widget" data-widget_type="heading.default">
-              <div class="elementor-widget-container">
-                <p class="elementor-heading-title elementor-size-default">03</p>
-              </div>
-            </div>
-            <div
-              class="elementor-element elementor-element-3706481 elementor-widget__width-initial elementor-widget elementor-widget-elementskit-accordion"
-              data-id="3706481" data-element_type="widget" data-widget_type="elementskit-accordion.default">
-              <div class="elementor-widget-container">
-                <div class="ekit-wid-con">
-                  <div class="elementskit-accordion accoedion-primary" id="accordion-68374019e54ae">
-
-
-                    <div class="elementskit-card ">
-                      <div class="elementskit-card-header" id="primaryHeading-0-3706481">
-                        <a href="#collapse-97e05e368374019e54ae"
-                          class="ekit-accordion--toggler elementskit-btn-link collapsed" data-ekit-toggle="collapse"
-                          data-target="#Collapse-97e05e368374019e54ae" aria-expanded="false"
-                          aria-controls="Collapse-97e05e368374019e54ae">
-
-                          <span class="ekit-accordion-title">Fairness & Bias Prevention</span>
-
-
-                          <div class="ekit_accordion_icon_group">
-                            <div class="ekit_accordion_normal_icon">
-
-                              <i class="icon icon-down-arrow1"></i>
-                            </div>
-
-                            <div class="ekit_accordion_active_icon">
-
-                              <i class="icon icon-cancel"></i>
-                            </div>
-                          </div>
-
-
-                        </a>
-                      </div>
-
-                      <div id="Collapse-97e05e368374019e54ae" class=" collapse"
-                        aria-labelledby="primaryHeading-0-3706481" data-parent="#accordion-68374019e54ae">
-
-                        <div class="elementskit-card-body ekit-accordion--content">
-                          <p>Our AI models are continuously monitored and tested for bias. We ensure fair treatment of all leads regardless of demographics, ensuring equal opportunity for conversion and engagement.</p>
-                        </div>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="elementor-element elementor-element-e359644 e-con-full e-flex e-con e-child" data-id="e359644"
-            data-element_type="container">
-            <div
-              class="elementor-element elementor-element-6980197 elementor-widget__width-initial elementor-widget elementor-widget-heading"
-              data-id="6980197" data-element_type="widget" data-widget_type="heading.default">
-              <div class="elementor-widget-container">
-                <p class="elementor-heading-title elementor-size-default">04</p>
-              </div>
-            </div>
-            <div
-              class="elementor-element elementor-element-4788319 elementor-widget__width-initial elementor-widget elementor-widget-elementskit-accordion"
-              data-id="4788319" data-element_type="widget" data-widget_type="elementskit-accordion.default">
-              <div class="elementor-widget-container">
-                <div class="ekit-wid-con">
-                  <div class="elementskit-accordion accoedion-primary" id="accordion-68374019e5c83">
-
-
-                    <div class="elementskit-card ">
-                      <div class="elementskit-card-header" id="primaryHeading-0-4788319">
-                        <a href="#collapse-97e05e368374019e5c83"
-                          class="ekit-accordion--toggler elementskit-btn-link collapsed" data-ekit-toggle="collapse"
-                          data-target="#Collapse-97e05e368374019e5c83" aria-expanded="false"
-                          aria-controls="Collapse-97e05e368374019e5c83">
-
-                          <span class="ekit-accordion-title">Human Oversight & Control</span>
-
-
-                          <div class="ekit_accordion_icon_group">
-                            <div class="ekit_accordion_normal_icon">
-
-                              <i class="icon icon-down-arrow1"></i>
-                            </div>
-
-                            <div class="ekit_accordion_active_icon">
-
-                              <i class="icon icon-cancel"></i>
-                            </div>
-                          </div>
-
-
-                        </a>
-                      </div>
-
-                      <div id="Collapse-97e05e368374019e5c83" class=" collapse"
-                        aria-labelledby="primaryHeading-0-4788319" data-parent="#accordion-68374019e5c83">
-
-                        <div class="elementskit-card-body ekit-accordion--content">
-                          <p>While our AI operates autonomously, human oversight remains paramount. Your team maintains full control over AI decisions, with the ability to intervene, adjust, or override automated actions at any time.</p>
-                        </div>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="elementor-element elementor-element-220fd21 e-con-full e-flex e-con e-child" data-id="220fd21"
-            data-element_type="container">
-            <div
-              class="elementor-element elementor-element-c4e39d4 elementor-widget__width-initial elementor-widget elementor-widget-heading"
-              data-id="c4e39d4" data-element_type="widget" data-widget_type="heading.default">
-              <div class="elementor-widget-container">
-                <p class="elementor-heading-title elementor-size-default">05</p>
-              </div>
-            </div>
-            <div
-              class="elementor-element elementor-element-73f5692 elementor-widget__width-initial elementor-widget elementor-widget-elementskit-accordion"
-              data-id="73f5692" data-element_type="widget" data-widget_type="elementskit-accordion.default">
-              <div class="elementor-widget-container">
-                <div class="ekit-wid-con">
-                  <div class="elementskit-accordion accoedion-primary" id="accordion-68374019e6385">
-
-
-                    <div class="elementskit-card ">
-                      <div class="elementskit-card-header" id="primaryHeading-0-73f5692">
-                        <a href="#collapse-97e05e368374019e6385"
-                          class="ekit-accordion--toggler elementskit-btn-link collapsed" data-ekit-toggle="collapse"
-                          data-target="#Collapse-97e05e368374019e6385" aria-expanded="false"
-                          aria-controls="Collapse-97e05e368374019e6385">
-
-                          <span class="ekit-accordion-title">Continuous Improvement & Learning</span>
-
-
-                          <div class="ekit_accordion_icon_group">
-                            <div class="ekit_accordion_normal_icon">
-
-                              <i class="icon icon-down-arrow1"></i>
-                            </div>
-
-                            <div class="ekit_accordion_active_icon">
-
-                              <i class="icon icon-cancel"></i>
-                            </div>
-                          </div>
-
-
-                        </a>
-                      </div>
-
-                      <div id="Collapse-97e05e368374019e6385" class=" collapse"
-                        aria-labelledby="primaryHeading-0-73f5692" data-parent="#accordion-68374019e6385">
-
-                        <div class="elementskit-card-body ekit-accordion--content">
-                          <p>Our AI systems continuously learn and improve from interactions while maintaining strict ethical boundaries. We regularly update our models to enhance performance while ensuring they remain aligned with your business values and customer expectations.</p>
-                        </div>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
   <div data-elementor-type="footer" data-elementor-id="1764" class="elementor elementor-1764 elementor-location-footer"
     data-elementor-post-type="elementor_library">
@@ -49374,7 +49238,7 @@
             </div>
           </div>
         </div>
-<div class="elementor-element elementor-element-dc0f0af e-con-full e-flex e-con e-child" data-id="dc0f0af"
+        <div class="elementor-element elementor-element-dc0f0af e-con-full e-flex e-con e-child" data-id="dc0f0af"
           data-element_type="container">
          <div class="elementor-element elementor-element-49dd403 elementor-widget elementor-widget-theme-site-title elementor-widget-heading" data-id="49dd403" data-element_type="widget" data-widget_type="theme-site-title.default" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
   <div class="elementor-widget-container" style="flex: 1; min-width: 200px;">

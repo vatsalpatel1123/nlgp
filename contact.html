@@ -898,7 +898,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <div
                                     class="elementor-field-type-select elementor-field-group elementor-column elementor-field-group-service elementor-col-50">
                                     <label for="form-field-service" class="elementor-field-label">
-                                        Which service interests you most? </label>
+                                        Which product interests you the most? </label>
                                     <div class="elementor-field elementor-select-wrapper remove-before ">
                                         <div class="select-caret-down-wrapper">
                                             <svg aria-hidden="true" class="e-font-icon-svg e-eicon-caret-down"
@@ -910,14 +910,14 @@ document.addEventListener("DOMContentLoaded", function () {
                                         </div>
                                         <select name="form_fields[service]" id="form-field-service"
                                             class="elementor-field-textual elementor-size-md">
-                                            <option value="Lead Revival Android">Lead Revival Android</option>
-                                            <option value="Instant Lead Android">Instant Lead Android</option>
-                                            <option value="Abandoned Cart Recovery">Abandoned Cart Recovery</option>
-                                            <option value="Out Of Hours Android">Out Of Hours Android</option>
-                                            <option value="Voice AI Receptionist">Voice AI Receptionist</option>
-                                            <option value="Convo AI Widget">Convo AI Widget</option>
-                                            <option value="Google Reviews Android">Google Reviews Android</option>
-                                            <option value="Custom Built Solution">Custom Built Solution</option>
+                                           <option value="Lead Revival Android">Lead Revival Android</option>
+            <option value="Instant Lead Android">Instant Lead Android</option>
+            <option value="Abandoned Cart Recovery">Abandoned Cart Recovery</option>
+            <option value="Out Of Hours Android">Out Of Hours Android</option>
+            <option value="Voice AI Receptionist">Voice AI Receptionist</option>
+            <option value="Convo AI Widget">Convo AI Widget</option>
+            <option value="Custom Built Solution">Custom Built Solution</option>
+            <option value="All of Them">All of Them</option>
                                         </select>
                                     </div>
                                 </div>
@@ -945,6 +945,39 @@ document.addEventListener("DOMContentLoaded", function () {
                                         </select>
                                     </div>
                                 </div>
+                                <!-- Your Role -->
+<div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-role elementor-col-50">
+    <label for="form-field-role" class="elementor-field-label">
+        Your role within the organization:
+    </label>
+    <input type="text" name="form_fields[role]" id="form-field-role"
+           class="elementor-field elementor-size-md elementor-field-textual"
+           placeholder="e.g., Marketing Manager, Founder, etc.">
+</div>
+
+<!-- Company Size -->
+<div class="elementor-field-type-select elementor-field-group elementor-column elementor-field-group-company-size elementor-col-50">
+    <label for="form-field-company-size" class="elementor-field-label">
+        Company Size:
+    </label>
+    <div class="elementor-field elementor-select-wrapper remove-before">
+        <div class="select-caret-down-wrapper">
+            <svg aria-hidden="true" class="e-font-icon-svg e-eicon-caret-down"
+                 viewBox="0 0 571.4 571.4" xmlns="http://www.w3.org/2000/svg">
+                <path d="M571 393Q571 407 561 418L311 668Q300 679 286 679T261 668L11 418Q0 407 0 393T11 368 36 357H536Q550 357 561 368T571 393Z"></path>
+            </svg>
+        </div>
+        <select name="form_fields[company_size]" id="form-field-company-size"
+                class="elementor-field-textual elementor-size-md">
+            <option value="1-10">1-10</option>
+            <option value="11-50">11-50</option>
+            <option value="51-200">51-200</option>
+            <option value="201-500">201-500</option>
+            <option value="500+">500+</option>
+        </select>
+    </div>
+</div>
+
                                 <div
                                     class="elementor-field-type-textarea elementor-field-group elementor-column elementor-field-group-message elementor-col-100">
                                     <label for="form-field-message" class="elementor-field-label">
@@ -960,7 +993,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                         <span class="elementor-field-option">
                                             <input type="checkbox" value="yes" id="form-field-sms-consent" name="form_fields[sms_consent]" required="required">
                                             <label for="form-field-sms-consent">
-                                                I consent to receive SMS messages from Next Level Growth Partners. Message and data rates may apply. Reply STOP to opt out. *
+                                              I consent to receive sms notifications, occasional marketing messages, & alerts for upcoming appointment details from Next Level Growth Partners. Message frequency may vary. Message & data rates may apply. Text HELP for assistance. Reply STOP to unsubscribe at any time. *
+
                                             </label>
                                         </span>
                                     </div>
@@ -981,7 +1015,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons">
                                     <button class="elementor-button elementor-size-lg" type="submit" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 18px 40px; border-radius: 50px; font-weight: 600; font-size: 1.1rem; border: none; cursor: pointer; transition: all 0.3s ease;">
                                         <span class="elementor-button-content-wrapper">
-                                            <span class="elementor-button-text">Book My Demo</span>
+                                            <span class="elementor-button-text">Request My Demo</span>
                                         </span>
                                     </button>
                                 </div>
@@ -1268,23 +1302,25 @@ document.addEventListener("DOMContentLoaded", function () {
                         </div>
                     </div>
                 </div>
-                <div class="elementor-element elementor-element-dc0f0af e-con-full e-flex e-con e-child"
-                    data-id="dc0f0af" data-element_type="container">
-                    <div class="elementor-element elementor-element-6f4b759 elementor-widget elementor-widget-theme-site-logo elementor-widget-image"
-                        data-id="6f4b759" data-element_type="widget" data-widget_type="theme-site-logo.default">
-                        <div class="elementor-widget-container">
-                            <a href="https://brandmode.1onestrong.com">
-                                 </a>
-                        </div>
-                    </div>
-                    <div class="elementor-element elementor-element-49dd403 elementor-widget elementor-widget-theme-site-title elementor-widget-heading"
-                        data-id="49dd403" data-element_type="widget" data-widget_type="theme-site-title.default">
-                        <div class="elementor-widget-container">
-                            <h2 class="elementor-heading-title elementor-size-default"><a
-                                    href="index.html">Copyright © 2024 Next Level Growth Partners | AI Lead Conversion Experts</a></h2>
-                        </div>
-                    </div>
-                </div>
+<div class="elementor-element elementor-element-dc0f0af e-con-full e-flex e-con e-child" data-id="dc0f0af"
+          data-element_type="container">
+         <div class="elementor-element elementor-element-49dd403 elementor-widget elementor-widget-theme-site-title elementor-widget-heading" data-id="49dd403" data-element_type="widget" data-widget_type="theme-site-title.default" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+  <div class="elementor-widget-container" style="flex: 1; min-width: 200px;">
+    <p style="margin: 0; font-size: 14px;">
+      <a href="privacy-policy.html" style="margin-right: 1rem; text-decoration: underline;">Privacy Policy</a>
+      <a href="terms.html" style="text-decoration: underline;">Terms of Service</a>
+    </p>
+  </div>
+</div>
+         <div class="elementor-element elementor-element-49dd403 elementor-widget elementor-widget-theme-site-title elementor-widget-heading" data-id="49dd403" data-element_type="widget" data-widget_type="theme-site-title.default" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+  <div class="elementor-widget-container" style="flex: 1; min-width: 200px; text-align: right;">
+    <h2 class="elementor-heading-title elementor-size-default" style="margin: 0; font-size: 14px;">
+      <a href="index.html">Copyright © 2024 Next Level Growth Partners | AI Lead Conversion Experts</a>
+    </h2>
+  </div>
+</div>
+
+        </div>
             </div>
         </div>
     </div>
@@ -1421,7 +1457,6 @@ document.addEventListener("DOMContentLoaded", function () {
             };
 
             // Add form-specific data
-            if (formType === 'contact_form') {
                 data = {
                     ...data,
                     first_name: formData.get('form_fields[first_name]'),
@@ -1433,14 +1468,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     referral_source: formData.get('form_fields[referral]'),
                     message: formData.get('form_fields[message]'),
                     sms_consent: formData.get('form_fields[sms_consent]') === 'yes',
-                    terms_consent: formData.get('form_fields[terms]') === 'yes'
+                    terms_consent: formData.get('form_fields[terms]') === 'yes',
+                     role: formData.get('form_fields[role]'),
+                     company_size: formData.get('form_fields[company_size]'),
                 };
-            } else if (formType === 'newsletter_signup') {
-                data = {
-                    ...data,
-                    email: formData.get('form_fields[email]')
-                };
-            }
+            
 
 
             const webhookTestUrl = 'https://n8n.srv791889.hstgr.cloud/webhook/contact-form';
