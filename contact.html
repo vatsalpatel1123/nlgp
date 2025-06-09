@@ -786,14 +786,104 @@
                                         class="elementor-field elementor-size-md  elementor-field-textual"
                                         placeholder="Email" required="required">
                                 </div>
-                                <div
-                                    class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-company elementor-col-100 elementor-field-required">
-                                    <label for="form-field-company" class="elementor-field-label">
-                                        Company Website *</label>
-                                    <input size="1" type="text" name="form_fields[company]" id="form-field-company"
-                                        class="elementor-field elementor-size-md  elementor-field-textual"
-                                        placeholder="Company Website" required="required">
-                                </div>
+<div
+    class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-company elementor-col-100 elementor-field-required">
+    <label for="form-field-company" class="elementor-field-label">
+        Company Website *
+    </label>
+    <input 
+        size="1" 
+        type="text" 
+        name="form_fields[company]" 
+        id="form-field-company"
+        class="elementor-field elementor-size-md elementor-field-textual"
+        placeholder="Company Website" 
+        required
+    >
+    <span id="website-error" style="color: red; font-size: 14px; display: none;">Please enter a valid website (e.g., www.example.com)</span>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form.elementor-form");
+    const websiteInput = document.getElementById("form-field-company");
+    const phoneInput = document.getElementById("form-field-phone");
+    const submitBtn = form.querySelector("button[type='submit']");
+    const websiteError = document.getElementById("website-error");
+
+    function validateWebsite() {
+        const pattern = /^www\.[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
+        const isValid = pattern.test(websiteInput.value.trim());
+        websiteError.style.display = isValid ? "none" : "block";
+        websiteInput.style.border = isValid ? "" : "1px solid red";
+        return isValid;
+    }
+
+    function validatePhone() {
+        const pattern = /^\+?[0-9]{7,15}$/;
+        const isValid = pattern.test(phoneInput.value.trim());
+        phoneInput.style.border = isValid ? "" : "1px solid red";
+        return isValid;
+    }
+
+    function checkFormValidity() {
+        const requiredFields = form.querySelectorAll("[required]");
+        let allValid = true;
+
+        requiredFields.forEach(field => {
+            if (field.type === "checkbox" && !field.checked) {
+                allValid = false;
+            } else if ((field.type === "text" || field.type === "email" || field.type === "tel") && field.value.trim() === "") {
+                allValid = false;
+            }
+        });
+
+        // Website validation ONLY when user has interacted with that input (use a flag)
+        // But since you want website validation always for final submit, keep website validation always
+        // You can skip website validation on form input except websiteInput events
+
+        if (!validateWebsite() || !validatePhone()) {
+            allValid = false;
+        }
+
+        submitBtn.disabled = !allValid;
+        submitBtn.style.opacity = allValid ? "1" : "0.5";
+        submitBtn.style.cursor = allValid ? "pointer" : "not-allowed";
+    }
+
+    // Bind website validation only on websiteInput events
+    websiteInput.addEventListener("input", () => {
+        validateWebsite();
+        checkFormValidity();
+    });
+
+    websiteInput.addEventListener("blur", () => {
+        validateWebsite();
+        checkFormValidity();
+    });
+
+    // Phone input validation on phoneInput events
+    phoneInput.addEventListener("input", () => {
+        validatePhone();
+        checkFormValidity();
+    });
+
+    // For rest of the form, just check validity but no website validation
+    form.addEventListener("input", (e) => {
+        if (e.target !== websiteInput) {  // skip website validation on generic input
+            checkFormValidity();
+        }
+    });
+
+    // Initially disable submit
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = "0.5";
+    submitBtn.style.cursor = "not-allowed";
+});
+
+</script>
+
+
                                 <div
                                     class="elementor-field-type-select elementor-field-group elementor-column elementor-field-group-service elementor-col-50">
                                     <label for="form-field-service" class="elementor-field-label">
