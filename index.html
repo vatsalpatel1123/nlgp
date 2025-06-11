@@ -1753,8 +1753,8 @@
     <!-- AOS Animation Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Universal Chat Widget -->
-    <script src="universal-chat-widget.js"></script>
+    <!-- n8n Chat Integration Widget -->
+    <script src="n8n-chat-integration.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -3478,8 +3478,9 @@
                                 data-id="responsive-image" data-element_type="widget" data-widget_type="image.default">
                                 <div class="elementor-widget-container">
                                     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1715&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                        alt="Business Analytics Dashboard"
                                         class="responsive-placeholder-image"
-                                        style="width: 80% !important; height: auto; display: block; margin: 0 auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                                        style="width: 100% !important; height: auto; display: block; margin: 0 auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);"
                                 </div>
                             </div>
                         </div>
@@ -6140,117 +6141,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 offset: 100
             });
 
-            // Chat Widget Functionality
-            document.addEventListener('DOMContentLoaded', function () {
-                const chatWidgetButton = document.getElementById('chatWidgetButton');
-                const chatWidgetPopup = document.getElementById('chatWidgetPopup');
-                const chatCloseBtn = document.getElementById('chatCloseBtn');
-                const chatNotification = document.getElementById('chatNotification');
-                const chatInputField = document.querySelector('.chat-input-field');
-                const chatSendBtn = document.querySelector('.chat-send-btn');
-                const chatMessages = document.querySelector('.chat-widget-messages');
-                const typingIndicator = document.querySelector('.chat-typing-indicator');
-
-                let isOpen = false;
-
-                // Toggle chat widget
-                function toggleChat() {
-                    isOpen = !isOpen;
-                    if (isOpen) {
-                        chatWidgetPopup.classList.add('show');
-                        chatNotification.style.display = 'none';
-                        chatInputField.focus();
-                    } else {
-                        chatWidgetPopup.classList.remove('show');
-                    }
-                }
-
-                // Event listeners
-                chatWidgetButton.addEventListener('click', toggleChat);
-                chatCloseBtn.addEventListener('click', toggleChat);
-
-                // Close chat when clicking outside
-                document.addEventListener('click', function (e) {
-                    if (isOpen && !chatWidgetPopup.contains(e.target) && !chatWidgetButton.contains(e.target)) {
-                        toggleChat();
-                    }
-                });
-
-                // Enable/disable send button based on input
-                chatInputField.addEventListener('input', function () {
-                    chatSendBtn.disabled = this.value.trim() === '';
-                });
-
-                // Send message on Enter key
-                chatInputField.addEventListener('keypress', function (e) {
-                    if (e.key === 'Enter' && !chatSendBtn.disabled) {
-                        sendChatMessage();
-                    }
-                });
-
-                // Send message on button click
-                chatSendBtn.addEventListener('click', function () {
-                    if (!this.disabled) {
-                        sendChatMessage();
-                    }
-                });
-
-                function sendChatMessage() {
-                    const message = chatInputField.value.trim();
-                    if (!message) return;
-
-                    // Add user message to chat
-                    addMessageToChat(message, 'sent');
-
-                    // Clear input
-                    chatInputField.value = '';
-                    chatSendBtn.disabled = true;
-
-                    // Show typing indicator
-                    showTypingIndicator();
-
-                    // Simulate AI response (replace with actual n8n integration)
-                    setTimeout(() => {
-                        hideTypingIndicator();
-                        addMessageToChat("Thanks for your message! I'm processing your request and will respond shortly.", 'received');
-                    }, 1500);
-                }
-
-                function addMessageToChat(message, type) {
-                    const messageDiv = document.createElement('div');
-                    messageDiv.className = `chat-message ${type}`;
-
-                    const avatarDiv = document.createElement('div');
-                    avatarDiv.className = 'chat-message-avatar';
-                    avatarDiv.innerHTML = type === 'sent' ? '<i class="fas fa-user"></i>' : '<i class="fas fa-robot"></i>';
-
-                    const bubbleDiv = document.createElement('div');
-                    bubbleDiv.className = 'chat-message-bubble';
-                    bubbleDiv.textContent = message;
-
-                    messageDiv.appendChild(avatarDiv);
-                    messageDiv.appendChild(bubbleDiv);
-
-                    chatMessages.appendChild(messageDiv);
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                }
-
-                function showTypingIndicator() {
-                    typingIndicator.classList.add('show');
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                }
-
-                function hideTypingIndicator() {
-                    typingIndicator.classList.remove('show');
-                }
-
-                // Show notification after 3 seconds
-                setTimeout(() => {
-                    if (!isOpen) {
-                        chatNotification.style.display = 'flex';
-                    }
-                }, 3000);
-            });
+            // n8n Chat Widget Integration is now handled by n8n-chat-integration.js
+            // This provides professional smartphone-like iMessage UI with direct n8n workflow connection
         </script>
 
 
