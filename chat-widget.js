@@ -479,7 +479,7 @@
                             <i class="fas fa-robot"></i>
                         </div>
                         <div class="chat-header-text">
-                            <div class="chat-header-title">Bella AI</div>
+                            <div class="chat-header-title">Bella  logu AI</div>
                             <div class="chat-header-status">AI Assistant • Online</div>
                         </div>
                     </div>
