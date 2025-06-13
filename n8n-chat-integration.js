@@ -806,6 +806,11 @@
             }
         }
 
+        // Send welcome message from Bella when chat widget is initialized
+        setTimeout(() => {
+            addMessage("Welcome, this is Bella your AI assistant, how can I help you today?", 'received');
+        }, 500);
+
         // Show notification after delay
         setTimeout(() => {
             if (!isOpen && chatNotification) {

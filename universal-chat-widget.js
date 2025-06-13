@@ -540,16 +540,7 @@
                 </div>
 
                 <div class="chat-widget-messages" id="professionalChatMessages">
-                    <div class="chat-message received">
-                        <div class="chat-message-avatar">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <div class="chat-message-bubble">
-                            Hello! I'm Bella, your friendly AI assistant. I'm here to help you see how your own
-                            custom AI assistant can work for your business. To get started, could you share your
-                            first name with me?
-                        </div>
-                    </div>
+                    <!-- Messages will be added dynamically -->
                 </div>
 
                 <div class="chat-typing-indicator" id="professionalChatTyping">
@@ -765,6 +756,17 @@
                 }
             }
 
+            // Send welcome message from Bella when chat widget is initialized
+            setTimeout(() => {
+                try {
+                    console.log('Professional Chat Widget: Adding welcome message...');
+                    addMessageToChat("Welcome, this is Bella your AI assistant, how can I help you today?", 'received');
+                    console.log('Professional Chat Widget: Welcome message added successfully');
+                } catch (error) {
+                    console.error('Professional Chat Widget: Welcome message error', error);
+                }
+            }, 500);
+
             // Professional notification system
             setTimeout(() => {
                 try {
@@ -833,6 +835,7 @@
             };
 
             console.log('Professional Chat Widget: Successfully initialized');
+            console.log('Professional Chat Widget: Chat messages element:', chatMessages);
 
         } catch (error) {
             console.error('Professional Chat Widget: Initialization failed', error);
