@@ -489,16 +489,7 @@
                 </div>
 
                 <div class="chat-widget-messages" id="chatMessages">
-                    <div class="chat-message received">
-                        <div class="chat-message-avatar">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <div class="chat-message-bubble">
-                            Hello! I'm Bella, your friendly AI assistant. I'm here to help you see how your own
-                            custom AI assistant can work for your business. To get started, could you share your
-                            first name with me?
-                        </div>
-                    </div>
+                    <!-- Messages will be added dynamically -->
                 </div>
 
                 <div class="chat-typing-indicator" id="typingIndicator">
@@ -629,6 +620,11 @@
         function hideTypingIndicator() {
             typingIndicator.classList.remove('show');
         }
+
+        // Send welcome message from Bella when chat widget is initialized
+        setTimeout(() => {
+            addMessageToChat("Welcome, this is Bella your AI assistant, how can I help you today?", 'received');
+        }, 500);
 
         // Show notification after 3 seconds
         setTimeout(() => {

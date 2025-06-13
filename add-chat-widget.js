@@ -6,8 +6,9 @@ const path = require('path');
 
 // List of HTML files to update
 const htmlFiles = [
+    'index.html',
     'Home.html',
-    'apps.html', 
+    'apps.html',
     'appscroll.html',
     'flow.html',
     'flowvp.html',
@@ -55,13 +56,13 @@ function addChatWidgetToFile(filename) {
                 insertPosition = content.indexOf(cssMatch[0]) + cssMatch[0].length;
                 insertAfter = cssMatch[0];
             }
-        }
-        // Fallback to head closing tag
-        else {
-            const headMatch = content.match(/<\/head>/i);
-            if (headMatch) {
-                insertPosition = content.indexOf(headMatch[0]);
-                insertAfter = '';
+            // Fallback to head closing tag
+            else {
+                const headMatch = content.match(/<\/head>/i);
+                if (headMatch) {
+                    insertPosition = content.indexOf(headMatch[0]);
+                    insertAfter = '';
+                }
             }
         }
 
