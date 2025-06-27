@@ -822,13 +822,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const submitBtn = form.querySelector("button[type='submit']");
     const websiteError = document.getElementById("website-error");
 
-    function validateWebsite() {
-        const pattern = /^www\.[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
-        const isValid = pattern.test(websiteInput.value.trim());
-        websiteError.style.display = isValid ? "none" : "block";
-        websiteInput.style.border = isValid ? "" : "1px solid red";
-        return isValid;
-    }
+   function validateWebsite() {
+    // Optional http/https, then ≥1 “label.” chunks, then ≥2-letter TLD, optional port/path/query
+    const pattern = /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,}(?::\d{2,5})?(\/[^\s]*)?$/i;
+
+    const trimmed   = websiteInput.value.trim();
+    const isValid   = pattern.test(trimmed);
+    
+    websiteError.style.display = isValid ? "none" : "block";
+    websiteInput.style.border  = isValid ? ""     : "1px solid red";
+    
+    return isValid;
+}
+
 
     function validatePhone() {
         const pattern = /^\+?[0-9]{7,15}$/;
@@ -917,6 +923,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <option value="Voice AI Receptionist">Voice AI Receptionist</option>
             <option value="Convo AI Widget">Convo AI Widget</option>
             <option value="Custom Built Solution">Custom Built Solution</option>
+            <option value="Full service lead generation system">Full service lead generation system</option>
             <option value="All of Them">All of Them</option>
                                         </select>
                                     </div>
